@@ -1,0 +1,43 @@
+package simulation.person;
+
+
+import simulation.util.Constant;
+import simulation.util.Randomizer;
+
+public class Health {
+
+    private HealthState currentState = HealthState.HEALTHY;
+    private int periodOfIllness = 0;
+
+    public void tick() {
+        if (currentState == HealthState.INFECTED || currentState == HealthState.SICK) {
+            periodOfIllness++;
+
+            if(Randomizer.nextDouble() * 12.0 < Constant.DEAD_PROBABILITY) {
+                currentState = HealthState.DEAD;
+            }
+        }
+
+        if (periodOfIllness == Constant.HIDDEN_PERIOD) {
+            currentState = HealthState.SICK;
+        }
+
+        if (periodOfIllness == Constant.ILLNESS_PERIOD) {
+            currentState = HealthState.RESISTED;
+        }
+    }
+
+    public boolean infected() {
+        if (currentState == HealthState.HEALTHY) {
+            currentState = HealthState.INFECTED;
+            return true;
+        }
+        return false;
+    }
+
+    public HealthState getCurrentState() {
+        return currentState;
+    }
+
+}
+
