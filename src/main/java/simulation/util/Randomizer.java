@@ -2,15 +2,18 @@ package simulation.util;
 
 import java.util.Random;
 
-public class Randomizer {
+public final class Randomizer {
 
-    private static Random random = new Random(System.currentTimeMillis());
+    private static final Random RANDOM = new Random(System.currentTimeMillis());
 
-    public static double nextDouble() {
-        return random.nextDouble();
+    private Randomizer() {
     }
 
-    public static int nextInt(int bound) {
-        return random.nextInt(bound);
+    public static double nextDouble() {
+        return RANDOM.nextDouble();
+    }
+
+    public static int nextInt(final int bound) {
+        return RANDOM.nextInt(bound);
     }
 }

@@ -16,9 +16,9 @@ public class Counter {
 
     private HashMap<Class, Long> counters = new HashMap<>();
 
-    public long inc(Class clazz) {
+    public long inc(final Class clazz) {
         long counter = counters.getOrDefault(clazz, 0L);
-        counters.put(clazz, counter+1);
+        counters.put(clazz, counter + 1);
         return counter;
     }
 

@@ -33,36 +33,36 @@ public class Main {
 
         ArrayList<Person> population = new ArrayList<>();
 
-        for (int i=0; i<500; i++) {
+        for (int i = 0; i < 500; i++) {
             population.add(new Person(personalIdentifier.inc(), behaviorFactory.worker(), behaviorFactory.sick()));
         }
 
-        for (int i=0; i<200; i++) {
+        for (int i = 0; i < 200; i++) {
             population.add(new Person(personalIdentifier.inc(), behaviorFactory.child(), behaviorFactory.sick()));
         }
 
-        for (int i=0; i<100; i++) {
+        for (int i = 0; i < 100; i++) {
             population.add(new Person(personalIdentifier.inc(), behaviorFactory.unemployed(), behaviorFactory.sick()));
         }
 
-        for (int i=0; i<100; i++) {
+        for (int i = 0; i < 100; i++) {
             population.add(new Person(personalIdentifier.inc(), behaviorFactory.homeless(), behaviorFactory.homeless()));
         }
 
-        for (int i=0; i< Constant.INITIAL_INFECTED; i++) {
+        for (int i = 0; i < Constant.INITIAL_INFECTED; i++) {
             population.get(Randomizer.nextInt(population.size())).infected();
         }
 
         LinkedList<String> tableRows = new LinkedList<>();
 
-        for (int i=0; i < 100; i++) {
+        for (int i = 0; i < 100; i++) {
             population.forEach((p) -> navigator.moveTo(p, p.getCurrentPlace(), p.tick()));
 
             for (Place place : city.getPlaces()) {
                 List<Person> people = navigator.inPlace(place);
                 long count = people.stream().filter((p) -> p.getStatus() == HealthState.INFECTED).count();
                 if (count > 0) {
-                    for(Person person : people) {
+                    for (Person person : people) {
                         if (Randomizer.nextDouble() < Constant.INFECTION_PROBABILITY * count * place.getInfectionRate()) {
                             if (person.infected()) {
                                 quantityOfInfection.inc(place.getClass());

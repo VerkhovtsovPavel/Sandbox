@@ -1,9 +1,9 @@
-package userManager;
+package user_manager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserManager {
+public final class UserManager {
 
     private static final UserManager INSTANCE = new UserManager();
 
@@ -27,7 +27,7 @@ public class UserManager {
         return user;
     }
 
-    public void release(User user) {
+    public void release(final User user) {
         users.add(user);
     }
 }

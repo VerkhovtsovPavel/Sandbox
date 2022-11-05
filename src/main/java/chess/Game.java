@@ -11,8 +11,8 @@ import java.util.Scanner;
 
 public class Game {
 
-    private Board gameBoard;
-    private List<String> history = new ArrayList<>();
+    private final Board gameBoard;
+    private final List<String> history = new ArrayList<>();
     private Color currentTurn = Color.WHITE;
 
     public Game() {

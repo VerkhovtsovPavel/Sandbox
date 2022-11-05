@@ -21,6 +21,11 @@ import static salad.constant.Type.VEGETABLE;
 
 public class FitnessGuruTest {
 
+    private static final int FROM_CALORIES = 5;
+    private static final int TO_CALORIES = 10;
+    private static final int DEFAULT_WEIGHT = 100;
+    private static final int EXPECTED_CALORIES = 2300;
+
     private final FitnessGuru fitnessGuru = new FitnessGuru();
     private final Salad salad = new Salad();
     private final Ingredient caloriesVegetable = new Ingredient(VEGETABLE, 10, 2, 2, 2);
@@ -31,15 +36,15 @@ public class FitnessGuruTest {
 
     @BeforeClass
     private void initSalad() {
-        salad.addIngredient(caloriesVegetable, 100);
-        salad.addIngredient(fattyNut, 100);
-        salad.addIngredient(carbohydrateFruit, 100);
-        salad.addIngredient(proteinsSauce, 100);
-        salad.addIngredient(balancedSeasoning, 100);
+        salad.addIngredient(caloriesVegetable, DEFAULT_WEIGHT);
+        salad.addIngredient(fattyNut, DEFAULT_WEIGHT);
+        salad.addIngredient(carbohydrateFruit, DEFAULT_WEIGHT);
+        salad.addIngredient(proteinsSauce, DEFAULT_WEIGHT);
+        salad.addIngredient(balancedSeasoning, DEFAULT_WEIGHT);
     }
 
     @Test(dataProvider = "sortConditions")
-    public void sorting(Comparator<Ingredient> sortCondition, List<Ingredient> expectedOrder) {
+    public void sorting(final Comparator<Ingredient> sortCondition, final List<Ingredient> expectedOrder) {
         Assert.assertEquals(fitnessGuru.sortIngredients(salad, sortCondition),
                 expectedOrder, "Sorting order is incorrect");
     }
@@ -47,13 +52,13 @@ public class FitnessGuruTest {
     @Test
     public void calories() {
         Assert.assertEquals(fitnessGuru.calories(salad),
-                2300, "Calories calculation is incorrect");
+                EXPECTED_CALORIES, "Calories calculation is incorrect");
     }
 
     @Test
     public void caloriesInInterval() {
         List<Ingredient> expectedIngredients = List.of(balancedSeasoning, caloriesVegetable);
-        List<Ingredient> actualIngredients = fitnessGuru.calories(salad, 5, 10);
+        List<Ingredient> actualIngredients = fitnessGuru.calories(salad, FROM_CALORIES, TO_CALORIES);
 
         Assert.assertEquals(actualIngredients.size(), expectedIngredients.size(), "Lists have different size");
         Assert.assertTrue(actualIngredients.containsAll(expectedIngredients), "Calories filtering is incorrect");
@@ -63,11 +68,11 @@ public class FitnessGuruTest {
     private Object[][] sortConditions() {
         return new Object[][]
         {
-                {TYPE,          List.of(caloriesVegetable, carbohydrateFruit, proteinsSauce, fattyNut, balancedSeasoning)},
-                {FATS,          List.of(caloriesVegetable, carbohydrateFruit, proteinsSauce, balancedSeasoning, fattyNut)},
-                {CARBOHYDRATES, List.of(fattyNut, caloriesVegetable, proteinsSauce, balancedSeasoning, carbohydrateFruit)},
-                {CALORIES,      List.of(fattyNut, carbohydrateFruit, proteinsSauce, balancedSeasoning, caloriesVegetable)},
-                {PROTEINS,      List.of(fattyNut, caloriesVegetable, carbohydrateFruit, balancedSeasoning, proteinsSauce)}
+            {TYPE,          List.of(caloriesVegetable, carbohydrateFruit, proteinsSauce, fattyNut, balancedSeasoning)},
+            {FATS,          List.of(caloriesVegetable, carbohydrateFruit, proteinsSauce, balancedSeasoning, fattyNut)},
+            {CARBOHYDRATES, List.of(fattyNut, caloriesVegetable, proteinsSauce, balancedSeasoning, carbohydrateFruit)},
+            {CALORIES,      List.of(fattyNut, carbohydrateFruit, proteinsSauce, balancedSeasoning, caloriesVegetable)},
+            {PROTEINS,      List.of(fattyNut, caloriesVegetable, carbohydrateFruit, balancedSeasoning, proteinsSauce)}
         };
     }
 

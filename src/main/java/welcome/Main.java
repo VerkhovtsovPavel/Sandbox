@@ -2,9 +2,9 @@ package welcome;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         for (Bonus bonus: Bonus.values()) {
-            System.out.println(bonus+" - "+bonus.icon);
+            System.out.println(bonus + " - " + bonus.icon);
         }
     }
 
@@ -17,10 +17,10 @@ public class Main {
         TEMP_AGENCY("\uD83C\uDFD7"),
         BIS("\uD83D\uDCE7");
 
-        private String icon;
+        private final String icon;
 
-        Bonus(String icon) {
-            this.icon = icon;
+        Bonus(final String symbols) {
+            this.icon = symbols;
         }
     }
 }

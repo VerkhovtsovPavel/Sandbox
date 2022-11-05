@@ -1,4 +1,7 @@
-apply plugin: 'java'
+plugins {
+    id 'java'
+    id 'checkstyle'
+}
 
 group 'org.pavelverk.sandbox'
 version '0.1-SNAPSHOT'

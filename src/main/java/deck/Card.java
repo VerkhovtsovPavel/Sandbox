@@ -1,4 +1,4 @@
-package deskOfCards;
+package deck;
 
 public class Card {
 

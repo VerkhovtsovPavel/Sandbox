@@ -1,13 +1,17 @@
 package simulation.util;
 
-public class StringUtils {
+public final class StringUtils {
 
-    static public String beatifyClassName(String className) {
+    private StringUtils() {
+
+    }
+
+    public static String beatifyClassName(final String className) {
         int indexOfLastDot = className.lastIndexOf(".") + 1;
         return className.substring(indexOfLastDot);
     }
 
-    static public String beatifyClassName(Class clazz) {
+    public static String beatifyClassName(final Class clazz) {
         return beatifyClassName(clazz.toString());
     }
 }
