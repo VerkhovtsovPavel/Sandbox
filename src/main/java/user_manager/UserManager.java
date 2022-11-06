@@ -3,15 +3,20 @@ package user_manager;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class UserManager {
 
-    private static final UserManager INSTANCE = new UserManager();
+//TODO Make class thread-safety
+//TODO Add methods to load and save user from/to external source
+public class UserManager {
+
+    private static final UserManager INSTANCE = new UserManager(new UserGenerator());
 
     private final List<User> users;
+    private final UserGenerator generator;
 
-    private UserManager() {
-        users = new ArrayList<User>();
-        users.add(new User("Pavel", "QW123456"));
+    public UserManager(UserGenerator generator) {
+        this.generator = generator;
+        this.users = new ArrayList<User>();
+        this.users.add(new User("Pavel", "QW123456"));
     }
 
     public static UserManager getInstance() {
@@ -20,7 +25,7 @@ public final class UserManager {
 
     public User getInUse() {
         if (users.size() == 0) {
-            return null;
+            return generator.generateUser();
         }
         User user = users.get(0);
         users.remove(0);
