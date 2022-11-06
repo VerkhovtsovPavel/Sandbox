@@ -11,6 +11,6 @@ public class Hospital extends Place {
 
     @Override
     public double getInfectionRate() {
-        return 0;
+        return 0.5;
     }
 }

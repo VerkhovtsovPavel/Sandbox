@@ -10,12 +10,20 @@ public class Health {
     private int periodOfIllness = 0;
 
     public void tick() {
-        if (currentState == HealthState.INFECTED || currentState == HealthState.SICK) {
+
+        if (currentState.isSick()) {
             periodOfIllness++;
 
-            if(Randomizer.nextDouble() * 12.0 < Constant.DEAD_PROBABILITY) {
-                currentState = HealthState.DEAD;
+            if (currentState == HealthState.SICK) {
+                // TODO Think about gauss distribution depends on probability
+                if (Randomizer.nextDouble() < Constant.DEAD_PROBABILITY) {
+                    currentState = HealthState.DEAD;
+                }
             }
+        }
+
+        if (periodOfIllness == Constant.PRE_CONTAGIOUS_PERIOD) {
+            currentState = HealthState.CONTAGIOUS;
         }
 
         if (periodOfIllness == Constant.HIDDEN_PERIOD) {

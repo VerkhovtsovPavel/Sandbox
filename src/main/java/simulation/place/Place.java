@@ -6,7 +6,7 @@ import static simulation.util.StringUtils.beatifyClassName;
 
 public abstract class Place {
 
-    private long id;
+    private final long id;
 
     public Place(Counter counter) {
         this.id = counter.inc(this.getClass());

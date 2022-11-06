@@ -2,11 +2,14 @@ package simulation.place;
 
 import simulation.person.Person;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 
 public class Navigator {
 
-    private HashMap<Place, List<Person>> currentLocation = new HashMap<>();
+    private final HashMap<Place, List<Person>> currentLocation = new HashMap<>();
 
     public void moveTo(Person person, Place from, Place to) {
         List<Person> fromList = currentLocation.get(from);

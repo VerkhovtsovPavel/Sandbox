@@ -10,7 +10,7 @@ import java.util.List;
 
 public class BehaviorFactory {
 
-    private City city;
+    private final City city;
 
     public BehaviorFactory(City city) {
         this.city = city;
@@ -26,6 +26,35 @@ public class BehaviorFactory {
                         work,
                         city.getRandom(Pub.class),
                         city.getRandom(Home.class)));
+            }
+        };
+    }
+
+    public Behavior hardWorker() {
+        return new Behavior() {
+            @Override
+            List<Place> initPlaces() {
+                Place work = city.getRandom(Work.class);
+                return new ArrayList<>(Arrays.asList(
+                        work,
+                        work,
+                        work,
+                        city.getRandom(Home.class)));
+            }
+        };
+    }
+
+    public Behavior doctor() {
+        return new Behavior() {
+            @Override
+            List<Place> initPlaces() {
+                Place hospital = city.getRandom(Hospital.class);
+                Place home = city.getRandom(Home.class);
+                return new ArrayList<>(Arrays.asList(
+                        home,
+                        hospital,
+                        hospital,
+                        home));
             }
         };
     }

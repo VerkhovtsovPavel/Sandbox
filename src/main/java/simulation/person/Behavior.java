@@ -27,7 +27,7 @@ public abstract class Behavior {
     @Override
     public String toString() {
         StringBuilder buffer = new StringBuilder();
-        places.forEach(buffer::append);
+        places.forEach(p -> buffer.append(" -> ").append(p));
         return buffer.toString();
     }
 

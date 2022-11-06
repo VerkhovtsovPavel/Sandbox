@@ -20,6 +20,11 @@ public class Person {
 
     public Place tick() {
         health.tick();
+
+        if (health.getCurrentState() == HealthState.DEAD) {
+            return City.getGate();
+        }
+
         if(health.getCurrentState() == HealthState.SICK) {
             currentPlace = sickBehavior.nextPlace();
         } else {
@@ -49,6 +54,6 @@ public class Person {
         String intro = toString();
         String behaviorInfo = behavior.toString();
 
-        return intro + "//" + behaviorInfo;
+        return intro + " | Places:" + behaviorInfo;
     }
 }
