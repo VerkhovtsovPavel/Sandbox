@@ -1,16 +1,20 @@
 package pattern_matching;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class Matcher<T> implements Function<Object, T> {
 
-    private final HashMap<Class<?>, Function<Object, T>> branches;
+    private final HashMap<Class<?>, Function<Object, T>> classBranches;
+    private final List<Pair<Predicate<Object>, Function<Object, T>>> conditionList;
     private Function<Object, T> defaultBranch = (x) -> { throw new IllegalArgumentException(); };
 
     private Matcher() {
-        branches = new HashMap<>();
+        classBranches = new HashMap<>();
+        conditionList = new ArrayList<>();
     }
 
     public static <T> Matcher<T> match(Class<T> returnType) {
@@ -21,13 +25,12 @@ public class Matcher<T> implements Function<Object, T> {
         return match(Object.class);
     }
 
-    public <R> Action<R> when(Class<R> clazz) {
-        return new Action<>(clazz, this);
+    public <R> ClassAction<R> when(Class<R> clazz) {
+        return new ClassAction<>(clazz, this);
     }
 
-    public <R> Action<R> when(Class<R> clazz, Predicate<R> condition) {
-        //TODO: Update implementation for enable conditions
-        return new Action<>(clazz, this);
+    public <R> ConditionAction<R> when(Predicate<R> condition) {
+        return new ConditionAction<>(condition, this);
     }
 
     public Matcher<T> orElse(Function<Object, T> action) {
@@ -37,24 +40,48 @@ public class Matcher<T> implements Function<Object, T> {
 
     @Override
     public T apply(Object r) {
-        if (branches.containsKey(r.getClass())) {
-            return branches.get(r.getClass()).apply(r);
-        } else {
-            return defaultBranch.apply(r);
+
+        for(Pair<Predicate<Object>, Function<Object, T>> pair : conditionList) {
+            try {
+                if (pair.getLeft().test(r)) {
+                    return pair.getRight().apply(r);
+                }
+            } catch(ClassCastException ignore) {}
         }
+
+        if (classBranches.containsKey(r.getClass())) {
+            return classBranches.get(r.getClass()).apply(r);
+        }
+
+        return defaultBranch.apply(r);
     }
 
-    public class Action<R> {
+    public class ClassAction<R> {
         private final Class<R> clazz;
         private final Matcher matcher;
 
-        private Action(Class<R> clazz, Matcher<T> matcher) {
+        private ClassAction(Class<R> clazz, Matcher<T> matcher) {
             this.clazz = clazz;
             this.matcher = matcher;
         }
 
         public Matcher<T> then(Function<R, T> action) {
-            matcher.branches.put(clazz, action);
+            matcher.classBranches.put(clazz, action);
+            return matcher;
+        }
+    }
+
+    public class ConditionAction<R> {
+        private final Predicate<R> condition;
+        private final Matcher matcher;
+
+        private ConditionAction(Predicate<R> condition, Matcher<T> matcher) {
+            this.condition = condition;
+            this.matcher = matcher;
+        }
+
+        public Matcher<T> then(Function<R, T> action) {
+            matcher.conditionList.add(new Pair<>(condition, action));
             return matcher;
         }
     }
