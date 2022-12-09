@@ -1,61 +1,65 @@
 package maze;
 
-import java.util.function.BiPredicate;
+import static maze.SymbolConstants.NEXT_LINE;
+import static maze.SymbolConstants.SPACE;
 
 public record Maze(int[][] matrix){
 
     public String toString(DisplayInfo info) {
-        BiPredicate<Integer, Bitable> bitNotSet = (cell, bitable) -> ((cell & bitable.getBit()) == 0);
-        String spaces = new String(new char[info.flat().length()]).replace('\0', ' ');
         StringBuilder buffer = new StringBuilder();
 
-        int y = matrix[0].length;
-        int x = matrix.length;
-
-        for (int i = 0; i < y; i++) {
+        // Build maze line by line
+        for (int i = 0; i < matrix[0].length; i++) {
             // Add the flats and tops
-            for (int j = 0; j < x; j++) {
-                buffer.append(info.corner());
-                if (bitNotSet.test(matrix[j][i], Direction.N)) {
-                    buffer.append(info.flat());
-                } else {
-                    buffer.append(spaces);
-                }
+            for (int[] line : matrix) {
+                buffer
+                        .append(info.getCorner())
+                        .append(isBitNotSet(line[i], Direction.N) ? info.getFlat() : info.getSpaces());
             }
-            buffer.append(info.corner()).append("\n");
+            buffer.append(info.getCorner()).append(NEXT_LINE);
 
             // Add the walls
-            for (char wallSign : info.wall().toCharArray()) {
-                for (int j = 0; j < x; j++) {
-                    if (bitNotSet.test(matrix[j][i], Direction.W)) {
+            int marketPlace = info.getWall().length() / 2;
+            int currentLevel = 0;
+            for (char wallSign : info.getWall().toCharArray()) {
+                for (int[] line : matrix) {
+                    if (isBitNotSet(line[i], Direction.W)) {
                         buffer.append(wallSign);
                     } else {
-                        buffer.append(" ");
+                        buffer.append(SPACE);
                     }
 
-                    int signOffset = (spaces.length() - 1) / 2;
-                    if(bitNotSet.negate().test(matrix[j][i], Type.START)) {
-                        buffer.append(spaces, 0, signOffset)
-                                .append(info.startSign())
-                                .append(spaces.substring(signOffset+1));
-                    } else if(bitNotSet.negate().test(matrix[j][i], Type.FINISH)) {
-                        buffer.append(spaces, 0, signOffset)
-                                .append(info.endSign())
-                                .append(spaces.substring(signOffset+1));
+                    if (!isBitNotSet(line[i], Type.START)) {
+                        if (info.isDuplicateSign() || currentLevel == marketPlace) {
+                            buffer.append(info.getStartSign());
+                        } else {
+                            buffer.append(info.getSpaces());
+                        }
+                    } else if (!isBitNotSet(line[i], Type.FINISH)) {
+                        if (info.isDuplicateSign() || currentLevel == marketPlace) {
+                            buffer.append(info.getEndSign());
+                        } else {
+                            buffer.append(info.getSpaces());
+                        }
                     } else {
-                        buffer.append(spaces);
+                        buffer.append(info.getSpaces());
                     }
                 }
-                buffer.append(wallSign).append("\n");
+                buffer.append(wallSign).append(NEXT_LINE);
+                currentLevel++;
             }
 
         }
         // Add the bottom line
-        for (int j = 0; j < x; j++) {
-            buffer.append(info.corner()).append(info.flat());
+        for (int j = 0; j < matrix.length; j++) {
+            buffer.append(info.getCorner()).append(info.getFlat());
         }
-        buffer.append(info.corner()).append("\n");
+        buffer.append(info.getCorner()).append(NEXT_LINE);
 
         return buffer.toString();
+    }
+
+    private boolean isBitNotSet(int cell, Bitable bitable) {
+        return (cell & bitable.getBit()) == 0;
     }
 }
