@@ -23,14 +23,14 @@ public class Deck {
     public List<Card> draw(int count) {
         List<Card> cardsToDraw = new ArrayList<>(count);
         int cardsCount = Math.min(count, cards.size());
-        for(int i = 0; i < cardsCount; i++) {
+        for (int i = 0; i < cardsCount; i++) {
             cardsToDraw.add(cards.poll());
         }
         return cardsToDraw;
     }
 
     public void shuffle() {
-        Collections.shuffle((LinkedList<Card>)cards);
+        Collections.shuffle((LinkedList<Card>) cards);
     }
 
     public int size() {

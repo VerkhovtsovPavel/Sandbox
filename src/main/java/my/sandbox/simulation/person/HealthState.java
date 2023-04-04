@@ -11,7 +11,7 @@ public enum HealthState {
     private final boolean isSick;
     private final boolean isContagious;
 
-    HealthState(boolean isSick, boolean isContagious) {
+    HealthState(final boolean isSick, final boolean isContagious) {
         this.isSick = isSick;
         this.isContagious = isContagious;
     }

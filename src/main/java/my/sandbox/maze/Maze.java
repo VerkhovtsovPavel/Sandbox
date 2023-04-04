@@ -3,7 +3,7 @@ package my.sandbox.maze;
 import static my.sandbox.maze.SymbolConstants.NEXT_LINE;
 import static my.sandbox.maze.SymbolConstants.SPACE;
 
-public record Maze(int[][] matrix){
+public record Maze(int[][] matrix) {
 
     public String toString(DisplayInfo info) {
         StringBuilder buffer = new StringBuilder();

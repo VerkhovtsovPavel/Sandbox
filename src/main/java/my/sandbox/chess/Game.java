@@ -36,7 +36,7 @@ public class Game {
     }
 
     public void print() {
-        System.out.println(gameBoard.toString());
+        System.out.println(gameBoard);
     }
 
     public void move() {

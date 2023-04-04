@@ -7,8 +7,8 @@ import java.util.concurrent.Flow;
 
 public class View implements Flow.Subscriber<String> {
 
-    private Scanner source;
-    private Controller controller;
+    private final Scanner source;
+    private final Controller controller;
 
     public View(Scanner source, Controller controller, Flow.Publisher<String> observable) {
         this.source = source;

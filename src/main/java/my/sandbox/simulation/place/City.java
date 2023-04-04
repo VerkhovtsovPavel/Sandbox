@@ -6,8 +6,8 @@ import java.util.List;
 
 public class City {
 
-    private final List<Place> places;
     private static final Place GATE = new Gate();
+    private final List<Place> places;
 
     public City(final List<Place> places) {
         this.places = places;

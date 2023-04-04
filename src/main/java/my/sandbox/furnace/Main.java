@@ -38,7 +38,7 @@ public class Main {
         }
 
         public void applyDisk() {
-            for (Integer disk: disks) {
+            for (Integer disk : disks) {
 
             }
         }

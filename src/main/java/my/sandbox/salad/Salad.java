@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Salad {
 
-    private HashMap<Ingredient, Integer> recipe;
+    private final HashMap<Ingredient, Integer> recipe;
 
     public Salad() {
         this.recipe = new HashMap<>();

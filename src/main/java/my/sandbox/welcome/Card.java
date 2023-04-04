@@ -2,10 +2,10 @@ package my.sandbox.welcome;
 
 public class Card {
 
-    private Bonus bonus;
-    private Denomination denomination;
+    private final Bonus bonus;
+    private final Denomination denomination;
 
-    public Card(Bonus bonus, Denomination denomination) {
+    public Card(final Bonus bonus, final Denomination denomination) {
         this.bonus = bonus;
         this.denomination = denomination;
     }

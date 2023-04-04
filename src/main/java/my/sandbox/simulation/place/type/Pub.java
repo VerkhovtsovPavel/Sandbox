@@ -10,6 +10,7 @@ public class Pub extends Place {
     }
 
     @Override
+    @SuppressWarnings("checkstyle:MagicNumber")
     public double getInfectionRate() {
         return 3;
     }

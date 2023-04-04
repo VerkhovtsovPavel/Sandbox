@@ -40,8 +40,8 @@ public class DeckFactory {
 
     private List<Card> combinations(final Suit[] suits, final Value[] values) {
         List<Card> cards = new ArrayList<>(suits.length * values.length);
-        for (Suit suit: suits) {
-            for (Value value: values) {
+        for (Suit suit : suits) {
+            for (Value value : values) {
                 cards.add(new Card(suit, value));
             }
         }

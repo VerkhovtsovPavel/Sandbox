@@ -10,6 +10,7 @@ public class School extends Place {
     }
 
     @Override
+    @SuppressWarnings("checkstyle:MagicNumber")
     public double getInfectionRate() {
         return 1.2;
     }

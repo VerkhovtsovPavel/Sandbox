@@ -11,11 +11,11 @@ public enum Column {
     G(7),
     H(8);
 
-    Column(int value) {
+    private final int value;
+
+    Column(final int value) {
         this.value = value;
     }
-
-    private final int value;
 
     public int getValue() {
         //TODO Beatify

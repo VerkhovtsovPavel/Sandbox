@@ -8,7 +8,9 @@ import java.util.function.Predicate;
 public class Matcher<T> {
 
     private final List<Pair<Predicate<Object>, Function<Object, T>>> conditionList;
-    private Function<Object, T> defaultBranch = (x) -> { throw new IllegalArgumentException(); };
+    private Function<Object, T> defaultBranch = (x) -> {
+        throw new IllegalArgumentException();
+    };
 
     private Matcher() {
         conditionList = new ArrayList<>();
@@ -41,12 +43,13 @@ public class Matcher<T> {
     }
 
     public T match(Object r) {
-        for(var pair : conditionList) {
+        for (var pair : conditionList) {
             try {
                 if (pair.left().test(r)) {
                     return pair.right().apply(r);
                 }
-            } catch(ClassCastException ignore) {}
+            } catch (ClassCastException ignore) {
+            }
         }
 
         return defaultBranch.apply(r);
@@ -54,17 +57,17 @@ public class Matcher<T> {
 
     public List<T> matchAll(Object r) {
         List<T> results = new ArrayList<>();
-        for(var pair : conditionList) {
+        for (var pair : conditionList) {
             try {
                 if (pair.left().test(r)) {
                     results.add(pair.right().apply(r));
                 }
-            } catch(ClassCastException ignore) {}
+            } catch (ClassCastException ignore) {
+            }
         }
 
         return results;
     }
-
 
 
     public class ConditionAction<R> {

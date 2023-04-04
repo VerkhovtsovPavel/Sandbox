@@ -9,7 +9,7 @@ import static my.sandbox.Small.uniqueElements;
 
 public class StringCompressorTests {
 
-    private StringCompressor stringCompressor = new StringCompressor();
+    private final StringCompressor stringCompressor = new StringCompressor();
 
     @Test(dataProvider = "strings")
     public void validArray(String compressedString, String expectedString) {
@@ -30,10 +30,10 @@ public class StringCompressorTests {
 
     @DataProvider
     private Object[] strings() {
-        return new Object[][] {
-                {"abc",         "abc"   },
-                {"ab2[c]ab",    "abccab"},
-                {"ab3[c]ab",    "abcccab"},
+        return new Object[][]{
+                {"abc", "abc"},
+                {"ab2[c]ab", "abccab"},
+                {"ab3[c]ab", "abcccab"},
                 {"2[ab2[c]ab]", "abccababccab"},
                 {"2[ab]2[c]ab", "ababccab"},
         };

@@ -28,16 +28,16 @@ public class UniqueElementTests {
 
     @DataProvider
     private Object[] arrays() {
-        return new Object[][] {
+        return new Object[][]{
                 {arr(1, 2, 3, 1, 6, 3), arr(1, 2, 3, 6)},
-                {arr(1, 2, 3),          arr(1, 2, 3)   },
-                {arr(1, 1, 1, 1, 1, 1), arr(1)         },
-                {arr(3, 2, 1, 1, 2),    arr(3, 2, 1)   },
-                {arr(1),                arr(1)         }
+                {arr(1, 2, 3), arr(1, 2, 3)},
+                {arr(1, 1, 1, 1, 1, 1), arr(1)},
+                {arr(3, 2, 1, 1, 2), arr(3, 2, 1)},
+                {arr(1), arr(1)}
         };
     }
 
-    private int[] arr(int... values){
+    private int[] arr(int... values) {
         return values;
     }
 }

@@ -11,7 +11,7 @@ public class Navigator {
 
     private final HashMap<Place, List<Person>> currentLocation = new HashMap<>();
 
-    public void moveTo(Person person, Place from, Place to) {
+    public void moveTo(final Person person, final Place from, final Place to) {
         List<Person> fromList = currentLocation.get(from);
         if (fromList == null) {
             currentLocation.put(from, new ArrayList<>());
@@ -27,7 +27,7 @@ public class Navigator {
         }
     }
 
-    public List<Person> inPlace(Place place) {
+    public List<Person> inPlace(final Place place) {
         return currentLocation.getOrDefault(place, new ArrayList<>());
     }
 

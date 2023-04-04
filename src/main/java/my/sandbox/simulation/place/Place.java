@@ -8,7 +8,7 @@ public abstract class Place {
 
     private final long id;
 
-    public Place(Counter counter) {
+    public Place(final Counter counter) {
         this.id = counter.inc(this.getClass());
     }
 

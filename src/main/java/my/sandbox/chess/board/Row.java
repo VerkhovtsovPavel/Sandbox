@@ -11,11 +11,11 @@ public enum Row {
     SEVEN(7),
     EIGHT(8);
 
+    private final int value;
+
     Row(int value) {
         this.value = value;
     }
-
-    private final int value;
 
     public int getValue() {
         //TODO Beatify

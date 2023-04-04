@@ -1,12 +1,15 @@
 package my.sandbox.mvc;
 
-import static my.sandbox.mvc.Operation.*;
+import static my.sandbox.mvc.Operation.DIVIDE;
+import static my.sandbox.mvc.Operation.MINUS;
+import static my.sandbox.mvc.Operation.MULTIPLE;
+import static my.sandbox.mvc.Operation.PLUS;
 
 public class Controller {
 
-    private Model model;
+    private final Model model;
 
-    public Controller(Model model){
+    public Controller(Model model) {
         this.model = model;
     }
 
@@ -18,7 +21,7 @@ public class Controller {
             case "-" -> operation = MINUS;
             case "*" -> operation = MULTIPLE;
             case "/" -> operation = DIVIDE;
-        };
+        }
         model.process(operation, Integer.parseInt(args[1]), Integer.parseInt(args[2]));
     }
 

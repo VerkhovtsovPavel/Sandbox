@@ -10,6 +10,7 @@ public class Hospital extends Place {
     }
 
     @Override
+    @SuppressWarnings("checkstyle:MagicNumber")
     public double getInfectionRate() {
         return 0.5;
     }

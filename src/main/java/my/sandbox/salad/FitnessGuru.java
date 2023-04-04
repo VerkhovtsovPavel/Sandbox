@@ -13,9 +13,9 @@ public class FitnessGuru {
         list.sort(criteria);
         return list;
     }
-    
+
     public int calories(Salad salad) {
-       return salad.getRecipe().entrySet().stream().mapToInt((k) -> k.getKey().calories() * k.getValue()).sum();
+        return salad.getRecipe().entrySet().stream().mapToInt((k) -> k.getKey().calories() * k.getValue()).sum();
     }
 
     public List<Ingredient> calories(Salad salad, int from, int to) {

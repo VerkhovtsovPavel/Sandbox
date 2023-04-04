@@ -14,7 +14,7 @@ import static my.sandbox.simulation.util.StringUtils.beatifyClassName;
 public class Reporter {
 
     private static final String tableFormat = "| %9d | %7d | %8d | %10d | %4d | %8d | %4d |";
-    private static final String tableHead =   "| Iteration | Healthy | Infected | Contagious | Sick | Resisted | Dead |";
+    private static final String tableHead = "| Iteration | Healthy | Infected | Contagious | Sick | Resisted | Dead |";
     private static final String tableBorder = "------------------------------------------------------------------------";
 
     private final LinkedList<String> tableRows = new LinkedList<>();
@@ -45,7 +45,7 @@ public class Reporter {
 
     public void printInfectionStatistic() {
         System.out.println("Infected by place:");
-        for(Map.Entry<Class, Long> infectionCounter : quantityOfInfection.getCounters().entrySet()) {
+        for (Map.Entry<Class, Long> infectionCounter : quantityOfInfection.getCounters().entrySet()) {
             System.out.println(beatifyClassName(infectionCounter.getKey()) + " -> " + infectionCounter.getValue());
         }
     }

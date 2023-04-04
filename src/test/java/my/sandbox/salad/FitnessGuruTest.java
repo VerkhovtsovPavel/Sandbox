@@ -67,13 +67,13 @@ public class FitnessGuruTest {
     @DataProvider(name = "sortConditions")
     private Object[][] sortConditions() {
         return new Object[][]
-        {
-            {TYPE,          List.of(caloriesVegetable, carbohydrateFruit, proteinsSauce, fattyNut, balancedSeasoning)},
-            {FATS,          List.of(caloriesVegetable, carbohydrateFruit, proteinsSauce, balancedSeasoning, fattyNut)},
-            {CARBOHYDRATES, List.of(fattyNut, caloriesVegetable, proteinsSauce, balancedSeasoning, carbohydrateFruit)},
-            {CALORIES,      List.of(fattyNut, carbohydrateFruit, proteinsSauce, balancedSeasoning, caloriesVegetable)},
-            {PROTEINS,      List.of(fattyNut, caloriesVegetable, carbohydrateFruit, balancedSeasoning, proteinsSauce)}
-        };
+                {
+                        {TYPE, List.of(caloriesVegetable, carbohydrateFruit, proteinsSauce, fattyNut, balancedSeasoning)},
+                        {FATS, List.of(caloriesVegetable, carbohydrateFruit, proteinsSauce, balancedSeasoning, fattyNut)},
+                        {CARBOHYDRATES, List.of(fattyNut, caloriesVegetable, proteinsSauce, balancedSeasoning, carbohydrateFruit)},
+                        {CALORIES, List.of(fattyNut, carbohydrateFruit, proteinsSauce, balancedSeasoning, caloriesVegetable)},
+                        {PROTEINS, List.of(fattyNut, caloriesVegetable, carbohydrateFruit, balancedSeasoning, proteinsSauce)}
+                };
     }
 
 

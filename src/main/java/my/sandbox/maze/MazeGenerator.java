@@ -45,7 +45,7 @@ public class MazeGenerator {
     }
 
     private void setEnd(int[][] maze, int cx, int cy) {
-        if(!endFlag) {
+        if (!endFlag) {
             endFlag = true;
             maze[cx][cy] |= Type.FINISH.bit;
         }

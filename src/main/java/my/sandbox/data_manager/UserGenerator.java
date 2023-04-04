@@ -1,12 +1,12 @@
-package my.sandbox.user_manager;
+package my.sandbox.data_manager;
 
 import java.util.Random;
 
-public class UserGenerator {
+public class UserGenerator implements DataGenerator<User>{
 
     private final Random rand = new Random();
 
-    public User generateUser() {
+    public User generate() {
         return new User(rand.nextLong() + "", rand.nextLong() + "");
     }
 }

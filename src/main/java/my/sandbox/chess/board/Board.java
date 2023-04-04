@@ -51,7 +51,7 @@ public class Board {
         cells = new Figure[8][8];
     }
 
-    public boolean move(Row fromX, Column fromY, Row toX, Column toY, Color turn) {
+    public boolean move(final Row fromX, final Column fromY, final Row toX, final Column toY, final Color turn) {
         Figure moved = cells[fromX.getValue()][fromY.getValue()];
         Figure target = cells[toX.getValue()][toY.getValue()];
 
@@ -68,11 +68,11 @@ public class Board {
         return true;
     }
 
-    private boolean validateGeometry(Type type) {
+    private boolean validateGeometry(final Type type) {
         return true;
     }
 
-    private boolean validateTurn(Figure moved, Figure target, Color turn) {
+    private boolean validateTurn(final Figure moved, final Figure target, Color turn) {
         return moved != null && target == null && turn == moved.getColor();
     }
 
@@ -81,18 +81,17 @@ public class Board {
         StringBuilder builder = new StringBuilder();
         builder.append(" |A|B|C|D|I|F|G|H|\n");
         for (int i = 0; i < cells.length; i++) {
-            builder.append(String.format("%d|", i+1));
+            builder.append(String.format("%d|", i + 1));
             for (int j = 0; j < cells[0].length; j++) {
                 Figure figure = cells[i][j];
                 if (figure == null) {
                     builder.append(" ");
-                }
-                else {
-                    builder.append(figure.toString());
+                } else {
+                    builder.append(figure);
                 }
                 builder.append("|");
             }
-            builder.append(String.format("%d\n", i+1));
+            builder.append(String.format("%d\n", i + 1));
         }
         builder.append(" |A|B|C|D|I|F|G|H|\n");
         return builder.toString();

@@ -7,7 +7,7 @@ public final class Main {
     }
 
     public static void main(final String[] args) {
-        for (Bonus bonus: Bonus.values()) {
+        for (Bonus bonus : Bonus.values()) {
             System.out.println(bonus + " - " + bonus.getIcon());
         }
     }

@@ -4,10 +4,10 @@ import my.sandbox.simulation.place.City;
 import my.sandbox.simulation.place.Place;
 
 public class Person {
-    private long id;
-    private Health health;
-    private Behavior behavior;
-    private Behavior sickBehavior;
+    private final long id;
+    private final Health health;
+    private final Behavior behavior;
+    private final Behavior sickBehavior;
     private Place currentPlace;
 
     public Person(long id, Behavior behavior, Behavior sickBehavior) {
@@ -25,7 +25,7 @@ public class Person {
             return City.getGate();
         }
 
-        if(health.getCurrentState() == HealthState.SICK) {
+        if (health.getCurrentState() == HealthState.SICK) {
             currentPlace = sickBehavior.nextPlace();
         } else {
             currentPlace = behavior.nextPlace();

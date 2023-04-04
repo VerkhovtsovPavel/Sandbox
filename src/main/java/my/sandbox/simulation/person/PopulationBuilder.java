@@ -23,7 +23,8 @@ public class PopulationBuilder {
         }
 
         for (int i = 0; i < 50; i++) {
-            population.add(new Person(personalIdentifier.inc(), behaviorFactory.hardWorker(), behaviorFactory.hardWorker()));
+            population.add(
+                    new Person(personalIdentifier.inc(), behaviorFactory.hardWorker(), behaviorFactory.hardWorker()));
         }
 
         for (int i = 0; i < 200; i++) {

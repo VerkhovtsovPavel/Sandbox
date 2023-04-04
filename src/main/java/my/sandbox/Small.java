@@ -1,6 +1,11 @@
 package my.sandbox;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public final class Small {
@@ -20,8 +25,8 @@ public final class Small {
         int tempLength = temp.size();
         int counter = 0;
         while (tempLength > counter) {
-            for (int k = counter+1; k < tempLength; k++) {
-                if(Objects.equals(temp.get(counter), temp.get(k))){
+            for (int k = counter + 1; k < tempLength; k++) {
+                if (Objects.equals(temp.get(counter), temp.get(k))) {
                     temp.remove(k);
                     tempLength--;
                     k--;

@@ -12,8 +12,6 @@ import my.sandbox.simulation.util.Randomizer;
 
 import java.util.List;
 
-import static my.sandbox.simulation.util.StringUtils.beatifyClassName;
-
 public class Main {
 
     private static final int ITERATIONS = 100;
