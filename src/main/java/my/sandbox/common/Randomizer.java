@@ -1,4 +1,4 @@
-package my.sandbox.simulation.util;
+package my.sandbox.common;
 
 import java.util.Random;
 
@@ -16,4 +16,6 @@ public final class Randomizer {
     public static int nextInt(final int bound) {
         return RANDOM.nextInt(bound);
     }
+
+    public static boolean nextBoolean() { return RANDOM.nextBoolean(); }
 }

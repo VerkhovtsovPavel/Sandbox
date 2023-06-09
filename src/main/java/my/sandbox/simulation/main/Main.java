@@ -8,7 +8,7 @@ import my.sandbox.simulation.place.CityBuilder;
 import my.sandbox.simulation.place.Navigator;
 import my.sandbox.simulation.place.Place;
 import my.sandbox.simulation.util.Constant;
-import my.sandbox.simulation.util.Randomizer;
+import my.sandbox.common.Randomizer;
 
 import java.util.List;
 

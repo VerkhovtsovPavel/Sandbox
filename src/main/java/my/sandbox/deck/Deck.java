@@ -7,21 +7,21 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Queue;
 
-public class Deck {
+public class Deck<T> {
 
-    private final Queue<Card> cards;
+    private final Queue<T> cards;
 
-    public Deck(List<Card> cards) {
+    public Deck(List<T> cards) {
         this.cards = new LinkedList<>();
         this.cards.addAll(cards);
     }
 
-    public Optional<Card> draw() {
+    public Optional<T> draw() {
         return Optional.ofNullable(cards.poll());
     }
 
-    public List<Card> draw(int count) {
-        List<Card> cardsToDraw = new ArrayList<>(count);
+    public List<T> draw(int count) {
+        List<T> cardsToDraw = new ArrayList<>(count);
         int cardsCount = Math.min(count, cards.size());
         for (int i = 0; i < cardsCount; i++) {
             cardsToDraw.add(cards.poll());
@@ -30,7 +30,7 @@ public class Deck {
     }
 
     public void shuffle() {
-        Collections.shuffle((LinkedList<Card>) cards);
+        Collections.shuffle((LinkedList<T>) cards);
     }
 
     public int size() {

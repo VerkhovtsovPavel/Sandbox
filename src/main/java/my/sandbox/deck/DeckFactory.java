@@ -6,17 +6,17 @@ import java.util.List;
 
 public class DeckFactory {
 
-    public Deck unite(final Deck... decks) {
-        List<Card> allCards = new LinkedList<>();
+    public <T> Deck<T> unite(final Deck<T>... decks) {
+        List<T> allCards = new LinkedList<>();
 
-        for (Deck deck : decks) {
+        for (Deck<T> deck : decks) {
             allCards.addAll(deck.draw(deck.size()));
         }
 
-        return new Deck(allCards);
+        return new Deck<T>(allCards);
     }
 
-    public Deck thirtySixCardsDeck() {
+    public Deck<Card> thirtySixCardsDeck() {
         List<Card> cards = combinations(Suit.values(),
                 new Value[]{
                         Value.SIX,
@@ -30,12 +30,12 @@ public class DeckFactory {
                         Value.ACE
                 });
 
-        return new Deck(cards);
+        return new Deck<>(cards);
     }
 
-    public Deck fiftyTwoCardsDeck() {
+    public Deck<Card> fiftyTwoCardsDeck() {
         List<Card> cards = combinations(Suit.values(), Value.values());
-        return new Deck(cards);
+        return new Deck<>(cards);
     }
 
     private List<Card> combinations(final Suit[] suits, final Value[] values) {

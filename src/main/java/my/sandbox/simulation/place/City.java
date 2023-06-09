@@ -1,6 +1,6 @@
 package my.sandbox.simulation.place;
 
-import my.sandbox.simulation.util.Randomizer;
+import my.sandbox.common.Randomizer;
 
 import java.util.List;
 

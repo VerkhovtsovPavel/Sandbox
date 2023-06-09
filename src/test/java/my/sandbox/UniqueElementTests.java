@@ -9,7 +9,7 @@ import static my.sandbox.Small.uniqueElements;
 public class UniqueElementTests {
 
     @Test(dataProvider = "arrays")
-    public void validArray(int[] origin, int[] expected) {
+    public void validArray(final int[] origin, final int[] expected) {
         int[] actual = uniqueElements(origin);
         Assert.assertEquals(actual, expected);
     }
@@ -27,6 +27,7 @@ public class UniqueElementTests {
     }
 
     @DataProvider
+    @SuppressWarnings("checkstyle:MagicNumber")
     private Object[] arrays() {
         return new Object[][]{
                 {arr(1, 2, 3, 1, 6, 3), arr(1, 2, 3, 6)},
@@ -37,7 +38,7 @@ public class UniqueElementTests {
         };
     }
 
-    private int[] arr(int... values) {
+    private int[] arr(final int... values) {
         return values;
     }
 }

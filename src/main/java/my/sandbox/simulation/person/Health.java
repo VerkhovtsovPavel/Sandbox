@@ -2,7 +2,7 @@ package my.sandbox.simulation.person;
 
 
 import my.sandbox.simulation.util.Constant;
-import my.sandbox.simulation.util.Randomizer;
+import my.sandbox.common.Randomizer;
 
 public class Health {
 

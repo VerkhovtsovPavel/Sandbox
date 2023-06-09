@@ -2,7 +2,7 @@ package my.sandbox.data_manager;
 
 import java.util.Random;
 
-public class UserGenerator implements DataGenerator<User>{
+public class UserGenerator implements DataGenerator<User> {
 
     private final Random rand = new Random();
 

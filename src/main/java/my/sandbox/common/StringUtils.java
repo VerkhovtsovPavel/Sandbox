@@ -1,4 +1,4 @@
-package my.sandbox.simulation.util;
+package my.sandbox.common;
 
 public final class StringUtils {
 

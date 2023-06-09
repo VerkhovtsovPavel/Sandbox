@@ -14,7 +14,7 @@ public record Maze(int[][] matrix) {
             for (int[] line : matrix) {
                 buffer
                         .append(info.getCorner())
-                        .append(isBitNotSet(line[i], Direction.N) ? info.getFlat() : info.getSpaces());
+                        .append(Direction.N.isBitNotSet(line[i]) ? info.getFlat() : info.getSpaces());
             }
             buffer.append(info.getCorner()).append(NEXT_LINE);
 
@@ -23,19 +23,19 @@ public record Maze(int[][] matrix) {
             int currentLevel = 0;
             for (char wallSign : info.getWall().toCharArray()) {
                 for (int[] line : matrix) {
-                    if (isBitNotSet(line[i], Direction.W)) {
+                    if (Direction.W.isBitNotSet(line[i])) {
                         buffer.append(wallSign);
                     } else {
                         buffer.append(SPACE);
                     }
 
-                    if (!isBitNotSet(line[i], Type.START)) {
+                    if (Type.START.isBitSet(line[i])) {
                         if (info.isDuplicateSign() || currentLevel == marketPlace) {
                             buffer.append(info.getStartSign());
                         } else {
                             buffer.append(info.getSpaces());
                         }
-                    } else if (!isBitNotSet(line[i], Type.FINISH)) {
+                    } else if (Type.FINISH.isBitSet(line[i])) {
                         if (info.isDuplicateSign() || currentLevel == marketPlace) {
                             buffer.append(info.getEndSign());
                         } else {
@@ -57,9 +57,5 @@ public record Maze(int[][] matrix) {
         buffer.append(info.getCorner()).append(NEXT_LINE);
 
         return buffer.toString();
-    }
-
-    private boolean isBitNotSet(int cell, Bitable bitable) {
-        return (cell & bitable.getBit()) == 0;
     }
 }
