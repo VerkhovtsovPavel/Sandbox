@@ -2,7 +2,7 @@ package my.sandbox.simulation.place;
 
 import my.sandbox.simulation.util.Counter;
 
-import static my.sandbox.common.StringUtils.beatifyClassName;
+import static my.sandbox.common.util.StringUtils.beatifyClassName;
 
 public abstract class Place {
 

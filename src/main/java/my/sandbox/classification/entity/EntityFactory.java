@@ -1,9 +1,9 @@
 package my.sandbox.classification.entity;
 
-import my.sandbox.common.Randomizer;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import my.sandbox.common.util.Randomizer;
 
 public final class EntityFactory {
 

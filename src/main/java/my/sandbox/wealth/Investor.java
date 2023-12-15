@@ -1,6 +1,6 @@
 package my.sandbox.wealth;
 
-import my.sandbox.common.Randomizer;
+import my.sandbox.common.util.Randomizer;
 
 import static my.sandbox.wealth.Constant.INVESTMENT_GAIN;
 import static my.sandbox.wealth.Constant.INVESTMENT_LOSS;

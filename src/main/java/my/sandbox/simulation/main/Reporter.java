@@ -9,7 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import static my.sandbox.common.StringUtils.beatifyClassName;
+import static my.sandbox.common.util.StringUtils.beatifyClassName;
 
 public class Reporter {
 

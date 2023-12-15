@@ -10,32 +10,23 @@ import java.util.stream.Collectors;
 
 public final class Small {
 
-    private Small() {
-
-    }
-
     public static void main(String[] args) {
-
+        System.out.println(hIndex(new int[]{1, 3, 7, 4}));
+        System.out.println(hIndex(new int[]{4, 4, 7, 4}));
+        System.out.println(hIndex(new int[]{}));
     }
 
-    public static int[] uniqueElements(int[] array) {
+    public static int[] uniqueElements(final int[] array) {
         List<Integer> temp = new ArrayList<>();
-        Arrays.stream(array).forEach(temp::add);
+        Set<Integer> set = new HashSet<>();
 
-        int tempLength = temp.size();
-        int counter = 0;
-        while (tempLength > counter) {
-            for (int k = counter + 1; k < tempLength; k++) {
-                if (Objects.equals(temp.get(counter), temp.get(k))) {
-                    temp.remove(k);
-                    tempLength--;
-                    k--;
-                }
+        for(int item : array) {
+            if(!set.contains(item)) {
+                set.add(item);
+                temp.add(item);
             }
-            counter++;
         }
-        array = temp.stream().mapToInt(i -> i).toArray();
-        return array;
+        return temp.stream().mapToInt(i -> i).toArray();
     }
 
     public static int[] countPositivesSumNegatives(final int[] input) {
@@ -102,5 +93,32 @@ public final class Small {
             }
         }
         return count == targetSequence.size();
+    }
+
+    public static int hIndex(final int[] quotes) {
+        int[] counts = new int[quotes.length + 1];
+
+        for (int quote : quotes) {
+            int currentValue = quote;
+            if (currentValue > quotes.length) {
+                currentValue = quotes.length;
+            }
+            counts[currentValue]++;
+        }
+
+        int hIndex = 0;
+        int totalQuotes = 0;
+        for (int i = counts.length - 1; i > 0; i--) {
+            totalQuotes += counts[i];
+            if (totalQuotes >= i) {
+                hIndex = i;
+                break;
+            }
+        }
+        return hIndex;
+    }
+
+    private Small() {
+
     }
 }

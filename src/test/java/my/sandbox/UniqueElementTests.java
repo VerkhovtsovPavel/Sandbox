@@ -1,5 +1,6 @@
 package my.sandbox;
 
+import my.sandbox.common.structure.Pair;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -7,11 +8,10 @@ import org.testng.annotations.Test;
 import static my.sandbox.Small.uniqueElements;
 
 public class UniqueElementTests {
-
     @Test(dataProvider = "arrays")
-    public void validArray(final int[] origin, final int[] expected) {
-        int[] actual = uniqueElements(origin);
-        Assert.assertEquals(actual, expected);
+    public void validArray(Pair<int[], int[]> arrays) {
+        int[] actual = uniqueElements(arrays.left());
+        Assert.assertEquals(actual, arrays.right());
     }
 
     @Test
@@ -28,13 +28,14 @@ public class UniqueElementTests {
 
     @DataProvider
     @SuppressWarnings("checkstyle:MagicNumber")
-    private Object[] arrays() {
-        return new Object[][]{
-                {arr(1, 2, 3, 1, 6, 3), arr(1, 2, 3, 6)},
-                {arr(1, 2, 3), arr(1, 2, 3)},
-                {arr(1, 1, 1, 1, 1, 1), arr(1)},
-                {arr(3, 2, 1, 1, 2), arr(3, 2, 1)},
-                {arr(1), arr(1)}
+    Object[] arrays() {
+        return new Object[]{
+                new Pair<>(arr(1, 2, 3, 1, 6, 3), arr(1, 2, 3, 6)),
+                new Pair<>(arr(1, 2, 3, 1, 6, 3), arr(1, 2, 3, 6)),
+                new Pair<>(arr(1, 2, 3), arr(1, 2, 3)),
+                new Pair<>(arr(1, 1, 1, 1, 1, 1), arr(1)),
+                new Pair<>(arr(3, 2, 1, 1, 2), arr(3, 2, 1)),
+                new Pair<>(arr(1), arr(1))
         };
     }
 

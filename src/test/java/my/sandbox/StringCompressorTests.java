@@ -5,12 +5,8 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static my.sandbox.Small.uniqueElements;
-
 public class StringCompressorTests {
-
     private static final String ABC = "abc";
-
     private final StringCompressor stringCompressor = new StringCompressor();
 
     @Test(dataProvider = "strings")
@@ -27,17 +23,18 @@ public class StringCompressorTests {
 
     @Test(expectedExceptions = NullPointerException.class)
     public void nullArray() {
-        uniqueElements(null);
+        stringCompressor.unzip(null);
     }
 
     @DataProvider
-    private Object[] strings() {
-        return new Object[][]{
-                {ABC, ABC},
-                {"ab2[c]ab", "abccab"},
-                {"ab3[c]ab", "abcccab"},
-                {"2[ab2[c]ab]", "abccababccab"},
-                {"2[ab]2[c]ab", "ababccab"},
-        };
+    Object[] strings() {
+        return new Object[][]
+                {
+                        {ABC, ABC},
+                        {"ab2[c]ab", "abccab"},
+                        {"ab3[c]ab", "abcccab"},
+                        {"2[ab2[c]ab]", "abccababccab"},
+                        {"2[ab]2[c]ab", "ababccab"},
+                };
     }
 }

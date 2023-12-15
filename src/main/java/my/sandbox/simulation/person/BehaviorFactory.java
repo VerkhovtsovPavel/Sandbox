@@ -2,12 +2,7 @@ package my.sandbox.simulation.person;
 
 import my.sandbox.simulation.place.City;
 import my.sandbox.simulation.place.Place;
-import my.sandbox.simulation.place.type.Home;
-import my.sandbox.simulation.place.type.Hospital;
-import my.sandbox.simulation.place.type.Park;
-import my.sandbox.simulation.place.type.Pub;
-import my.sandbox.simulation.place.type.School;
-import my.sandbox.simulation.place.type.Work;
+import my.sandbox.simulation.place.type.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;

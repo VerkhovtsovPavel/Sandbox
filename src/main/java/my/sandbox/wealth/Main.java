@@ -3,7 +3,7 @@ package my.sandbox.wealth;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static my.sandbox.common.Utils.times;
+import static my.sandbox.common.util.ExecutionUtils.times;
 
 public class Main {
 
@@ -15,7 +15,7 @@ public class Main {
         times(investorsAmount, () -> investors.add(new Investor(100, 1)));
 
         times(roundsAmount,
-                () -> times(investorsAmount -1 ,
+                () -> times(investorsAmount - 1,
                         (i) -> investors.get(i.intValue()).invest()
                 )
         );
@@ -25,9 +25,8 @@ public class Main {
         Arrays.sort(wealthValues);
         double median;
         if (wealthValues.length % 2 == 0) {
-            median = ((double)wealthValues[wealthValues.length / 2] + (double)wealthValues[wealthValues.length / 2 - 1]) / 2;
-        }
-        else {
+            median = ((double) wealthValues[wealthValues.length / 2] + (double) wealthValues[wealthValues.length / 2 - 1]) / 2;
+        } else {
             median = wealthValues[wealthValues.length / 2];
         }
 
@@ -46,6 +45,6 @@ public class Main {
     }
 
     private static long percentiles(long[] wealthValues, double percentiles) {
-        return wealthValues[(int)(wealthValues.length * percentiles)];
+        return wealthValues[(int) (wealthValues.length * percentiles)];
     }
 }
