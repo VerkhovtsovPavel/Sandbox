@@ -1,10 +1,9 @@
 package my.sandbox;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -17,16 +16,11 @@ public final class Small {
     }
 
     public static int[] uniqueElements(final int[] array) {
-        List<Integer> temp = new ArrayList<>();
-        Set<Integer> set = new HashSet<>();
-
+        Set<Integer> set = new LinkedHashSet<>();
         for(int item : array) {
-            if(!set.contains(item)) {
-                set.add(item);
-                temp.add(item);
-            }
+            set.add(item);
         }
-        return temp.stream().mapToInt(i -> i).toArray();
+        return set.stream().mapToInt(i -> i).toArray();
     }
 
     public static int[] countPositivesSumNegatives(final int[] input) {

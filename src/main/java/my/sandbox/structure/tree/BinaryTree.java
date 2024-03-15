@@ -1,11 +1,15 @@
 package my.sandbox.structure.tree;
 
+import my.sandbox.common.constant.CompareResult;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static my.sandbox.common.util.CompareUtils.compare;
+
 // TODO: Add delete
-// TODO: Optimize `add` function
+// TODO: Optimize `add` function (?)
 
 public class BinaryTree<T extends Comparable<T>> {
 
@@ -24,17 +28,13 @@ public class BinaryTree<T extends Comparable<T>> {
             return Optional.empty();
         }
 
-        int comparison = value.compareTo(currentNode.value);
+        CompareResult comparison = compare(value, currentNode.value);
 
-        if (comparison == 0) {
-            return Optional.of(currentNode);
-        }
-
-        if (comparison > 0) {
-            return recursiveFind(currentNode.right, value);
-        } else {
-            return recursiveFind(currentNode.left, value);
-        }
+        return switch (comparison) {
+            case LESS -> recursiveFind(currentNode.left, value);
+            case MORE -> recursiveFind(currentNode.right, value);
+            case EQUAL -> Optional.of(currentNode);
+        };
     }
 
     private Node<T> recursiveAdd(final Node<T> currentNode, final T value) {
@@ -42,11 +42,12 @@ public class BinaryTree<T extends Comparable<T>> {
             return new Node<>(value);
         }
 
-        int comparison = value.compareTo(currentNode.value);
-        if (comparison < 0) {
-            currentNode.left = recursiveAdd(currentNode.left, value);
-        } else if (comparison > 0) {
-            currentNode.right = recursiveAdd(currentNode.right, value);
+        CompareResult comparison = compare(value, currentNode.value);
+
+        switch (comparison) {
+            case LESS -> currentNode.left = recursiveAdd(currentNode.left, value);
+            case MORE -> currentNode.right = recursiveAdd(currentNode.right, value);
+            case EQUAL -> { /* Ignore - Current value equal to added */ }
         }
         return currentNode;
     }

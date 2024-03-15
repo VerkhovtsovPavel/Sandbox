@@ -11,7 +11,6 @@ public class Main {
         integerBinaryTree.add(8);
         integerBinaryTree.add(1);
 
-
         System.out.println(integerBinaryTree.contains(5));
         System.out.println(integerBinaryTree.contains(6));
         System.out.println(integerBinaryTree.contains(10));
