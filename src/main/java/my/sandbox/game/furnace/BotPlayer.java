@@ -1,6 +1,6 @@
 package my.sandbox.game.furnace;
 
-import my.sandbox.common.util.Randomizer;
+import my.sandbox.common.game.Dice;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,31 +13,28 @@ public class BotPlayer implements Player {
     private final Queue<Integer> disks;
     private final BotMode mode;
     private final PlayerColor color;
+    private final Dice dice;
 
-    public BotPlayer(List<Card> cards, Queue<Integer> disks, BotMode upside, PlayerColor color) {
+    public BotPlayer(List<Card> cards, Queue<Integer> disks, BotMode upside, PlayerColor color, Dice dice) {
         this.cards = cards;
         this.disks = disks;
         this.mode = upside;
         this.color = color;
+        this.dice = dice;
     }
 
     public void applyDisk() {
-        int initialCard = rollDice();
+        int initialCard = dice.roll();
         Integer currentDisk = disks.poll();
         List<Card> round = buildTheRound(initialCard, cards, mode);
         for (Card card : round) {
-            if (!card.disks().containsKey(color)) {
-                if (!card.disks().containsValue(currentDisk)) {
-                    card.disks().put(color, currentDisk);
-                    System.out.printf("Bot[%s] put %d disk on %d card%n", color, currentDisk, card.numberInRow() + 1);
-                    break;
-                }
+            var disks = card.disks();
+            if (!disks.containsKey(color) && !disks.containsValue(currentDisk)) {
+                disks.put(color, currentDisk);
+                System.out.printf("Bot[%s] put %d disk on %d card%n", color, currentDisk, card.numberInRow() + 1);
+                break;
             }
         }
-    }
-
-    private int rollDice() {
-        return 1 + Randomizer.nextInt(cards.size() - 1);
     }
 
     private List<Card> buildTheRound(int initialCard, List<Card> cards, BotMode mode) {

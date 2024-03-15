@@ -1,20 +1,11 @@
 package my.sandbox.deck;
 
+import my.sandbox.common.game.Deck;
+
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class DeckFactory {
-
-    public <T> Deck<T> unite(final Deck<T>... decks) {
-        List<T> allCards = new LinkedList<>();
-
-        for (Deck<T> deck : decks) {
-            allCards.addAll(deck.draw(deck.size()));
-        }
-
-        return new Deck<T>(allCards);
-    }
 
     public Deck<Card> thirtySixCardsDeck() {
         List<Card> cards = combinations(Suit.values(),

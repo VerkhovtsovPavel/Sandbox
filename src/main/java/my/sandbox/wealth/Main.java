@@ -9,19 +9,15 @@ public class Main {
 
     private static final int investorsAmount = 1000000;
     private static final int roundsAmount = 25;
+    private static final int beginningWealth = 100;
 
     public static void main(String[] args) {
         ArrayList<Investor> investors = new ArrayList<>(investorsAmount);
-        times(investorsAmount, () -> investors.add(new Investor(100, 1)));
+        times(investorsAmount, () -> investors.add(new Investor(beginningWealth, 1)));
 
-        times(roundsAmount,
-                () -> times(investorsAmount - 1,
-                        (i) -> investors.get(i.intValue()).invest()
-                )
-        );
+        times(roundsAmount, () -> investors.forEach(Investor::invest));
 
         long[] wealthValues = investors.stream().mapToLong(Investor::getWealth).toArray();
-
         Arrays.sort(wealthValues);
         double median;
         if (wealthValues.length % 2 == 0) {
@@ -30,7 +26,7 @@ public class Main {
             median = wealthValues[wealthValues.length / 2];
         }
 
-        System.out.println("Average:\t" + Arrays.stream(wealthValues).average().orElse(0.0));
+        System.out.println("Avg:\t" + Arrays.stream(wealthValues).average().orElse(0.0));
         System.out.println("Median:\t" + median);
 
         printPercentiles(wealthValues, .5, .6, .7, .8, .9, .95, .99, .995, .999);
@@ -42,7 +38,7 @@ public class Main {
 
     private static void printPercentiles(long[] wealthValues, double... percentiles) {
         for(double percentile : percentiles) {
-            System.out.println((percentile*100)+"%:\t" + percentiles(wealthValues, percentile));
+            System.out.println((percentile*100)+"th:\t" + percentiles(wealthValues, percentile));
         }
     }
 }

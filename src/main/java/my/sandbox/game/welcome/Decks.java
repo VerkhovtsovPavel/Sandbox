@@ -1,10 +1,10 @@
 package my.sandbox.game.welcome;
 
+import my.sandbox.common.game.Deck;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import my.sandbox.deck.Deck;
 
 public class Decks {
 

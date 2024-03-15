@@ -1,4 +1,4 @@
-package my.sandbox.deck;
+package my.sandbox.common.game;
 
 import java.util.ArrayList;
 import java.util.Collections;

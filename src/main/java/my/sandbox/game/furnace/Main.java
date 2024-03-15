@@ -1,5 +1,8 @@
 package my.sandbox.game.furnace;
 
+import my.sandbox.common.game.Dice;
+import my.sandbox.common.game.DiceFactory;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -9,25 +12,30 @@ import static my.sandbox.common.util.ExecutionUtils.times;
 
 public class Main {
 
+    //TODO Need to re-tests after changes
     public static void main(String[] args) {
 
-        final List<Card> cards = new LinkedList<>();
-        times(7, (i) -> cards.add(new Card((Long) i, new HashMap<>())));
+        Dice dice = DiceFactory.d6();
 
-        Player userPlayer = new UserPlayer(cards, PlayerColor.RED);
-        Player upsidePlayer = new BotPlayer(cards, DisksFactory.highToLow(), BotMode.UPSIDE, PlayerColor.BLACK);
-        Player downsidePlayer = new BotPlayer(cards, DisksFactory.lowToHigh(), BotMode.DOWNSIDE, PlayerColor.WHILE);
+        times(4, (round) -> {
+            final List<Card> cards = new LinkedList<>();
+            times(7, (i) -> cards.add(new Card(i.longValue(), new HashMap<>())));
 
-        List<Player> playOrder = new ArrayList<>();
-        times(4, () -> {
-            playOrder.add(userPlayer);
-            playOrder.add(upsidePlayer);
-            playOrder.add(downsidePlayer);
+            Player userPlayer = new UserPlayer(cards, PlayerColor.RED);
+            Player upsidePlayer = new BotPlayer(cards, DisksFactory.highToLow(round.intValue() + 1), BotMode.UPSIDE, PlayerColor.BLACK, dice);
+            Player downsidePlayer = new BotPlayer(cards, DisksFactory.lowToHigh(round.intValue() + 1), BotMode.DOWNSIDE, PlayerColor.WHILE, dice);
+
+            List<Player> playOrder = new ArrayList<>();
+            times(5, () -> {
+                playOrder.add(userPlayer);
+                playOrder.add(upsidePlayer);
+                playOrder.add(downsidePlayer);
+            });
+
+            for (Player currentPlayer : playOrder) {
+                currentPlayer.applyDisk();
+            }
         });
-
-        for (Player currentPlayer : playOrder) {
-            currentPlayer.applyDisk();
-        }
     }
 }
 

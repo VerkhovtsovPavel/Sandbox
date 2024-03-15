@@ -14,6 +14,11 @@ public final class Randomizer {
         return RANDOM.nextInt(bound);
     }
 
+    public static int nextInt(final int from, final int to) {
+        int bound = to - from + 1;
+        return from + RANDOM.nextInt(bound);
+    }
+
     public static boolean nextBoolean() {
         return RANDOM.nextBoolean();
     }

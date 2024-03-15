@@ -1,6 +1,6 @@
 package my.sandbox.game.welcome;
 
-import my.sandbox.deck.Deck;
+import my.sandbox.common.game.Deck;
 
 public final class Main {
 

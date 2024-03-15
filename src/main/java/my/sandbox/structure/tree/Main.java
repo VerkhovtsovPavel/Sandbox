@@ -1,5 +1,6 @@
 package my.sandbox.structure.tree;
 
+//TODO Move to tests
 public class Main {
 
     public static void main(String[] args) {
