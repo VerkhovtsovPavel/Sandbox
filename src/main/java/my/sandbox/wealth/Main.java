@@ -30,21 +30,19 @@ public class Main {
             median = wealthValues[wealthValues.length / 2];
         }
 
-        System.out.println("Average: " + Arrays.stream(wealthValues).average().orElse(0));
-        System.out.println("Median: " + median);
+        System.out.println("Average:\t" + Arrays.stream(wealthValues).average().orElse(0.0));
+        System.out.println("Median:\t" + median);
 
-        System.out.println("50%: " + percentiles(wealthValues, 0.50));
-        System.out.println("60%: " + percentiles(wealthValues, 0.60));
-        System.out.println("70%: " + percentiles(wealthValues, 0.70));
-        System.out.println("80%: " + percentiles(wealthValues, 0.80));
-        System.out.println("90%: " + percentiles(wealthValues, 0.90));
-        System.out.println("95%: " + percentiles(wealthValues, 0.95));
-        System.out.println("99%: " + percentiles(wealthValues, 0.99));
-        System.out.println("99.5%: " + percentiles(wealthValues, 0.995));
-        System.out.println("99.9%: " + percentiles(wealthValues, 0.999));
+        printPercentiles(wealthValues, .5, .6, .7, .8, .9, .95, .99, .995, .999);
     }
 
-    private static long percentiles(long[] wealthValues, double percentiles) {
-        return wealthValues[(int) (wealthValues.length * percentiles)];
+    private static long percentiles(long[] wealthValues, double percentile) {
+        return wealthValues[(int) (wealthValues.length * percentile)];
+    }
+
+    private static void printPercentiles(long[] wealthValues, double... percentiles) {
+        for(double percentile : percentiles) {
+            System.out.println((percentile*100)+"%:\t" + percentiles(wealthValues, percentile));
+        }
     }
 }
