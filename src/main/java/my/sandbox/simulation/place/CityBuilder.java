@@ -6,6 +6,8 @@ import my.sandbox.simulation.util.Counter;
 import java.util.ArrayList;
 import java.util.stream.IntStream;
 
+import static my.sandbox.common.util.ExecutionUtils.times;
+
 public class CityBuilder {
     private int homesCount;
     private int workCount;
@@ -47,6 +49,7 @@ public class CityBuilder {
     public City build() {
         Counter placesUniqueIdentifiers = new Counter();
         ArrayList<Place> places = new ArrayList<>();
+        //TODO Re-work with times
         IntStream.range(0, homesCount).forEach(i -> places.add(new Home(placesUniqueIdentifiers)));
         IntStream.range(0, workCount).forEach(i -> places.add(new Work(placesUniqueIdentifiers)));
         IntStream.range(0, schoolCount).forEach(i -> places.add(new School(placesUniqueIdentifiers)));

@@ -1,6 +1,5 @@
 package my.sandbox.simulation.main;
 
-import my.sandbox.simulation.person.HealthState;
 import my.sandbox.simulation.person.Person;
 import my.sandbox.simulation.person.PopulationBuilder;
 import my.sandbox.simulation.place.City;
@@ -12,6 +11,10 @@ import my.sandbox.common.util.Randomizer;
 
 import java.util.List;
 
+import static my.sandbox.common.constant.IntConstant.*;
+import static my.sandbox.common.logger.CommonLogger.LOG;
+
+
 public class Main {
 
     private static final int ITERATIONS = 100;
@@ -20,12 +23,12 @@ public class Main {
 
         CityBuilder cityBuilder = new CityBuilder();
         City city = cityBuilder
-                .withHomes(500)
+                .withHomes(FIVE * HUNDRED)
                 .withWorks(50)
-                .withSchools(3)
-                .withPubs(5)
-                .withParks(2)
-                .withHospitals(1)
+                .withSchools(THREE)
+                .withPubs(FIVE)
+                .withParks(TWO)
+                .withHospitals(ONE)
                 .build();
 
         PopulationBuilder populationBuilder = new PopulationBuilder(city);
@@ -59,16 +62,13 @@ public class Main {
             reporter.addLine(i, population);
             long count = population.stream().filter((p) -> p.getStatus().isSick()).count();
             if (count == 0) {
-                System.out.println("End of my.sandbox.simulation on " + i + " iteration. Not more sick people");
+                LOG.info("End of simulation on " + i + " iteration. Not more sick people");
                 break;
             }
         }
 
         reporter.printTable();
         reporter.printInfectionStatistic();
-
-        population.stream()
-                .filter((p) -> p.getStatus() == HealthState.HEALTHY)
-                .forEach((p) -> System.out.println(p.detailedDescription()));
+        reporter.printUninfected(population);
     }
 }

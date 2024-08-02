@@ -1,5 +1,7 @@
 package my.sandbox.classification.main;
 
+import static my.sandbox.common.logger.CommonLogger.LOG;
+
 import my.sandbox.classification.entity.Entity;
 import my.sandbox.classification.util.MathUtils;
 
@@ -21,7 +23,7 @@ public class MaxMin extends Classification {
 
     @Override
     protected int getEntitiesCount() {
-        System.out.print("Input count of objects: ");
+        LOG.info("Input count of objects: ");
         return (new Scanner(System.in)).nextInt();
     }
 

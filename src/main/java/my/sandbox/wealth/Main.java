@@ -1,44 +1,50 @@
 package my.sandbox.wealth;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
+import my.sandbox.common.util.StatUtils;
+
+import static my.sandbox.common.constant.DoubleConstant.DOUBLE_NINE;
+import static my.sandbox.common.constant.DoubleConstant.HALF;
+import static my.sandbox.common.constant.DoubleConstant.TRIPLE_NINE;
+import static my.sandbox.common.constant.DoubleConstant.ZERO_EIGHTH;
+import static my.sandbox.common.constant.DoubleConstant.ZERO_NINE;
+import static my.sandbox.common.constant.DoubleConstant.ZERO_NINETY_FIVE;
+import static my.sandbox.common.constant.DoubleConstant.ZERO_NINE_NINE_FIVE;
+import static my.sandbox.common.constant.DoubleConstant.ZERO_SEVEN;
+import static my.sandbox.common.constant.DoubleConstant.ZERO_SIX;
+import static my.sandbox.common.constant.IntConstant.HUNDRED;
+import static my.sandbox.common.logger.CommonLogger.LOG;
 import static my.sandbox.common.util.ExecutionUtils.times;
+import static my.sandbox.wealth.Configuration.BEGINNING_WEALTH;
+import static my.sandbox.wealth.Configuration.INVESTING_FACTOR;
+import static my.sandbox.wealth.Configuration.INVESTORS_AMOUNT;
+import static my.sandbox.wealth.Configuration.ROUNDS_AMOUNT;
+
 
 public class Main {
 
-    private static final int investorsAmount = 1000000;
-    private static final int roundsAmount = 25;
-    private static final int beginningWealth = 100;
-
     public static void main(String[] args) {
-        ArrayList<Investor> investors = new ArrayList<>(investorsAmount);
-        times(investorsAmount, () -> investors.add(new Investor(beginningWealth, 1)));
+        ArrayList<Investor> investors = new ArrayList<>(INVESTORS_AMOUNT);
+        times(INVESTORS_AMOUNT, () -> investors.add(new Investor(BEGINNING_WEALTH, INVESTING_FACTOR)));
 
-        times(roundsAmount, () -> investors.forEach(Investor::invest));
+        times(ROUNDS_AMOUNT, () -> investors.forEach(Investor::invest));
 
-        long[] wealthValues = investors.stream().mapToLong(Investor::getWealth).toArray();
-        Arrays.sort(wealthValues);
-        double median;
-        if (wealthValues.length % 2 == 0) {
-            median = ((double) wealthValues[wealthValues.length / 2] + (double) wealthValues[wealthValues.length / 2 - 1]) / 2;
-        } else {
-            median = wealthValues[wealthValues.length / 2];
-        }
+        List<Double> wealthValues = new ArrayList<>(investors.stream().map(Investor::getWealth).toList());
+        Collections.sort(wealthValues);
 
-        System.out.println("Avg:\t" + Arrays.stream(wealthValues).average().orElse(0.0));
-        System.out.println("Median:\t" + median);
+        LOG.info("Avg:\t" + StatUtils.average(wealthValues));
+        LOG.info("Median:\t" + StatUtils.median(wealthValues));
 
-        printPercentiles(wealthValues, .5, .6, .7, .8, .9, .95, .99, .995, .999);
+        printPercentiles(wealthValues, HALF, ZERO_SIX, ZERO_SEVEN, ZERO_EIGHTH, ZERO_NINE, ZERO_NINETY_FIVE,
+                DOUBLE_NINE, ZERO_NINE_NINE_FIVE, TRIPLE_NINE);
     }
 
-    private static long percentiles(long[] wealthValues, double percentile) {
-        return wealthValues[(int) (wealthValues.length * percentile)];
-    }
-
-    private static void printPercentiles(long[] wealthValues, double... percentiles) {
+    private static void printPercentiles(List<Double> wealthValues, double... percentiles) {
         for(double percentile : percentiles) {
-            System.out.println((percentile*100)+"th:\t" + percentiles(wealthValues, percentile));
+            LOG.info((percentile * HUNDRED)+"th:\t" + StatUtils.percentile(wealthValues, percentile));
         }
     }
 }

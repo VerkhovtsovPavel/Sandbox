@@ -1,6 +1,12 @@
 package my.sandbox.classification.main;
 
+import static my.sandbox.common.logger.CommonLogger.LOG;
+
+import java.util.List;
 import java.util.Scanner;
+
+import my.sandbox.classification.entity.Entity;
+
 
 public class KMeans extends Classification {
 
@@ -10,13 +16,13 @@ public class KMeans extends Classification {
 
     @Override
     protected int getEntitiesCount() {
-        System.out.print("Input count entities: ");
+        LOG.info("Input count entities: ");
         return (new Scanner(System.in)).nextInt();
     }
 
     @Override
     protected int getClassesCount() {
-        System.out.print("Input count classes: ");
+        LOG.info("Input count classes: ");
         return (new Scanner(System.in)).nextInt();
     }
 }

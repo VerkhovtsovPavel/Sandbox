@@ -7,8 +7,8 @@ import java.util.List;
 
 public class DeckFactory {
 
-    public Deck<Card> thirtySixCardsDeck() {
-        List<Card> cards = combinations(Suit.values(),
+    public Deck<PlayingCard> thirtySixCardsDeck() {
+        List<PlayingCard> cards = combinations(Suit.values(),
                 new Value[]{
                         Value.SIX,
                         Value.SEVEN,
@@ -24,16 +24,16 @@ public class DeckFactory {
         return new Deck<>(cards);
     }
 
-    public Deck<Card> fiftyTwoCardsDeck() {
-        List<Card> cards = combinations(Suit.values(), Value.values());
+    public Deck<PlayingCard> fiftyTwoCardsDeck() {
+        List<PlayingCard> cards = combinations(Suit.values(), Value.values());
         return new Deck<>(cards);
     }
 
-    private List<Card> combinations(final Suit[] suits, final Value[] values) {
-        List<Card> cards = new ArrayList<>(suits.length * values.length);
+    private List<PlayingCard> combinations(final Suit[] suits, final Value[] values) {
+        List<PlayingCard> cards = new ArrayList<>(suits.length * values.length);
         for (Suit suit : suits) {
             for (Value value : values) {
-                cards.add(new Card(suit, value));
+                cards.add(new PlayingCard(suit, value));
             }
         }
         return cards;

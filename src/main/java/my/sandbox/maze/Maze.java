@@ -1,7 +1,7 @@
 package my.sandbox.maze;
 
-import static my.sandbox.maze.SymbolConstants.NEXT_LINE;
-import static my.sandbox.maze.SymbolConstants.SPACE;
+import static my.sandbox.common.constant.SymbolConstants.NEXT_LINE;
+import static my.sandbox.common.constant.SymbolConstants.SPACE;
 
 public record Maze(int[][] matrix) {
 

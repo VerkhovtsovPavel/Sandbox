@@ -1,5 +1,9 @@
 package my.sandbox.structure.tree;
 
+import static java.lang.String.format;
+import static my.sandbox.common.logger.CommonLogger.LOG;
+
+
 //TODO Move to tests
 public class Main {
 
@@ -12,10 +16,10 @@ public class Main {
         integerBinaryTree.add(8);
         integerBinaryTree.add(1);
 
-        System.out.println(integerBinaryTree.contains(5));
-        System.out.println(integerBinaryTree.contains(6));
-        System.out.println(integerBinaryTree.contains(10));
+        LOG.info(integerBinaryTree.contains(5));
+        LOG.info(integerBinaryTree.contains(6));
+        LOG.info(integerBinaryTree.contains(10));
 
-        System.out.println(integerBinaryTree.traverse(TraversalOrder.IN_ORDER));
+        LOG.info(integerBinaryTree.traverse(TraversalOrder.IN_ORDER));
     }
 }

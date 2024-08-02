@@ -15,7 +15,7 @@ public class PopulationBuilder {
     }
 
     public List<Person> build() {
-        Counter personalIdentifier = new Counter(Person.class);
+        Counter personalIdentifier = new Counter();
         ArrayList<Person> population = new ArrayList<>();
 
         for (int i = 0; i < 500; i++) {
@@ -40,7 +40,7 @@ public class PopulationBuilder {
         }
 
         for (int i = 0; i < 10; i++) {
-            population.add(new Person(personalIdentifier.inc(), behaviorFactory.doctor(), behaviorFactory.doctor()));
+            population.add(new Person(personalIdentifier.inc(), behaviorFactory.doctor(), behaviorFactory.sick()));
         }
 
         return population;

@@ -1,7 +1,6 @@
 package my.sandbox.simulation.util;
 
 public interface Constant {
-
     double INFECTION_PROBABILITY = 0.05;
     double DEAD_PROBABILITY = 0.01;
     int INITIAL_INFECTED = 3;

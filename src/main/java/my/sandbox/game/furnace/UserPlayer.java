@@ -1,5 +1,8 @@
 package my.sandbox.game.furnace;
 
+import static java.lang.String.format;
+import static my.sandbox.common.logger.CommonLogger.LOG;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,10 +18,10 @@ public class UserPlayer implements Player {
     @Override
     public void applyDisk() {
         Scanner in = new Scanner(System.in);
-        System.out.println("Choose card and disk:");
+        LOG.info("Choose card and disk:");
         int card = in.nextInt() - 1;
         int disk = in.nextInt();
         cards.get(card).disks().put(color, disk);
-        System.out.printf("Player[%s] put %d disk on %d card%n", color, disk, card + 1);
+        LOG.info(format("Player[%s] put %d disk on %d card%n", color, disk, card + 1));
     }
 }
