@@ -8,19 +8,19 @@ public enum HealthState {
     DEAD(false, false),
     RESISTED(false, false);
 
-    private final boolean isSick;
-    private final boolean isContagious;
+    private final boolean sick;
+    private final boolean contagious;
 
-    HealthState(final boolean isSick, final boolean isContagious) {
-        this.isSick = isSick;
-        this.isContagious = isContagious;
+    HealthState(final boolean sick, final boolean contagious) {
+        this.sick = sick;
+        this.contagious = contagious;
     }
 
     public boolean isSick() {
-        return isSick;
+        return sick;
     }
 
     public boolean isContagious() {
-        return isContagious;
+        return contagious;
     }
 }

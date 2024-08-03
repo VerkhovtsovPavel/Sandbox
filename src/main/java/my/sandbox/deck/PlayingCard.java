@@ -1,11 +1,11 @@
 package my.sandbox.deck;
 
-public class Card {
+public class PlayingCard {
 
     private final Suit suit;
     private final Value value;
 
-    public Card(final Suit cardSuit, final Value cardValue) {
+    public PlayingCard(final Suit cardSuit, final Value cardValue) {
         this.suit = cardSuit;
         this.value = cardValue;
     }

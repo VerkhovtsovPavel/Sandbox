@@ -10,7 +10,7 @@ import java.util.List;
 
 import static my.sandbox.common.util.ExecutionUtils.times;
 
-public class Main {
+public final class Application {
 
     //TODO Need to re-tests after changes
     public static void main(String[] args) {
@@ -37,5 +37,7 @@ public class Main {
             }
         });
     }
+
+    private Application() {}
 }
 

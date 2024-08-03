@@ -1,5 +1,14 @@
 package my.sandbox;
 
+import static my.sandbox.common.constant.IntConstant.FOUR;
+import static my.sandbox.common.constant.IntConstant.ONE;
+import static my.sandbox.common.constant.IntConstant.SEVEN;
+import static my.sandbox.common.constant.IntConstant.THREE;
+import static my.sandbox.common.constant.IntConstant.TWO;
+import static my.sandbox.common.constant.IntConstant.ZERO;
+import static my.sandbox.common.logger.CommonLogger.LOG;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -10,27 +19,28 @@ import java.util.stream.Collectors;
 public final class Small {
 
     public static void main(String[] args) {
-        System.out.println(hIndex(new int[]{1, 3, 7, 4}));
-        System.out.println(hIndex(new int[]{4, 4, 7, 4}));
-        System.out.println(hIndex(new int[]{}));
+        LOG.info(hIndex(ONE, THREE, SEVEN, FOUR));
+        LOG.info(hIndex(FOUR, FOUR, SEVEN, FOUR));
+        LOG.info(hIndex());
     }
 
-    public static int[] uniqueElements(final int[] array) {
+    public static int[] uniqueElements(final int... array) {
         Set<Integer> set = new LinkedHashSet<>();
-        for(int item : array) {
+        for (int item : array) {
             set.add(item);
         }
         return set.stream().mapToInt(i -> i).toArray();
     }
 
-    public static int[] countPositivesSumNegatives(final int[] input) {
-        if (input == null || input.length == 0) {
-            return new int[0];
+    // return an array with count of positives and sum of negatives
+    public static int[] countPositivesSumNegatives(final int... input) {
+        if (input == null || input.length == ZERO) {
+            return new int[ZERO];
         }
-        int[] result = new int[2];
-        result[0] = (int) Arrays.stream(input).filter(x -> x > 0).count();
-        result[1] = Arrays.stream(input).filter(x -> x < 0).sum();
-        return result; //return an array with count of positives and sum of negatives
+        int[] result = new int[TWO];
+        result[ZERO] = (int) Arrays.stream(input).filter(x -> x > 0).count();
+        result[ONE] = Arrays.stream(input).filter(x -> x < 0).sum();
+        return result;
     }
 
     public static boolean isIsogram(final String str) {
@@ -58,17 +68,19 @@ public final class Small {
         for (int i = 0; i < letters.length; i++) {
             if (letters[i] == currentLetter) {
                 counter++;
-            } else if (counter == 1) {
+            }
+            else if (counter == ONE) {
                 result.append(currentLetter);
                 currentLetter = letters[i];
-            } else {
+            }
+            else {
                 result.append(currentLetter);
                 result.append(counter);
                 currentLetter = letters[i];
-                counter = 1;
+                counter = ONE;
             }
 
-            if (i == letters.length - 1) {
+            if (i == letters.length - ONE) {
                 result.append(currentLetter);
                 result.append(counter);
             }
@@ -89,8 +101,8 @@ public final class Small {
         return count == targetSequence.size();
     }
 
-    public static int hIndex(final int[] quotes) {
-        int[] counts = new int[quotes.length + 1];
+    public static int hIndex(final int... quotes) {
+        int[] counts = new int[quotes.length + ONE];
 
         for (int quote : quotes) {
             int currentValue = quote;
@@ -102,7 +114,7 @@ public final class Small {
 
         int hIndex = 0;
         int totalQuotes = 0;
-        for (int i = counts.length - 1; i > 0; i--) {
+        for (int i = counts.length - ONE; i > 0; i--) {
             totalQuotes += counts[i];
             if (totalQuotes >= i) {
                 hIndex = i;
@@ -112,7 +124,44 @@ public final class Small {
         return hIndex;
     }
 
-    private Small() {
+    public static String allNonconsecutiveBinaryStrings(int length) {
+        long uppedBound = (long) Math.pow(2, length);
+        String addedZeros = "0".repeat(length);
+        List<String> nonconsecutiveBinaryStrings = new ArrayList<>();
 
+        for (long i = 0; i < uppedBound; i++) {
+            String candidate = addedZeros + Long.toBinaryString(i);
+            if (!candidate.contains("11")) {
+                nonconsecutiveBinaryStrings.add(candidate.substring(candidate.length() - length));
+            }
+        }
+
+        return String.join(" ", nonconsecutiveBinaryStrings);
+    }
+    
+    public static int uniqueSequenceCount(String value) {
+        int maxSequence = 0;
+        Set<Character> sequenceChars = new HashSet<>();
+        for(char currentChar : value.toCharArray()) {
+            if(sequenceChars.contains(currentChar)) {
+                int currentSequence = sequenceChars.size();
+                if(currentSequence > maxSequence) {
+                    maxSequence = currentSequence;
+                }
+                sequenceChars.clear();
+            }
+            sequenceChars.add(currentChar);
+        }
+
+        int currentSequence = sequenceChars.size();
+        if(currentSequence > maxSequence) {
+            maxSequence = currentSequence;
+        }
+
+        return maxSequence;
+
+    }
+
+    private Small() {
     }
 }

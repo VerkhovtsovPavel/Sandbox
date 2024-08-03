@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class DisksFactory {
+public final class DisksFactory {
 
     public static Queue<Integer> lowToHigh() {
         final Queue<Integer> disks = new LinkedList<>();
@@ -39,4 +39,6 @@ public class DisksFactory {
         Collections.reverse((List<Integer>) disks);
         return disks;
     }
+
+    private DisksFactory() {}
 }

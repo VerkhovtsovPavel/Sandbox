@@ -16,7 +16,7 @@ public enum Direction implements Bitable {
     public final int bit;
     public final int dx;
     public final int dy;
-    public Direction opposite;
+    private Direction opposite;
 
     Direction(int bit, int dx, int dy) {
         this.bit = bit;
@@ -27,5 +27,9 @@ public enum Direction implements Bitable {
     @Override
     public int getBit() {
         return bit;
+    }
+
+    public Direction getOpposite() {
+        return opposite;
     }
 }
