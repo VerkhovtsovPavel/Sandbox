@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
-public class GroupBy {
+public final class GroupBy {
 
     public static <V, K> Map<V, List<K>> groupBy(Collection<K> collection, Function<K, V> groupCondition) {
         HashMap<V, List<K>> groups = new HashMap<>();
@@ -21,4 +21,7 @@ public class GroupBy {
 
         return groups;
     }
+
+    private GroupBy() {}
+
 }

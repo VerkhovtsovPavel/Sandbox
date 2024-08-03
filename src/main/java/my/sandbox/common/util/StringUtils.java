@@ -1,12 +1,15 @@
 package my.sandbox.common.util;
 
+import static my.sandbox.common.constant.StringConstant.DOT;
+
+
 public final class StringUtils {
     public static String beatifyClassName(final String className) {
-        int indexOfLastDot = className.lastIndexOf(".") + 1;
+        int indexOfLastDot = className.lastIndexOf(DOT) + 1;
         return className.substring(indexOfLastDot);
     }
 
-    public static String beatifyClassName(final Class clazz) {
+    public static String beatifyClassName(final Class<?> clazz) {
         return beatifyClassName(clazz.toString());
     }
 

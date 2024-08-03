@@ -27,7 +27,8 @@ public class Person {
 
         if (health.getCurrentState() == HealthState.SICK) {
             currentPlace = sickBehavior.nextPlace();
-        } else {
+        }
+        else {
             currentPlace = behavior.nextPlace();
         }
         return currentPlace;

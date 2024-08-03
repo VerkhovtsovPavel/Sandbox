@@ -2,14 +2,12 @@ package my.sandbox.simulation.place;
 
 import my.sandbox.simulation.person.Person;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+
 
 public class Navigator {
 
-    private final HashMap<Place, List<Person>> currentLocation = new HashMap<>();
+    private final Map<Place, List<Person>> currentLocation = new HashMap<>();
 
     public void moveTo(final Person person, final Place from, final Place to) {
         List<Person> fromList = currentLocation.get(from);
@@ -31,8 +29,8 @@ public class Navigator {
         return currentLocation.getOrDefault(place, new ArrayList<>());
     }
 
-    public HashMap<String, Integer> getStatistic() {
-        HashMap<String, Integer> statistic = new HashMap<>();
+    public Map<String, Integer> getStatistic() {
+        Map<String, Integer> statistic = new HashMap<>();
         for (Place place : currentLocation.keySet()) {
             List<Person> people = currentLocation.getOrDefault(place, new ArrayList<>());
             statistic.put(place.toString(), people.size());

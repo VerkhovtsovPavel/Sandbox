@@ -1,9 +1,16 @@
 package my.sandbox.maze;
 
+import static my.sandbox.common.constant.StringConstant.SPACE;
+import static my.sandbox.common.constant.SymbolConstants.HASH;
+import static my.sandbox.common.constant.SymbolConstants.PLUS;
+import static my.sandbox.common.constant.SymbolConstants.X;
+import static my.sandbox.common.constant.SymbolConstants.ZERO;
+
+
 public class DisplayInfo {
-    public static final DisplayInfo BASE = new DisplayInfo('+', "│", "---", '0', 'X', false);
-    public static final DisplayInfo BIG = new DisplayInfo('+', "│││", "---___---", '0', 'X', false);
-    public static final DisplayInfo HEAVY = new DisplayInfo('#', "#", "###", '0', 'X', false);
+    public static final DisplayInfo BASE = new DisplayInfo(PLUS, "│", "---", ZERO, X, false);
+    public static final DisplayInfo BIG = new DisplayInfo(PLUS, "│││", "---___---", ZERO, X, false);
+    public static final DisplayInfo HEAVY = new DisplayInfo(HASH, "#", "###", ZERO, X, false);
 
     private final char corner;
     private final String wall;
@@ -24,10 +31,11 @@ public class DisplayInfo {
         this.wall = wallSigns;
         this.flat = flatSigns;
         this.duplicateSign = isDuplicateSign;
-        this.spaces = new String(new char[flat.length()]).replace('\0', ' ');
-        int signOffset = (spaces.length() - 1) / 2;
-        this.startSigns = spaces.substring(0, signOffset) + startSign + spaces.substring(signOffset + 1);
-        this.endSigns = spaces.substring(0, signOffset) + endSign + spaces.substring(signOffset + 1);
+        this.spaces = SPACE.repeat(flat.length());
+
+        String signOffset = SPACE.repeat((flat.length() - 1) / 2);
+        this.startSigns = signOffset + startSign + signOffset;
+        this.endSigns = signOffset + endSign + signOffset;
     }
 
     public char getCorner() {

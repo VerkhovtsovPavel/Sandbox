@@ -9,6 +9,8 @@ import my.sandbox.classification.util.SyncUtils;
 import java.util.List;
 
 import static my.sandbox.classification.util.Constants.UI_REDRAW_EVENT;
+import static my.sandbox.common.logger.CommonLogger.LOG;
+
 
 public abstract class Classification {
 
@@ -20,15 +22,15 @@ public abstract class Classification {
 
     public final void process() {
         int objectCount = getEntitiesCount();
-        System.out.println("[*] Generate entities");
+        LOG.info("[*] Generate entities");
         List<Entity> entities = EntityFactory.generate(dispersion, objectCount);
-        System.out.println("[x] Entities generated");
+        LOG.info("[x] Entities generated");
         int classCount = getClassesCount();
         List<Entity> entityCores = EntityFactory.selectRandomEntities(entities, classCount);
 
-        System.out.println("[x] Initial dividing");
+        LOG.info("[*] Initial dividing");
         divideObjectsOnClasses(entities, entityCores);
-        System.out.println("[x] Entities initially divided");
+        LOG.info("[x] Entities initially divided");
 
         SyncUtils.register(UI_REDRAW_EVENT);
         GraphicsClass.setScreenSize(dispersion);
@@ -37,19 +39,16 @@ public abstract class Classification {
         GraphicsClass.visualizeClasses("Before");
         SyncUtils.wait(UI_REDRAW_EVENT);
 
-        System.out.println("[x] Prepare entities");
+        LOG.info("[*] Prepare entities");
         prepare(entities, entityCores);
-        System.out.println("[x] Entities prepared");
+        LOG.info("[x] Entities prepared");
 
-        System.out.println("[x] Classify entities");
+        LOG.info("[*] Classify entities");
         classify(entities, entityCores);
-        System.out.println("[x] Entities classified");
+        LOG.info("[x] Entities classified");
 
         GraphicsClass.visualizeClasses("After");
         SyncUtils.wait(UI_REDRAW_EVENT);
-    }
-
-    protected void prepare(final List<Entity> entities, final List<Entity> cores) {
     }
 
     protected void classify(final List<Entity> entities, final List<Entity> cores) {
@@ -76,6 +75,8 @@ public abstract class Classification {
         }
         return redefinitionClasses;
     }
+
+    protected abstract void prepare(List<Entity> entities, List<Entity> cores);
 
     protected abstract int getEntitiesCount();
 

@@ -12,24 +12,24 @@ import static my.sandbox.matching.Matcher.match;
 
 public class MatcherTests {
 
-    private final String stringValueFormat = "String value: %s";
-    private final String integerValue = "Integer value";
-    private final String doubleValue = "Double value";
-    private final String unexpectedValue = "Unexpected value";
-    private final String shortStringValue = "Short string value";
-    private final String aStartedStringValue = "'a' started string value";
+    private static final String STRING_VALUE_FORMAT = "String value: %s";
+    private static final String INTEGER_VALUE = "Integer value";
+    private static final String DOUBLE_VALUE = "Double value";
+    private static final String UNEXPECTED_VALUE = "Unexpected value";
+    private static final String SHORT_STRING_VALUE = "Short string value";
+    private static final String A_STARTED_STRING_VALUE = "'a' started string value";
     private Matcher<String> matcher;
 
 
     @BeforeClass
     void initMatcher() {
         matcher = match(String.class)
-                .when((String s) -> s.length() < 3).then(shortStringValue)
-                .when((String s) -> s.startsWith("a")).then(aStartedStringValue)
-                .when(String.class).then((s) -> format(stringValueFormat, s))
-                .when(Integer.class).then((i) -> integerValue)
-                .when(Double.class).then((d) -> doubleValue)
-                .orElse(unexpectedValue);
+                .when((String s) -> s.length() < 3).then(SHORT_STRING_VALUE)
+                .when((String s) -> s.startsWith("a")).then(A_STARTED_STRING_VALUE)
+                .when(String.class).then((s) -> format(STRING_VALUE_FORMAT, s))
+                .when(Integer.class).then((i) -> INTEGER_VALUE)
+                .when(Double.class).then((d) -> DOUBLE_VALUE)
+                .orElse(UNEXPECTED_VALUE);
     }
 
     @Test(dataProvider = "branches")
@@ -41,19 +41,19 @@ public class MatcherTests {
     @Test
     public void matchAll() {
         Assert.assertEquals(matcher.matchAll("ab"),
-                List.of(shortStringValue, aStartedStringValue, format(stringValueFormat, "ab")), "Matched branches is incorrect");
+                List.of(SHORT_STRING_VALUE, A_STARTED_STRING_VALUE, format(STRING_VALUE_FORMAT, "ab")), "Matched branches is incorrect");
     }
 
     @DataProvider(name = "branches")
     Object[][] branches() {
         return new Object[][]
                 {
-                        {"ab", shortStringValue},
-                        {"abc", aStartedStringValue},
-                        {"bcd", format(stringValueFormat, "bcd")},
-                        {1, integerValue},
-                        {1.0, doubleValue},
-                        {'b', unexpectedValue}
+                        {"ab", SHORT_STRING_VALUE},
+                        {"abc", A_STARTED_STRING_VALUE},
+                        {"bcd", format(STRING_VALUE_FORMAT, "bcd")},
+                        {1, INTEGER_VALUE},
+                        {1.0, DOUBLE_VALUE},
+                        {'b', UNEXPECTED_VALUE}
                 };
     }
 }

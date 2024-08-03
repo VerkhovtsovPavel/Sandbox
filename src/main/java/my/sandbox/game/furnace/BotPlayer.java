@@ -1,5 +1,8 @@
 package my.sandbox.game.furnace;
 
+import static java.lang.String.format;
+import static my.sandbox.common.logger.CommonLogger.LOG;
+
 import my.sandbox.common.game.Dice;
 
 import java.util.ArrayList;
@@ -23,6 +26,7 @@ public class BotPlayer implements Player {
         this.dice = dice;
     }
 
+    @Override
     public void applyDisk() {
         int initialCard = dice.roll();
         Integer currentDisk = disks.poll();
@@ -31,7 +35,7 @@ public class BotPlayer implements Player {
             var disks = card.disks();
             if (!disks.containsKey(color) && !disks.containsValue(currentDisk)) {
                 disks.put(color, currentDisk);
-                System.out.printf("Bot[%s] put %d disk on %d card%n", color, currentDisk, card.numberInRow() + 1);
+                LOG.info(format("Bot[%s] put %d disk on %d card%n", color, currentDisk, card.numberInRow() + 1));
                 break;
             }
         }
@@ -49,6 +53,7 @@ public class BotPlayer implements Player {
                 round.addAll(cards.subList(initialCard, cards.size()));
                 Collections.reverse(round);
             }
+            default -> throw new IllegalArgumentException(mode.toString());
         }
         return round;
     }

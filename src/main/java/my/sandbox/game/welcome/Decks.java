@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Decks {
+public final class Decks {
 
     public static Deck<Card> classic() {
         List<Card> cards = new ArrayList<>();

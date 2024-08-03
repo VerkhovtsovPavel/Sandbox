@@ -29,7 +29,7 @@ public final class GraphicsClass extends JPanel {
     private final List<Entity> objectArray;
     private final List<Entity> classArray;
 
-    private boolean isRepaint = false;
+    private boolean isRepaint;
 
     private GraphicsClass() {
         this.objectArray = CloneUtils.clone(objectArrayBinding);
@@ -76,6 +76,7 @@ public final class GraphicsClass extends JPanel {
      *
      * @param g graphics object
      */
+    @Override
     public void paint(final Graphics g) {
         final int areaCount = classArray.size();
 

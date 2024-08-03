@@ -7,10 +7,6 @@ import java.util.concurrent.BlockingQueue;
 
 public final class SyncUtils {
 
-    private SyncUtils() {
-
-    }
-
     private static final Map<String, BlockingQueue<Object>> SYNCS = new HashMap<>();
 
     public static void register(final String key) {
@@ -23,7 +19,7 @@ public final class SyncUtils {
             try {
                 queue.take();
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                throw new IllegalStateException(e);
             }
         }
     }
@@ -33,5 +29,9 @@ public final class SyncUtils {
         if (queue != null) {
             queue.add(new Object());
         }
+    }
+
+    private SyncUtils() {
+
     }
 }

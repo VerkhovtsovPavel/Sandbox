@@ -18,7 +18,7 @@ public class City {
     }
 
     //TODO Add generic for Place bounds
-    public Place getRandom(final Class clazz) {
+    public Place getRandom(final Class<?> clazz) {
         Object[] filteredPlaces = places.stream().filter((x) -> x.getClass() == clazz).toArray();
         int randomIndex = Randomizer.nextInt(filteredPlaces.length);
         return (Place) filteredPlaces[randomIndex];
