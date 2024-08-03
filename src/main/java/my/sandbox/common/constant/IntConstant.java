@@ -1,6 +1,6 @@
 package my.sandbox.common.constant;
 
-public class IntConstant {
+public final class IntConstant {
 
     public static final int ZERO = 0;
     public static final int ONE = 1;

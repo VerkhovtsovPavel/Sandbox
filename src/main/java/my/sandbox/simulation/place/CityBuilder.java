@@ -6,8 +6,6 @@ import my.sandbox.simulation.util.Counter;
 import java.util.ArrayList;
 import java.util.stream.IntStream;
 
-import static my.sandbox.common.util.ExecutionUtils.times;
-
 public class CityBuilder {
     private int homesCount;
     private int workCount;

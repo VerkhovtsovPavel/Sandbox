@@ -17,7 +17,7 @@ public class Reporter {
     private static final String TABLE_HEAD = "| Iteration | Healthy | Infected | Contagious | Sick | Resisted | Dead |";
     private static final String TABLE_BORDER = DASH.repeat(TABLE_HEAD.length());
 
-    private final LinkedList<String> tableRows = new LinkedList<>();
+    private final List<String> tableRows = new LinkedList<>();
     private final Counter quantityOfInfection = new Counter();
 
     public void addLine(int iteration, List<Person> population) {
@@ -28,7 +28,7 @@ public class Reporter {
         long resistedCount = population.stream().filter(p -> p.getStatus() == HealthState.RESISTED).count();
         long deadCount = population.stream().filter(p -> p.getStatus() == HealthState.DEAD).count();
 
-        tableRows.addLast(
+        tableRows.add(
               String.format(
                   TABLE_FORMAT,
                   iteration,

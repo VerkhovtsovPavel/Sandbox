@@ -80,7 +80,7 @@ public class Entity implements Cloneable {
         try {
             return (Entity) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
+            throw new AssertionError(e);
         }
     }
 }

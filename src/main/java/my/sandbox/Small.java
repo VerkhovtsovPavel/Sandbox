@@ -16,17 +16,15 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-
-//TODO Cover all by tests
 public final class Small {
 
     public static void main(String[] args) {
-        LOG.info(hIndex(new int[]{ONE, THREE, SEVEN, FOUR}));
-        LOG.info(hIndex(new int[]{FOUR, FOUR, SEVEN, FOUR}));
-        LOG.info(hIndex(new int[]{}));
+        LOG.info(hIndex(ONE, THREE, SEVEN, FOUR));
+        LOG.info(hIndex(FOUR, FOUR, SEVEN, FOUR));
+        LOG.info(hIndex());
     }
 
-    public static int[] uniqueElements(final int[] array) {
+    public static int[] uniqueElements(final int... array) {
         Set<Integer> set = new LinkedHashSet<>();
         for (int item : array) {
             set.add(item);
@@ -35,7 +33,7 @@ public final class Small {
     }
 
     // return an array with count of positives and sum of negatives
-    public static int[] countPositivesSumNegatives(final int[] input) {
+    public static int[] countPositivesSumNegatives(final int... input) {
         if (input == null || input.length == ZERO) {
             return new int[ZERO];
         }
@@ -103,7 +101,7 @@ public final class Small {
         return count == targetSequence.size();
     }
 
-    public static int hIndex(final int[] quotes) {
+    public static int hIndex(final int... quotes) {
         int[] counts = new int[quotes.length + ONE];
 
         for (int quote : quotes) {

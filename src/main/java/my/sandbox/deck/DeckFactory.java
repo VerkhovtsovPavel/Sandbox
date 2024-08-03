@@ -8,18 +8,8 @@ import java.util.List;
 public class DeckFactory {
 
     public Deck<PlayingCard> thirtySixCardsDeck() {
-        List<PlayingCard> cards = combinations(Suit.values(),
-                new Value[]{
-                        Value.SIX,
-                        Value.SEVEN,
-                        Value.EIGHTH,
-                        Value.NINE,
-                        Value.TEN,
-                        Value.JACK,
-                        Value.QUEEN,
-                        Value.KING,
-                        Value.ACE
-                });
+        List<PlayingCard> cards = combinations(Suit.values(), Value.SIX, Value.SEVEN, Value.EIGHTH, Value.NINE, Value.TEN,
+              Value.JACK, Value.QUEEN, Value.KING, Value.ACE);
 
         return new Deck<>(cards);
     }
@@ -29,7 +19,7 @@ public class DeckFactory {
         return new Deck<>(cards);
     }
 
-    private List<PlayingCard> combinations(final Suit[] suits, final Value[] values) {
+    private List<PlayingCard> combinations(final Suit[] suits, final Value... values) {
         List<PlayingCard> cards = new ArrayList<>(suits.length * values.length);
         for (Suit suit : suits) {
             for (Value value : values) {

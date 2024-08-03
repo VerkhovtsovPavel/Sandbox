@@ -1,9 +1,11 @@
 package my.sandbox.simulation.util;
 
 import java.util.HashMap;
+import java.util.Map;
+
 
 public class Counter {
-    private final HashMap<Class<?>, Long> counters = new HashMap<>();
+    private final Map<Class<?>, Long> counters = new HashMap<>();
 
     public long inc(final Class<?> clazz) {
         long counter = counters.getOrDefault(clazz, 0L);
@@ -15,7 +17,7 @@ public class Counter {
         return inc(Object.class);
     }
 
-    public HashMap<Class<?>, Long> getCounters() {
+    public Map<Class<?>, Long> getCounters() {
         return counters;
     }
 }

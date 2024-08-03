@@ -1,12 +1,13 @@
 package my.sandbox.cars.util;
 
-public interface AvailableCommand {
+//TODO Consider enum
+public final class AvailableCommand {
 
-	String COUNT_TYPES = "count types";
-	String COUNT_ALL = "count all";
+	public static final String COUNT_TYPES = "count types";
+	public static final String COUNT_ALL = "count all";
+	public static final String AVERAGE_PRICE = "average price";
+	public static final String EXIT = "exit";
+	public static final String ADD = "add";
 
-	String AVERAGE_PRICE = "average price";
-
-	String EXIT = "exit";
-	String ADD = "add";
+	private AvailableCommand() {}
 }

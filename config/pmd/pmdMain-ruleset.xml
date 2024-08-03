@@ -1,9 +1,7 @@
 <?xml version="1.0"?>
-<ruleset name="Vividus ruleset" xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+<ruleset name="Ruleset" xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
-
-    <description>Custom ruleset checks for Vividus</description>
 
     <rule ref="category/java/bestpractices.xml">
         <exclude name="AccessorMethodGeneration"/>
@@ -29,7 +27,7 @@
     </rule>
     <rule ref="category/java/codestyle.xml/TooManyStaticImports">
         <properties>
-            <property name="maximumStaticImports" value="6"/>
+            <property name="maximumStaticImports" value="10"/>
         </properties>
     </rule>
 
@@ -80,4 +78,12 @@
         <exclude name="AvoidFileStream"/>
         <exclude name="AvoidInstantiatingObjectsInLoops"/>
     </rule>
+
+    <rule ref="category/java/bestpractices.xml/GuardLogStatement">
+        <properties>
+            <property name="logLevels" value="trace,debug" />
+            <property name="guardsMethods" value="isTraceEnabled,isDebugEnabled" />
+        </properties>
+    </rule>
+
 </ruleset>

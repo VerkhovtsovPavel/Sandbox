@@ -1,6 +1,6 @@
 package my.sandbox.common.constant;
 
-public class DoubleConstant {
+public final class DoubleConstant {
     public static final double HALF = .5;
     public static final double ZERO_SIX = .6;
     public static final double ZERO_SEVEN = .7;

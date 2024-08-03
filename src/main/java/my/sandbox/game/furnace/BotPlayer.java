@@ -26,6 +26,7 @@ public class BotPlayer implements Player {
         this.dice = dice;
     }
 
+    @Override
     public void applyDisk() {
         int initialCard = dice.roll();
         Integer currentDisk = disks.poll();
@@ -52,6 +53,7 @@ public class BotPlayer implements Player {
                 round.addAll(cards.subList(initialCard, cards.size()));
                 Collections.reverse(round);
             }
+            default -> throw new IllegalArgumentException(mode.toString());
         }
         return round;
     }

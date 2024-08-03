@@ -9,7 +9,6 @@ import java.util.List;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-
 public class AllNonconsecutiveBinaryStringsTests {
 
 	@Test(dataProvider = "bounders")
@@ -18,7 +17,7 @@ public class AllNonconsecutiveBinaryStringsTests {
 	}
 
 	@DataProvider(parallel = true)
-	private Iterator<Object[]> bounders() {
+	Iterator<Object[]> bounders() {
 		return List.of(
 				arr(1, "0 1"),
 				arr(2, "00 01 10"),

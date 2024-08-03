@@ -5,27 +5,21 @@ import java.util.List;
 
 import my.sandbox.cars.command.CarCommand;
 
-
 public final class Storage {
 
-	private final List<Car> storage;
+	private final List<Car> cars;
 
-	private static Storage instance;
+	private static final Storage INSTANCE = new Storage();
 
 	private Storage() {
-		this.storage = new ArrayList<>();
+		this.cars = new ArrayList<>();
 	}
 
 	public <R> R execute(CarCommand<R> command) {
-		return command.execute(this.storage);
+		return command.execute(this.cars);
 	}
 
 	public static Storage getInstance() {
-		if (instance == null) {
-			instance = new Storage();
-		}
-		return instance;
+		return INSTANCE;
 	}
-
-
 }

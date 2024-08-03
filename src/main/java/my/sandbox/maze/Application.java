@@ -3,7 +3,7 @@ package my.sandbox.maze;
 import static my.sandbox.common.logger.CommonLogger.LOG;
 
 
-public class Main {
+public final class Application {
 
     private static final int X = 10;
     private static final int Y = 5;
@@ -12,4 +12,6 @@ public class Main {
         MazeGenerator mazeGenerator = new MazeGenerator(X, Y);
         LOG.info(mazeGenerator.generateMaze().toString(DisplayInfo.BASE));
     }
+
+    private Application() {}
 }

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.function.Function;
 
 
-public class StatUtils {
+public final class StatUtils {
 
     public static Number median(List<? extends Number> sortedValues) {
         int halfSize = sortedValues.size() / 2;

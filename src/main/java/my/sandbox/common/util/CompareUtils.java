@@ -2,7 +2,7 @@ package my.sandbox.common.util;
 
 import my.sandbox.common.constant.CompareResult;
 
-public class CompareUtils {
+public final class CompareUtils {
 
     public static <T extends Comparable<T>> CompareResult compare(T left, T right) {
        int intResult = left.compareTo(right);
@@ -15,4 +15,6 @@ public class CompareUtils {
            return CompareResult.LESS;
        }
     }
+
+    private CompareUtils() {}
 }

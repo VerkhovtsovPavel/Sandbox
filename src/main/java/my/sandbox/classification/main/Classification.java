@@ -51,10 +51,6 @@ public abstract class Classification {
         SyncUtils.wait(UI_REDRAW_EVENT);
     }
 
-    protected void prepare(List<Entity> entities, List<Entity> cores) {
-        // Do nothing by default
-    }
-
     protected void classify(final List<Entity> entities, final List<Entity> cores) {
         while (checkOptimalityDivision(entities, cores)) {
             divideObjectsOnClasses(entities, cores);
@@ -79,6 +75,8 @@ public abstract class Classification {
         }
         return redefinitionClasses;
     }
+
+    protected abstract void prepare(List<Entity> entities, List<Entity> cores);
 
     protected abstract int getEntitiesCount();
 

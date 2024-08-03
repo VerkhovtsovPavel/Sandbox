@@ -10,6 +10,7 @@ public class StringCompressor {
         return internalUnzip(compressedString, 1);
     }
 
+    @SuppressWarnings("PMD.AvoidReassigningLoopVariables")
     private String internalUnzip(final String string, final int duplications) {
         StringBuilder result = new StringBuilder();
         int duplicationValueLength = 0;
