@@ -1,5 +1,7 @@
 package my.sandbox.classification.util;
 
-public interface Constants {
-    String UI_REDRAW_EVENT = "UI_REDRAW";
+public final class Constants {
+    public static final String UI_REDRAW_EVENT = "UI_REDRAW";
+
+    private Constants() {}
 }

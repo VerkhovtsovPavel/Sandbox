@@ -7,7 +7,7 @@ import java.util.List;
 
 public abstract class Behavior {
 
-    private final ArrayList<Place> places = new ArrayList<>();
+    private final List<Place> places = new ArrayList<>();
     private int currentElement;
 
     Behavior() {

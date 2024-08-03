@@ -1,15 +1,16 @@
 package my.sandbox.classification.main;
 
-import my.sandbox.classification.entity.Entity;
-import my.sandbox.classification.util.MathUtils;
+import static my.sandbox.common.logger.CommonLogger.LOG;
+import static my.sandbox.common.util.ConsoleScanner.CONSOLE_SCANNER;
 
 import java.util.List;
-import java.util.Scanner;
+
+import my.sandbox.classification.entity.Entity;
+import my.sandbox.classification.util.MathUtils;
 
 /**
  * Main class for Max-Min approach
  */
-//TODO Use same keywords: core, class, entity
 public class MaxMin extends Classification {
 
     private static final int INITIAL_CLASSES_COUNT = 2;
@@ -21,8 +22,8 @@ public class MaxMin extends Classification {
 
     @Override
     protected int getEntitiesCount() {
-        System.out.print("Input count of objects: ");
-        return (new Scanner(System.in)).nextInt();
+        LOG.info("Input count of objects: ");
+        return CONSOLE_SCANNER.nextInt();
     }
 
     @Override

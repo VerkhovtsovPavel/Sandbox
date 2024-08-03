@@ -14,7 +14,7 @@ import static my.sandbox.group.GroupBy.groupBy;
 public class GroupByTests {
 
     @Test
-    public void testGroupBy() {
+    public void validateGroupBy() {
         List<String> input = List.of("abc", "cba", "foo", "bar");
         Function<String, Set<Character>> groper = item -> item.chars()
                 .mapToObj(ch -> (char) ch)

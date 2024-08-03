@@ -1,5 +1,7 @@
 package my.sandbox.game.welcome;
 
+import static my.sandbox.common.logger.CommonLogger.LOG;
+
 import my.sandbox.common.game.Deck;
 
 public final class Main {
@@ -12,8 +14,8 @@ public final class Main {
         Deck<Card> deck = Decks.classic();
         deck.shuffle();
         for (Card card : deck.draw(3)) {
-            System.out.println(card.bonus());
-            System.out.println(card.denomination() + " - " + card.bonus().getIcon());
+            LOG.info(card.bonus());
+            LOG.info(card.denomination() + " - " + card.bonus().getIcon());
         }
     }
 }

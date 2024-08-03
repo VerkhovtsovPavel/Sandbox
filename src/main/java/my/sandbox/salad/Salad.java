@@ -1,10 +1,12 @@
 package my.sandbox.salad;
 
 import java.util.HashMap;
+import java.util.Map;
+
 
 public class Salad {
 
-    private final HashMap<Ingredient, Integer> recipe;
+    private final Map<Ingredient, Integer> recipe;
 
     public Salad() {
         this.recipe = new HashMap<>();
@@ -14,7 +16,7 @@ public class Salad {
         recipe.put(ingredient, weight);
     }
 
-    public HashMap<Ingredient, Integer> getRecipe() {
+    public Map<Ingredient, Integer> getRecipe() {
         return recipe;
     }
 }
