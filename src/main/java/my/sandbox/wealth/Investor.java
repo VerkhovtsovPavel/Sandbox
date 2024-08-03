@@ -1,13 +1,12 @@
 package my.sandbox.wealth;
 
+import static my.sandbox.wealth.Configuration.INVESTMENT_GAIN;
+import static my.sandbox.wealth.Configuration.INVESTMENT_LOSS;
+
 import my.sandbox.common.util.Randomizer;
 
-import static my.sandbox.wealth.Constant.INVESTMENT_GAIN;
-import static my.sandbox.wealth.Constant.INVESTMENT_LOSS;
-
 public class Investor {
-
-    private long wealth;
+    private double wealth;
     private final double investingFraction;
 
     public Investor(long wealth, double investingFraction) {
@@ -16,16 +15,17 @@ public class Investor {
     }
 
     public void invest() {
-        long investedAmount = (long) (wealth * investingFraction);
+        double investedAmount = wealth * investingFraction;
 
-        if(Randomizer.nextBoolean()) {
+        if (Randomizer.nextBoolean()) {
             wealth += investedAmount * INVESTMENT_GAIN;
-        } else {
+        }
+        else {
             wealth -= investedAmount * INVESTMENT_LOSS;
         }
     }
 
-    public long getWealth() {
+    public double getWealth() {
         return wealth;
     }
 }
