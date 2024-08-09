@@ -20,26 +20,26 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
     - name: Compile
-      uses: gradle/gradle-build-action@ac2d340dc04d9e1113182899e983b5400c17cda1
+      uses: gradle/actions/setup-gradle@v4
       with:
         arguments: compileJava compileTestJava
     - name: Tests
-      uses: gradle/gradle-build-action@ac2d340dc04d9e1113182899e983b5400c17cda1
+      uses: gradle/actions/setup-gradle@v4
       with:
         arguments: test
     - name: Coverage
-      uses: gradle/gradle-build-action@ac2d340dc04d9e1113182899e983b5400c17cda1
+      uses: gradle/actions/setup-gradle@v4
       with:
         arguments: jacocoTestReport
     - name: Checkstyle
-      uses: gradle/gradle-build-action@ac2d340dc04d9e1113182899e983b5400c17cda1
+      uses: gradle/actions/setup-gradle@v4
       with:
         arguments: checkstyleMain checkstyleTest
     - name: PMD
-      uses: gradle/gradle-build-action@ac2d340dc04d9e1113182899e983b5400c17cda1
+      uses: gradle/actions/setup-gradle@v4
       with:
         arguments: pmdMain pmdTest
     - name: SpotBug
-      uses: gradle/gradle-build-action@ac2d340dc04d9e1113182899e983b5400c17cda1
+      uses: gradle/actions/setup-gradle@v4
       with:
         arguments: spotbugsMain spotbugsTest
