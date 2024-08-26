@@ -30,7 +30,7 @@ checkstyle {
     configDirectory = file("config/checkstyle")
     maxErrors = 500
     dependencies {
-        checkstyle(group: 'com.puppycrawl.tools', name: 'checkstyle', version: '10.17.0')
+        checkstyle(group: 'com.puppycrawl.tools', name: 'checkstyle', version: '10.18.0')
         checkstyle(group: 'com.github.sevntu-checkstyle', name: 'sevntu-checks', version: '1.44.1')
     }
 }
