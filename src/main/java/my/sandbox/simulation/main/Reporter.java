@@ -2,10 +2,8 @@ package my.sandbox.simulation.main;
 
 import static my.sandbox.common.constant.StringConstant.DASH;
 import static my.sandbox.common.logger.CommonLogger.LOG;
-
 import java.util.LinkedList;
 import java.util.List;
-
 import my.sandbox.common.util.StringUtils;
 import my.sandbox.simulation.person.HealthState;
 import my.sandbox.simulation.person.Person;

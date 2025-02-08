@@ -1,6 +1,8 @@
 package my.sandbox.game.furnace;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -8,7 +10,7 @@ public final class DisksFactory {
 
     private static Set<GameMode> gameModes;
 
-    public static void configure(Set<GameMode> modes){
+    public static void configure(Set<GameMode> modes) {
         gameModes = modes;
     }
 
@@ -34,5 +36,6 @@ public final class DisksFactory {
         return ((LinkedList<Integer>) lowToHigh(rotationDisk)).reversed();
     }
 
-    private DisksFactory() {}
+    private DisksFactory() {
+    }
 }

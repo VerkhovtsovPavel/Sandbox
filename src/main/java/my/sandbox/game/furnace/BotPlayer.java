@@ -1,10 +1,11 @@
 package my.sandbox.game.furnace;
 
 import static my.sandbox.common.logger.CommonLogger.LOG;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Queue;
 import java.util.function.Function;
-
 import my.sandbox.common.game.Dice;
 
 public class BotPlayer implements Player {
@@ -16,7 +17,8 @@ public class BotPlayer implements Player {
     private final PlayerColor color;
     private final Dice dice;
 
-    public BotPlayer(PlayerColor color, BotMode upside, Dice dice, Cards cards, Function<Integer, Queue<Integer>> diskProvider) {
+    public BotPlayer(PlayerColor color, BotMode upside, Dice dice, Cards cards,
+                     Function<Integer, Queue<Integer>> diskProvider) {
         this.color = color;
         this.mode = upside;
         this.dice = dice;
@@ -27,7 +29,7 @@ public class BotPlayer implements Player {
     @Override
     public void applyDisk() {
         int initialCard = dice.roll();
-        LOG.debug("Bot[{}] rolled {}",color, initialCard);
+        LOG.debug("Bot[{}] rolled {}", color, initialCard);
         Integer currentDisk = disks.poll();
         List<Card> round = buildTheRound(initialCard, cards, mode);
         for (Card card : round) {

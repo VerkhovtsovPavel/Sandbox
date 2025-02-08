@@ -1,8 +1,7 @@
 package my.sandbox.classification.entity;
 
-import java.util.List;
-
 import static my.sandbox.classification.util.MathUtils.distance;
+import java.util.List;
 
 /**
  * Class describing object with two characteristics x and y coordinates.

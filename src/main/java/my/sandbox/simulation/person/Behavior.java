@@ -1,9 +1,8 @@
 package my.sandbox.simulation.person;
 
-import my.sandbox.simulation.place.Place;
-
 import java.util.ArrayList;
 import java.util.List;
+import my.sandbox.simulation.place.Place;
 
 public abstract class Behavior {
 

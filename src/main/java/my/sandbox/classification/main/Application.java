@@ -7,5 +7,6 @@ public final class Application {
         classification.process();
     }
 
-    private Application() {}
+    private Application() {
+    }
 }

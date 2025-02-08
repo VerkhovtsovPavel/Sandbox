@@ -1,17 +1,17 @@
 package my.sandbox.classification.graphics;
 
-import my.sandbox.classification.entity.Entity;
-import my.sandbox.classification.util.CloneUtils;
-import my.sandbox.classification.util.SyncUtils;
+import static my.sandbox.classification.util.Constants.UI_REDRAW_EVENT;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.io.Serial;
 import java.util.List;
-
-import static my.sandbox.classification.util.Constants.UI_REDRAW_EVENT;
+import my.sandbox.classification.entity.Entity;
+import my.sandbox.classification.util.CloneUtils;
+import my.sandbox.classification.util.SyncUtils;
 
 /**
  * Class containing methods to visualize classes.
@@ -103,9 +103,9 @@ public final class GraphicsClass extends JPanel {
             case 2 -> Color.GREEN;
             case 3 -> Color.GRAY;
             default -> new Color(
-                    0,
-                    255 / areaCount * areaNumber,
-                    255 / areaCount * areaNumber
+                0,
+                255 / areaCount * areaNumber,
+                255 / areaCount * areaNumber
             );
         };
     }

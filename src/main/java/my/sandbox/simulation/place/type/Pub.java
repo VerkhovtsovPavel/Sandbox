@@ -5,7 +5,6 @@ import my.sandbox.simulation.util.Counter;
 
 @SuppressWarnings("PMD.ShortClassName")
 public class Pub extends Place {
-
     public Pub(final Counter counter) {
         super(counter);
     }

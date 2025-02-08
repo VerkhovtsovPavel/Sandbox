@@ -1,11 +1,10 @@
 package my.sandbox.simulation.place;
 
-import my.sandbox.common.util.Randomizer;
-
 import java.util.List;
 
-public class City {
+import my.sandbox.common.util.Randomizer;
 
+public class City {
     private static final Place GATE = new Gate();
     private final List<Place> places;
 

@@ -2,9 +2,7 @@ package my.sandbox.classification.main;
 
 import static my.sandbox.common.logger.CommonLogger.LOG;
 import static my.sandbox.common.util.ConsoleScanner.CONSOLE_SCANNER;
-
 import java.util.List;
-
 import my.sandbox.classification.entity.Entity;
 import my.sandbox.classification.util.MathUtils;
 

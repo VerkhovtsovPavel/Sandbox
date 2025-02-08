@@ -1,11 +1,10 @@
 package my.sandbox.classification.util;
 
-import my.sandbox.classification.entity.Entity;
-
 import java.util.List;
 
-public final class MathUtils {
+import my.sandbox.classification.entity.Entity;
 
+public final class MathUtils {
     private MathUtils() {
 
     }
@@ -16,7 +15,7 @@ public final class MathUtils {
 
     public static double sqrDistance(final Entity first, final Entity second) {
         return Math.pow(Math.abs(first.getX() - second.getX()), 2)
-                + Math.pow(Math.abs(first.getY() - second.getY()), 2);
+            + Math.pow(Math.abs(first.getY() - second.getY()), 2);
     }
 
     public static double getAverageDeviation(final List<Entity> entities, final Entity core) {

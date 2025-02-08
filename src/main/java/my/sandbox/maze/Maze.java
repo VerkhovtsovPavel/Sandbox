@@ -24,8 +24,8 @@ public record Maze(int[][] matrix) {
     private void flatsAndTops(int i, StringBuilder buffer, DisplayInfo info) {
         for (int[] line : matrix) {
             buffer
-                  .append(info.getCorner())
-                  .append(Direction.N.isBitNotSet(line[i]) ? info.getFlat() : info.getSpaces());
+                .append(info.getCorner())
+                .append(Direction.N.isBitNotSet(line[i]) ? info.getFlat() : info.getSpaces());
         }
         buffer.append(info.getCorner()).append(NEXT_LINE);
     }

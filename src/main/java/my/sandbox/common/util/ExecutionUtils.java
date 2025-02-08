@@ -16,5 +16,6 @@ public final class ExecutionUtils {
         }
     }
 
-    private ExecutionUtils() {}
+    private ExecutionUtils() {
+    }
 }

@@ -1,9 +1,5 @@
 package my.sandbox.common.util;
 
-import static my.sandbox.common.logger.CommonLogger.LOG;
-
-import java.util.Map;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,9 +10,10 @@ import org.apache.logging.log4j.Logger;
 @Deprecated
 public final class LogUtil {
 
+    @Deprecated
     public static final Logger LOG = LogManager.getLogger();
 
-
+    @Deprecated
     public static void info(String message) {
         LOG.info(message);
     }

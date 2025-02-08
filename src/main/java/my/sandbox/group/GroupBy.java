@@ -22,6 +22,7 @@ public final class GroupBy {
         return groups;
     }
 
-    private GroupBy() {}
+    private GroupBy() {
+    }
 
 }

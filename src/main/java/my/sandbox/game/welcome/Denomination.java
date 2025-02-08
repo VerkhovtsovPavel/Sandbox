@@ -28,7 +28,7 @@ public enum Denomination {
     }
 
     public static Denomination valueOf(int value) {
-        for(Denomination denomination : values()) {
+        for (Denomination denomination : values()) {
             if (denomination.getDenomination() == value) {
                 return denomination;
             }

@@ -5,7 +5,6 @@ import static my.sandbox.common.constant.SymbolConstants.OPEN_SQUARE_BRACKET;
 import static my.sandbox.common.util.StringUtils.repeat;
 
 public class StringCompressor {
-
     public String unzip(final String compressedString) {
         return internalUnzip(compressedString, 1);
     }

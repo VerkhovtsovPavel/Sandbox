@@ -2,7 +2,6 @@ package my.sandbox.common.util;
 
 import static my.sandbox.common.constant.StringConstant.DOT;
 
-
 public final class StringUtils {
     public static String beatifyClassName(final String className) {
         int indexOfLastDot = className.lastIndexOf(DOT) + 1;

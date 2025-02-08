@@ -1,9 +1,9 @@
 package my.sandbox.salad.constant;
 
-import my.sandbox.salad.Ingredient;
-
 import java.util.Comparator;
 import java.util.function.Function;
+
+import my.sandbox.salad.Ingredient;
 
 public enum SortCriteria implements Comparator<Ingredient> {
     TYPE(i -> i.type().ordinal()),

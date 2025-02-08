@@ -1,7 +1,6 @@
 package my.sandbox.game.welcome;
 
 import static my.sandbox.common.logger.CommonLogger.LOG;
-
 import my.sandbox.common.game.Deck;
 
 public final class Main {

@@ -1,9 +1,8 @@
 package my.sandbox.classification.util;
 
-import my.sandbox.classification.entity.Entity;
-
 import java.util.ArrayList;
 import java.util.List;
+import my.sandbox.classification.entity.Entity;
 
 public final class CloneUtils {
 

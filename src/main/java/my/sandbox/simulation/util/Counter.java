@@ -3,7 +3,6 @@ package my.sandbox.simulation.util;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class Counter {
     private final Map<Class<?>, Long> counters = new HashMap<>();
 

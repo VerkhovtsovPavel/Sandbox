@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 public final class ConsoleScanner {
 
-	public final static Scanner CONSOLE_SCANNER = new Scanner(System.in, StandardCharsets.UTF_8);
+    public final static Scanner CONSOLE_SCANNER = new Scanner(System.in, StandardCharsets.UTF_8);
 
-	private ConsoleScanner() {}
+    private ConsoleScanner() {
+    }
 }

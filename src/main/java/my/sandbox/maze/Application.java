@@ -13,5 +13,6 @@ public final class Application {
         LOG.info(mazeGenerator.generateMaze().toString(DisplayInfo.BASE));
     }
 
-    private Application() {}
+    private Application() {
+    }
 }

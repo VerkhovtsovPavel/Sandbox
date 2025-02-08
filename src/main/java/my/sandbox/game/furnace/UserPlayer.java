@@ -2,7 +2,6 @@ package my.sandbox.game.furnace;
 
 import static my.sandbox.common.logger.CommonLogger.LOG;
 import static my.sandbox.common.util.ConsoleScanner.CONSOLE_SCANNER;
-
 import java.util.List;
 
 public class UserPlayer implements Player {

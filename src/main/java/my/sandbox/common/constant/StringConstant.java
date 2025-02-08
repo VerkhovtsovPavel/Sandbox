@@ -6,5 +6,6 @@ public final class StringConstant {
     public static final String DOT = ".";
     public static final String DASH = "-";
 
-    private StringConstant() {}
+    private StringConstant() {
+    }
 }

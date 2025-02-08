@@ -1,10 +1,14 @@
 package my.sandbox.simulation.place;
 
-import my.sandbox.simulation.place.type.*;
-import my.sandbox.simulation.util.Counter;
-
 import java.util.ArrayList;
 import java.util.stream.IntStream;
+import my.sandbox.simulation.place.type.Home;
+import my.sandbox.simulation.place.type.Hospital;
+import my.sandbox.simulation.place.type.Park;
+import my.sandbox.simulation.place.type.Pub;
+import my.sandbox.simulation.place.type.School;
+import my.sandbox.simulation.place.type.Work;
+import my.sandbox.simulation.util.Counter;
 
 public class CityBuilder {
     private int homesCount;

@@ -1,9 +1,12 @@
 package my.sandbox.simulation.place;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import my.sandbox.simulation.person.Person;
-
-import java.util.*;
-
 
 public class Navigator {
 
@@ -13,14 +16,16 @@ public class Navigator {
         List<Person> fromList = currentLocation.get(from);
         if (fromList == null) {
             currentLocation.put(from, new ArrayList<>());
-        } else {
+        }
+        else {
             fromList.remove(person);
         }
 
         List<Person> toList = currentLocation.get(to);
         if (toList == null) {
             currentLocation.put(from, new ArrayList<>(Collections.singletonList(person)));
-        } else {
+        }
+        else {
             toList.add(person);
         }
     }

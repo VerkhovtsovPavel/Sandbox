@@ -4,7 +4,6 @@ import my.sandbox.simulation.place.Place;
 import my.sandbox.simulation.util.Counter;
 
 public class Hospital extends Place {
-
     public Hospital(Counter counter) {
         super(counter);
     }

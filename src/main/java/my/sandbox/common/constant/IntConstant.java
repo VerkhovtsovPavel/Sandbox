@@ -1,7 +1,6 @@
 package my.sandbox.common.constant;
 
 public final class IntConstant {
-
     public static final int ZERO = 0;
     public static final int ONE = 1;
     public static final int TWO = 2;
@@ -11,6 +10,7 @@ public final class IntConstant {
     public static final int SIX = 6;
     public static final int SEVEN = 7;
     public static final int TEN = 10;
+    public static final int FIFTY = 50;
     public static final int HUNDRED = 100;
 
     private IntConstant() {

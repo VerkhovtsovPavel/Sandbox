@@ -5,16 +5,17 @@ import my.sandbox.common.constant.CompareResult;
 public final class CompareUtils {
 
     public static <T extends Comparable<T>> CompareResult compare(T left, T right) {
-       int intResult = left.compareTo(right);
+        int intResult = left.compareTo(right);
 
-       if (intResult == 0) {
-           return CompareResult.EQUAL;
-       } else if (intResult > 0) {
-           return CompareResult.MORE;
-       } else {
-           return CompareResult.LESS;
-       }
+        if (intResult == 0) {
+            return CompareResult.EQUAL;
+        } else if (intResult > 0) {
+            return CompareResult.MORE;
+        } else {
+            return CompareResult.LESS;
+        }
     }
 
-    private CompareUtils() {}
+    private CompareUtils() {
+    }
 }

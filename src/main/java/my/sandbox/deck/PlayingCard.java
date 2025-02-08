@@ -1,7 +1,6 @@
 package my.sandbox.deck;
 
 public class PlayingCard {
-
     private final Suit suit;
     private final Value value;
 

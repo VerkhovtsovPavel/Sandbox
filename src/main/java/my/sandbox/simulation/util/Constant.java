@@ -8,5 +8,6 @@ public final class Constant {
     public static final int ILLNESS_PERIOD = 36;
     public static final int HIDDEN_PERIOD = 12;
 
-    private Constant() {}
+    private Constant() {
+    }
 }

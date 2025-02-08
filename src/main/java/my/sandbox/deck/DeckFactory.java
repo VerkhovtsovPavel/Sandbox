@@ -1,15 +1,15 @@
 package my.sandbox.deck;
 
-import my.sandbox.common.game.Deck;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeckFactory {
+import my.sandbox.common.game.Deck;
 
+public class DeckFactory {
     public Deck<PlayingCard> thirtySixCardsDeck() {
-        List<PlayingCard> cards = combinations(Suit.values(), Value.SIX, Value.SEVEN, Value.EIGHTH, Value.NINE, Value.TEN,
-              Value.JACK, Value.QUEEN, Value.KING, Value.ACE);
+        List<PlayingCard> cards =
+            combinations(Suit.values(), Value.SIX, Value.SEVEN, Value.EIGHTH, Value.NINE, Value.TEN,
+                Value.JACK, Value.QUEEN, Value.KING, Value.ACE);
 
         return new Deck<>(cards);
     }
