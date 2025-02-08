@@ -1,7 +1,6 @@
 package my.sandbox.game.furnace;
 
 import static my.sandbox.common.logger.CommonLogger.LOG;
-import static my.sandbox.game.furnace.BotMode.IMPULSIVE;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,7 +8,7 @@ import java.util.List;
 import java.util.Queue;
 import java.util.function.Function;
 
-import my.sandbox.common.game.Dice;
+import my.sandbox.game.common.Dice;
 
 public class BotPlayer implements Player {
     private final List<Card> cards;

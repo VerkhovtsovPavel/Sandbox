@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 
 import my.sandbox.classification.entity.Entity;
 import my.sandbox.classification.util.CloneUtils;
-import my.sandbox.classification.util.SyncUtils;
+import my.sandbox.common.util.SyncUtils;
 
 /**
  * Class containing methods to visualize classes.

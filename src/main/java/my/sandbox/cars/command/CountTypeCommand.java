@@ -3,6 +3,7 @@ package my.sandbox.cars.command;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import my.sandbox.cars.command.base.CarCommand;
 import my.sandbox.cars.storage.Car;
 
 public class CountTypeCommand implements CarCommand<Integer> {

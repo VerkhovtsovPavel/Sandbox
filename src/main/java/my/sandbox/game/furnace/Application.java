@@ -16,8 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import my.sandbox.common.game.Dice;
-import my.sandbox.common.game.DiceFactory;
+import my.sandbox.game.common.Dice;
+import my.sandbox.game.common.DiceFactory;
 
 public final class Application {
     private Application() {

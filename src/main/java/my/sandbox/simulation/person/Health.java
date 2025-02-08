@@ -11,7 +11,6 @@ public class Health {
         if (currentState.isSick()) {
             periodOfIllness++;
 
-            // TODO Think about gauss distribution depends on probability
             if (currentState == HealthState.SICK && Randomizer.nextDouble() < Constant.DEAD_PROBABILITY) {
                 currentState = HealthState.DEAD;
             }

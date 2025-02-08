@@ -3,7 +3,7 @@ package my.sandbox.game.welcome;
 import static my.sandbox.common.constant.IntConstant.THREE;
 import static my.sandbox.common.logger.CommonLogger.LOG;
 
-import my.sandbox.common.game.Deck;
+import my.sandbox.game.common.Deck;
 
 public final class Main {
     private Main() {

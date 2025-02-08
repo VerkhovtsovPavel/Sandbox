@@ -1,15 +1,14 @@
 package my.sandbox.structure.tree;
 
-import static my.sandbox.common.util.CompareUtil.compare;
+import static my.sandbox.common.util.compare.CompareUtil.compare;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import my.sandbox.common.constant.CompareResult;
+import my.sandbox.common.util.compare.CompareResult;
 
-// TODO: Add delete
-// TODO: Optimize `add` function (?)
+// Add delete
 public class BinaryTree<T extends Comparable<T>> {
     private Node<T> root;
 

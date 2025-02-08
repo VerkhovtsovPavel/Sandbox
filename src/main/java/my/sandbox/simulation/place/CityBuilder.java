@@ -1,7 +1,8 @@
 package my.sandbox.simulation.place;
 
+import static my.sandbox.common.util.ExecutionUtil.times;
+
 import java.util.ArrayList;
-import java.util.stream.IntStream;
 
 import my.sandbox.simulation.place.type.Home;
 import my.sandbox.simulation.place.type.Hospital;
@@ -52,13 +53,12 @@ public class CityBuilder {
     public City build() {
         Counter placesUniqueIdentifiers = new Counter();
         ArrayList<Place> places = new ArrayList<>();
-        //TODO Re-work with times
-        IntStream.range(0, homesCount).forEach(i -> places.add(new Home(placesUniqueIdentifiers)));
-        IntStream.range(0, workCount).forEach(i -> places.add(new Work(placesUniqueIdentifiers)));
-        IntStream.range(0, schoolCount).forEach(i -> places.add(new School(placesUniqueIdentifiers)));
-        IntStream.range(0, pubCount).forEach(i -> places.add(new Pub(placesUniqueIdentifiers)));
-        IntStream.range(0, parkCount).forEach(i -> places.add(new Park(placesUniqueIdentifiers)));
-        IntStream.range(0, hospitalCount).forEach(i -> places.add(new Hospital(placesUniqueIdentifiers)));
+        times(homesCount, i -> places.add(new Home(placesUniqueIdentifiers)));
+        times(workCount, i -> places.add(new Work(placesUniqueIdentifiers)));
+        times(schoolCount, i -> places.add(new School(placesUniqueIdentifiers)));
+        times(pubCount, i -> places.add(new Pub(placesUniqueIdentifiers)));
+        times(parkCount, i -> places.add(new Park(placesUniqueIdentifiers)));
+        times(hospitalCount, i -> places.add(new Hospital(placesUniqueIdentifiers)));
         return new City(places);
     }
 }
