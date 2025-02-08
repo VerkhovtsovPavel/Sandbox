@@ -1,43 +1,65 @@
 package my.sandbox.game.furnace;
 
+import static my.sandbox.common.logger.CommonLogger.LOG;
+import static my.sandbox.common.util.ExecutionUtils.times;
+import static my.sandbox.game.furnace.GameMode.UNIVERSITIES;
+import static my.sandbox.game.furnace.GameMode.VARIABLE_CAPITAL_DISK;
+import static my.sandbox.game.furnace.PlayerColor.*;
+import static my.sandbox.game.furnace.PlayerColor.RED;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 import my.sandbox.common.game.Dice;
 import my.sandbox.common.game.DiceFactory;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-
-import static my.sandbox.common.util.ExecutionUtils.times;
-
 public final class Application {
 
-    //TODO Need to re-tests after changes
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-        Dice dice = DiceFactory.d6();
+		Set<GameMode> gameModes = Set.of(UNIVERSITIES);
 
-        times(4, (round) -> {
-            final List<Card> cards = new LinkedList<>();
-            times(7, (i) -> cards.add(new Card(i.longValue(), new HashMap<>())));
+		DisksFactory.configure(gameModes);
 
-            Player userPlayer = new UserPlayer(cards, PlayerColor.RED);
-            Player upsidePlayer = new BotPlayer(cards, DisksFactory.highToLow(round.intValue() + 1), BotMode.UPSIDE, PlayerColor.BLACK, dice);
-            Player downsidePlayer = new BotPlayer(cards, DisksFactory.lowToHigh(round.intValue() + 1), BotMode.DOWNSIDE, PlayerColor.WHILE, dice);
+		Dice dice = DiceFactory.d6();
 
-            List<Player> playOrder = new ArrayList<>();
-            times(5, () -> {
-                playOrder.add(userPlayer);
-                playOrder.add(upsidePlayer);
-                playOrder.add(downsidePlayer);
-            });
+		Cards rowOfCard = new Cards(cardsInRound(gameModes));
 
-            for (Player currentPlayer : playOrder) {
-                currentPlayer.applyDisk();
-            }
-        });
-    }
+		UserPlayer userPlayer = new UserPlayer(RED, rowOfCard);
+		BotPlayer upsidePlayer = new BotPlayer(BLACK, BotMode.UPSIDE,  dice, rowOfCard, DisksFactory::highToLow);
+		BotPlayer downsidePlayer = new BotPlayer(WHILE, BotMode.DOWNSIDE, dice, rowOfCard, DisksFactory::lowToHigh);
 
-    private Application() {}
+		Score score = new Score();
+
+		List<Player> players = List.of(userPlayer, upsidePlayer, downsidePlayer);
+
+		times(4, (round) -> {
+			LOG.info("Round [{}] ", round.intValue() + 1);
+
+			players.forEach(player -> player.setup(round.intValue() + 1));
+
+			List<Player> playOrder = new ArrayList<>();
+			times(disksInRound(gameModes), () -> playOrder.addAll(players));
+
+			playOrder.forEach(Player::applyDisk);
+
+			score.computeScope(rowOfCard.getCards());
+			score.getScores().forEach((key, value) -> LOG.info("Player[{}] has {} points", key, value));
+
+			rowOfCard.clean();
+		});
+	}
+
+	private static int cardsInRound(Set<GameMode> gameModes) {
+		return gameModes.contains(UNIVERSITIES) ? 8 : 6;
+	}
+
+	private static int disksInRound(Set<GameMode> gameModes) {
+		return gameModes.contains(VARIABLE_CAPITAL_DISK) ? 5 : 4;
+	}
+
+	private Application() {
+	}
 }
 

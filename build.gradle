@@ -51,7 +51,7 @@ tasks.withType(Pmd) {
 
 apply plugin: SpotBugsPlugin
 ext {
-    spotbugsVersion = '4.6.0'
+    spotbugsVersion = '4.8.6'
 }
 spotbugs.toolVersion = spotbugsVersion
 tasks.withType(SpotBugsTask) {
