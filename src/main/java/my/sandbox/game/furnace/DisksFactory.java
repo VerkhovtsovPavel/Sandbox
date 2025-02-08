@@ -6,28 +6,32 @@ import java.util.stream.IntStream;
 
 public final class DisksFactory {
 
+    private static Set<GameMode> gameModes;
+
+    public static void configure(Set<GameMode> modes){
+        gameModes = modes;
+    }
+
     public static Queue<Integer> lowToHigh() {
         return IntStream.rangeClosed(1, 4).boxed().collect(Collectors.toCollection(LinkedList::new));
     }
 
     public static Queue<Integer> lowToHigh(Integer rotationDisk) {
-        final Queue<Integer> disks = lowToHigh();
-        disks.add(rotationDisk);
-        return disks.stream().sorted().collect(Collectors.toCollection(LinkedList::new));
+        Queue<Integer> disks = lowToHigh();
+
+        if (gameModes.contains(GameMode.VARIABLE_CAPITAL_DISK)) {
+            disks.add(rotationDisk);
+            disks = disks.stream().sorted().collect(Collectors.toCollection(LinkedList::new));
+        }
+        return disks;
     }
 
     public static Queue<Integer> highToLow() {
-        return reverse((LinkedList<Integer>) lowToHigh());
+        return ((LinkedList<Integer>) lowToHigh()).reversed();
     }
 
     public static Queue<Integer> highToLow(Integer rotationDisk) {
-        return reverse((LinkedList<Integer>) lowToHigh(rotationDisk));
-    }
-
-    private static <T> LinkedList<T> reverse(LinkedList<T> list) {
-        final LinkedList<T> reversedList = new LinkedList<>();
-        list.descendingIterator().forEachRemaining(reversedList::add);
-        return reversedList;
+        return ((LinkedList<Integer>) lowToHigh(rotationDisk)).reversed();
     }
 
     private DisksFactory() {}

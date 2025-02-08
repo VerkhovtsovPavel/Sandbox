@@ -3,26 +3,25 @@ package my.sandbox.game.furnace;
 import static my.sandbox.common.logger.CommonLogger.LOG;
 
 import java.util.*;
+import java.util.function.Function;
 
 import my.sandbox.common.game.Dice;
 
 public class BotPlayer implements Player {
 
-    private List<Card> cards;
+    private final List<Card> cards;
+    private final Function<Integer, Queue<Integer>> disksProvider;
     private Queue<Integer> disks;
     private final BotMode mode;
     private final PlayerColor color;
     private final Dice dice;
 
-    public BotPlayer(BotMode upside, PlayerColor color, Dice dice) {
-        this.mode = upside;
+    public BotPlayer(PlayerColor color, BotMode upside, Dice dice, Cards cards, Function<Integer, Queue<Integer>> diskProvider) {
         this.color = color;
+        this.mode = upside;
         this.dice = dice;
-    }
-
-    public void setRound(List<Card> cards, Queue<Integer> disks) {
-        this.cards = cards;
-        this.disks = disks;
+        this.cards = cards.getCards();
+        this.disksProvider = diskProvider;
     }
 
     @Override
@@ -41,6 +40,11 @@ public class BotPlayer implements Player {
         }
     }
 
+    @Override
+    public void setup(int roundNumber) {
+        this.disks = disksProvider.apply(roundNumber);
+    }
+
     private List<Card> buildTheRound(int initialCard, List<Card> cards, BotMode mode) {
         List<Card> round = new ArrayList<>();
         switch (mode) {
@@ -49,11 +53,8 @@ public class BotPlayer implements Player {
                 round.addAll(cards.subList(0, initialCard - 1));
             }
             case DOWNSIDE -> {
-                round.addAll(cards.subList(0, initialCard));
-                Collections.reverse(round);
-                List<Card> secondPart = new ArrayList<>(cards.subList(initialCard, cards.size()));
-                Collections.reverse(secondPart);
-                round.addAll(secondPart);
+                round.addAll(cards.subList(0, initialCard).reversed());
+                round.addAll(cards.subList(initialCard, cards.size()).reversed());
             }
             case IMPULSIVE -> {
                 round.addAll(cards);

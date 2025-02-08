@@ -1,7 +1,10 @@
 package my.sandbox.game.furnace;
 
-import java.util.*;
+import static my.sandbox.common.util.MapUtils.increase;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Score {
 
@@ -9,13 +12,18 @@ public class Score {
 	private final HashMap<PlayerColor, Integer> scores = new HashMap<>();
 
 	public void computeScope(List<Card> cards) {
-		for (Card card: cards) {
-			var cardTaker = card.disks().entrySet().stream().sorted(Map.Entry.comparingByValue()).toList().reversed();
-			// TODO Potentially no winner (Empty card)
-			var winnerPlayer = cardTaker.get(0).getKey();
-			increase(wonCards, winnerPlayer, 1);
+		for (Card card : cards) {
+			var disks = card.disks();
+			if (!disks.isEmpty()) {
+				var cardTaker = disks.entrySet().stream()
+						.sorted(Map.Entry.comparingByValue())
+						.toList()
+						.reversed();
+				var winnerPlayer = cardTaker.get(0).getKey();
+				increase(wonCards, winnerPlayer, 1);
 
-			cardTaker.stream().skip(1).forEach(pair -> increase(scores, pair.getKey(), pair.getValue()));
+				cardTaker.stream().skip(1).forEach(pair -> increase(scores, pair.getKey(), pair.getValue()));
+			}
 		}
 
 		wonCards.forEach((key, value) -> increase(scores, key, value * 3));
@@ -24,9 +32,4 @@ public class Score {
 	public HashMap<PlayerColor, Integer> getScores() {
 		return scores;
 	}
-
-	private void increase(HashMap<PlayerColor, Integer> map, PlayerColor key,  Integer value) {
-		map.put(key, map.getOrDefault(key, 0) + value);
-	}
-
 }
