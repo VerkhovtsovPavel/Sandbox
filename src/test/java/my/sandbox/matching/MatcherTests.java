@@ -1,14 +1,17 @@
 package my.sandbox.matching;
 
 import static java.lang.String.format;
+import static my.sandbox.constant.StringConstant.AB;
+import static my.sandbox.constant.StringConstant.ABC;
+import static my.sandbox.constant.StringConstant.BCD;
 import static my.sandbox.matching.Matcher.match;
+
+import java.util.List;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.util.List;
 
 public class MatcherTests {
     private static final String STRING_VALUE_FORMAT = "String value: %s";
@@ -38,8 +41,8 @@ public class MatcherTests {
 
     @Test
     public void matchAll() {
-        Assert.assertEquals(matcher.matchAll("ab"),
-            List.of(SHORT_STRING_VALUE, A_STARTED_STRING_VALUE, format(STRING_VALUE_FORMAT, "ab")),
+        Assert.assertEquals(matcher.matchAll(AB),
+            List.of(SHORT_STRING_VALUE, A_STARTED_STRING_VALUE, format(STRING_VALUE_FORMAT, AB)),
             "Matched branches is incorrect");
     }
 
@@ -47,9 +50,9 @@ public class MatcherTests {
     Object[][] branches() {
         return new Object[][]
             {
-                {"ab", SHORT_STRING_VALUE},
-                {"abc", A_STARTED_STRING_VALUE},
-                {"bcd", format(STRING_VALUE_FORMAT, "bcd")},
+                {AB, SHORT_STRING_VALUE},
+                {ABC, A_STARTED_STRING_VALUE},
+                {BCD, format(STRING_VALUE_FORMAT, BCD)},
                 {1, INTEGER_VALUE},
                 {1.0, DOUBLE_VALUE},
                 {'b', UNEXPECTED_VALUE}

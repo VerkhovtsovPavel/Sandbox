@@ -2,14 +2,14 @@ package my.sandbox.compressor;
 
 import static my.sandbox.common.constant.SymbolConstants.CLOSE_SQUARE_BRACKET;
 import static my.sandbox.common.constant.SymbolConstants.OPEN_SQUARE_BRACKET;
-import static my.sandbox.common.util.StringUtils.repeat;
+import static my.sandbox.common.util.StringUtil.repeat;
 
 public class StringCompressor {
     public String unzip(final String compressedString) {
         return internalUnzip(compressedString, 1);
     }
 
-    @SuppressWarnings("PMD.AvoidReassigningLoopVariables")
+    @SuppressWarnings({"PMD.AvoidReassigningLoopVariables", "checkstyle:ModifiedControlVariable"})
     private String internalUnzip(final String string, final int duplications) {
         StringBuilder result = new StringBuilder();
         int duplicationValueLength = 0;
@@ -18,10 +18,12 @@ public class StringCompressor {
                 result.append(string.charAt(i));
                 if (Character.isDigit(string.charAt(i))) {
                     duplicationValueLength++;
-                } else {
+                }
+                else {
                     duplicationValueLength = 0;
                 }
-            } else {
+            }
+            else {
                 // Remove group duplication value
                 result = new StringBuilder(result.substring(0, result.length() - duplicationValueLength));
 
@@ -41,7 +43,8 @@ public class StringCompressor {
             char currentChar = string.charAt(j);
             if (currentChar == OPEN_SQUARE_BRACKET) {
                 level++;
-            } else if (currentChar == CLOSE_SQUARE_BRACKET) {
+            }
+            else if (currentChar == CLOSE_SQUARE_BRACKET) {
                 level--;
             }
             if (level == 0) {

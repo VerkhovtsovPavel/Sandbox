@@ -2,6 +2,7 @@ package my.sandbox.wealth;
 
 import static my.sandbox.wealth.Configuration.INVESTMENT_GAIN;
 import static my.sandbox.wealth.Configuration.INVESTMENT_LOSS;
+
 import my.sandbox.common.util.Randomizer;
 
 public class Investor {
@@ -18,7 +19,8 @@ public class Investor {
 
         if (Randomizer.nextBoolean()) {
             wealth += investedAmount * INVESTMENT_GAIN;
-        } else {
+        }
+        else {
             wealth -= investedAmount * INVESTMENT_LOSS;
         }
     }

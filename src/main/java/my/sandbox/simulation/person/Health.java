@@ -4,12 +4,10 @@ import my.sandbox.common.util.Randomizer;
 import my.sandbox.simulation.util.Constant;
 
 public class Health {
-
     private HealthState currentState = HealthState.HEALTHY;
     private int periodOfIllness;
 
     public void tick() {
-
         if (currentState.isSick()) {
             periodOfIllness++;
 
@@ -43,6 +41,4 @@ public class Health {
     public HealthState getCurrentState() {
         return currentState;
     }
-
 }
-

@@ -2,7 +2,9 @@ package my.sandbox.classification.main;
 
 import static my.sandbox.common.logger.CommonLogger.LOG;
 import static my.sandbox.common.util.ConsoleScanner.CONSOLE_SCANNER;
+
 import java.util.List;
+
 import my.sandbox.classification.entity.Entity;
 import my.sandbox.classification.util.MathUtils;
 
@@ -10,7 +12,6 @@ import my.sandbox.classification.util.MathUtils;
  * Main class for Max-Min approach
  */
 public class MaxMin extends Classification {
-
     private static final int INITIAL_CLASSES_COUNT = 2;
     private Entity entityWithMaxDistance;
 

@@ -1,14 +1,15 @@
 package my.sandbox.classification.entity;
 
 import static my.sandbox.classification.util.MathUtils.distance;
+
 import java.util.List;
 
 /**
  * Class describing object with two characteristics x and y coordinates.
  */
 public class Entity implements Cloneable {
-    private final int xCoordinate;
-    private final int yCoordinate;
+    private final int x;
+    private final int y;
     private int areaNumber;
 
     /**
@@ -18,8 +19,8 @@ public class Entity implements Cloneable {
      * @param y Coordinate y
      */
     public Entity(final int x, final int y) {
-        xCoordinate = x;
-        yCoordinate = y;
+        this.x = x;
+        this.y = y;
     }
 
     /**
@@ -44,7 +45,7 @@ public class Entity implements Cloneable {
      * @return x coordinate object's
      */
     public int getX() {
-        return xCoordinate;
+        return x;
     }
 
     /**
@@ -53,7 +54,7 @@ public class Entity implements Cloneable {
      * @return y coordinate object's
      */
     public int getY() {
-        return yCoordinate;
+        return y;
     }
 
     /**
@@ -78,7 +79,8 @@ public class Entity implements Cloneable {
     public Entity clone() {
         try {
             return (Entity) super.clone();
-        } catch (CloneNotSupportedException e) {
+        }
+        catch (CloneNotSupportedException e) {
             throw new AssertionError(e);
         }
     }

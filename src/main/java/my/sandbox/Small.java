@@ -17,6 +17,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public final class Small {
+    private Small() {
+    }
+
     public static void main(String[] args) {
         LOG.info(hIndex(ONE, THREE, SEVEN, FOUR));
         LOG.info(hIndex(FOUR, FOUR, SEVEN, FOUR));
@@ -32,6 +35,7 @@ public final class Small {
     }
 
     // return an array with count of positives and sum of negatives
+    @SuppressWarnings("checkstyle:streamOf")
     public static int[] countPositivesSumNegatives(final int... input) {
         if (input == null || input.length == ZERO) {
             return new int[ZERO];
@@ -157,8 +161,5 @@ public final class Small {
             maxSequence = currentSequence;
         }
         return maxSequence;
-    }
-
-    private Small() {
     }
 }

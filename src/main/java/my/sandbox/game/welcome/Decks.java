@@ -3,9 +3,12 @@ package my.sandbox.game.welcome;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
 import my.sandbox.common.game.Deck;
 
 public final class Decks {
+    private Decks() {
+    }
 
     public static Deck<Card> classic() {
         List<Card> cards = new ArrayList<>();
@@ -28,8 +31,5 @@ public final class Decks {
         return Constant.BIG_BONUS_CARD_VALUES.stream()
             .map(value -> new Card(bonus, value))
             .collect(Collectors.toList());
-    }
-
-    private Decks() {
     }
 }

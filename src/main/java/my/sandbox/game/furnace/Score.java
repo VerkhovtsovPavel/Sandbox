@@ -1,12 +1,13 @@
 package my.sandbox.game.furnace;
 
-import static my.sandbox.common.util.MapUtils.increase;
+import static my.sandbox.common.constant.IntConstant.THREE;
+import static my.sandbox.common.util.MapUtil.increase;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Score {
-
     private final HashMap<PlayerColor, Integer> wonCards = new HashMap<>();
     private final HashMap<PlayerColor, Integer> scores = new HashMap<>();
 
@@ -25,7 +26,7 @@ public class Score {
             }
         }
 
-        wonCards.forEach((key, value) -> increase(scores, key, value * 3));
+        wonCards.forEach((key, value) -> increase(scores, key, value * THREE));
     }
 
     public HashMap<PlayerColor, Integer> getScores() {

@@ -9,11 +9,12 @@ public final class IntConstant {
     public static final int FIVE = 5;
     public static final int SIX = 6;
     public static final int SEVEN = 7;
+    public static final int EIGHTH = 8;
+    public static final int NINE = 9;
     public static final int TEN = 10;
     public static final int FIFTY = 50;
     public static final int HUNDRED = 100;
 
     private IntConstant() {
-
     }
 }

@@ -15,7 +15,6 @@ import my.sandbox.simulation.place.type.School;
 import my.sandbox.simulation.place.type.Work;
 
 public class BehaviorFactory {
-
     private final City city;
 
     public BehaviorFactory(final City city) {

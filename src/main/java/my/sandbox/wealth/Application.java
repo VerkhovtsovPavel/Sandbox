@@ -1,15 +1,19 @@
 package my.sandbox.wealth;
 
 import static my.sandbox.common.logger.CommonLogger.LOG;
-import static my.sandbox.common.util.ExecutionUtils.times;
+import static my.sandbox.common.util.ExecutionUtil.times;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import my.sandbox.common.constant.DoubleConstant;
 import my.sandbox.common.constant.IntConstant;
-import my.sandbox.common.util.StatUtils;
+import my.sandbox.common.util.StatUtil;
 
 public final class Application {
+    private Application() {
+    }
 
     public static void main(String[] args) {
         ArrayList<Investor> investors = new ArrayList<>(Configuration.INVESTORS_AMOUNT);
@@ -21,8 +25,8 @@ public final class Application {
         List<Double> wealthValues = new ArrayList<>(investors.stream().map(Investor::getWealth).toList());
         Collections.sort(wealthValues);
 
-        LOG.info("Avg:\t" + StatUtils.average(wealthValues));
-        LOG.info("Median:\t" + StatUtils.median(wealthValues));
+        LOG.info("Avg:\t" + StatUtil.average(wealthValues));
+        LOG.info("Median:\t" + StatUtil.median(wealthValues));
 
         printPercentiles(wealthValues, DoubleConstant.HALF, DoubleConstant.ZERO_SIX, DoubleConstant.ZERO_SEVEN,
             DoubleConstant.ZERO_EIGHTH, DoubleConstant.ZERO_NINE, DoubleConstant.ZERO_NINETY_FIVE,
@@ -31,10 +35,7 @@ public final class Application {
 
     private static void printPercentiles(List<Double> wealthValues, double... percentiles) {
         for (double percentile : percentiles) {
-            LOG.info((percentile * IntConstant.HUNDRED) + "th:\t" + StatUtils.percentile(wealthValues, percentile));
+            LOG.info((percentile * IntConstant.HUNDRED) + "th:\t" + StatUtil.percentile(wealthValues, percentile));
         }
-    }
-
-    private Application() {
     }
 }

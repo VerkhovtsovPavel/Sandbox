@@ -2,6 +2,7 @@ package my.sandbox.simulation.place;
 
 import java.util.ArrayList;
 import java.util.stream.IntStream;
+
 import my.sandbox.simulation.place.type.Home;
 import my.sandbox.simulation.place.type.Hospital;
 import my.sandbox.simulation.place.type.Park;

@@ -11,7 +11,9 @@ import my.sandbox.common.structure.Pair;
 
 public final class Matcher<R> {
     private final List<Pair<Predicate<Object>, Function<Object, R>>> conditionList;
-    private Function<Object, R> defaultBranch = x -> { throw new IllegalArgumentException(); };
+    private Function<Object, R> defaultBranch = x -> {
+        throw new IllegalArgumentException();
+    };
 
     private Matcher() {
         conditionList = new ArrayList<>();
@@ -45,13 +47,8 @@ public final class Matcher<R> {
 
     public R match(Object r) {
         for (var pair : conditionList) {
-            try {
-                if (pair.left().test(r)) {
-                    return pair.right().apply(r);
-                }
-            }
-            catch (ClassCastException ignore) {
-                LOG.warn("Class cast error happens for object {}", r.toString());
+            if (tryToMatch(pair.left(), r)) {
+                return pair.right().apply(r);
             }
         }
 
@@ -61,17 +58,22 @@ public final class Matcher<R> {
     public List<R> matchAll(Object r) {
         List<R> results = new ArrayList<>();
         for (var pair : conditionList) {
-            try {
-                if (pair.left().test(r)) {
-                    results.add(pair.right().apply(r));
-                }
-            }
-            catch (ClassCastException ignore) {
-                LOG.warn("Class cast error happens for object {}" + r.toString());
+            if (tryToMatch(pair.left(), r)) {
+                results.add(pair.right().apply(r));
             }
         }
 
         return results;
+    }
+
+    private boolean tryToMatch(Predicate<Object> condition, Object r) {
+        try {
+            return condition.test(r);
+        }
+        catch (ClassCastException ignore) {
+            LOG.warn("Class cast error happens for object {}" + r.toString());
+        }
+        return false;
     }
 
     public final class ConditionAction<T> {

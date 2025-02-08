@@ -3,21 +3,19 @@ package my.sandbox.common.util;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-
 /**
- * Use CommonLogger instwad
+ * @deprecated Use CommonLogger instead
  */
-@Deprecated
+@Deprecated(forRemoval = true, since = "0.1")
 public final class LogUtil {
-
-    @Deprecated
+    @Deprecated(forRemoval = true, since = "0.1")
     public static final Logger LOG = LogManager.getLogger();
 
-    @Deprecated
-    public static void info(String message) {
-        LOG.info(message);
+    private LogUtil() {
     }
 
-    private LogUtil() {
+    @Deprecated(forRemoval = true, since = "0.1")
+    public static void info(String message) {
+        LOG.info(message);
     }
 }

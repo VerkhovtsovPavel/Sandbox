@@ -2,10 +2,10 @@ package my.sandbox.classification.util;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import my.sandbox.classification.entity.Entity;
 
 public final class CloneUtils {
-
     private CloneUtils() {
     }
 

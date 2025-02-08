@@ -4,7 +4,6 @@ import static my.sandbox.common.constant.SymbolConstants.NEXT_LINE;
 import static my.sandbox.common.constant.SymbolConstants.SPACE;
 
 public record Maze(int[][] matrix) {
-
     public String toString(DisplayInfo info) {
         StringBuilder buffer = new StringBuilder();
 
@@ -37,7 +36,8 @@ public record Maze(int[][] matrix) {
             for (int[] line : matrix) {
                 if (Direction.W.isBitNotSet(line[i])) {
                     buffer.append(wallSign);
-                } else {
+                }
+                else {
                     buffer.append(SPACE);
                 }
 
@@ -51,17 +51,21 @@ public record Maze(int[][] matrix) {
     private void line(int item, int currentLevel, int marketPlace, StringBuilder buffer, DisplayInfo info) {
         if (Type.START.isBitSet(item)) {
             if (info.isDuplicateSign() || currentLevel == marketPlace) {
-                buffer.append(info.getStartSign());
-            } else {
+                buffer.append(info.getStartSigns());
+            }
+            else {
                 buffer.append(info.getSpaces());
             }
-        } else if (Type.FINISH.isBitSet(item)) {
+        }
+        else if (Type.FINISH.isBitSet(item)) {
             if (info.isDuplicateSign() || currentLevel == marketPlace) {
-                buffer.append(info.getEndSign());
-            } else {
+                buffer.append(info.getEndSigns());
+            }
+            else {
                 buffer.append(info.getSpaces());
             }
-        } else {
+        }
+        else {
             buffer.append(info.getSpaces());
         }
     }

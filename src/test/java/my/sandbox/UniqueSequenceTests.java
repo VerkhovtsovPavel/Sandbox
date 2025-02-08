@@ -3,12 +3,12 @@ package my.sandbox;
 import static my.sandbox.Small.uniqueSequenceCount;
 import static my.sandbox.util.ParameterUtils.arr;
 
+import java.util.Iterator;
+import java.util.List;
+
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.util.Iterator;
-import java.util.List;
 
 public class UniqueSequenceTests {
     @Test(dataProvider = "strings")

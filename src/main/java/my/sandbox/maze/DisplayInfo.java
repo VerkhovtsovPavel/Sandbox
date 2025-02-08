@@ -49,11 +49,11 @@ public class DisplayInfo {
         return flat;
     }
 
-    public String getStartSign() {
+    public String getStartSigns() {
         return startSigns;
     }
 
-    public String getEndSign() {
+    public String getEndSigns() {
         return endSigns;
     }
 

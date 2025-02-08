@@ -2,11 +2,12 @@ package my.sandbox.classification.main;
 
 import static my.sandbox.common.logger.CommonLogger.LOG;
 import static my.sandbox.common.util.ConsoleScanner.CONSOLE_SCANNER;
+
 import java.util.List;
+
 import my.sandbox.classification.entity.Entity;
 
 public class KMeans extends Classification {
-
     public KMeans(final int dispersion) {
         super(dispersion);
     }

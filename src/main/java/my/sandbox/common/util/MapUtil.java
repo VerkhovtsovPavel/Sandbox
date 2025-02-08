@@ -1,10 +1,13 @@
 package my.sandbox.common.util;
 
 import static my.sandbox.common.logger.CommonLogger.LOG;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class MapUtils {
+public final class MapUtil {
+    private MapUtil() {
+    }
 
     public static void printMap(Map<?, ?> map) {
         for (Map.Entry<?, ?> e : map.entrySet()) {

@@ -11,13 +11,13 @@ import static my.sandbox.salad.constant.Type.SAUCE;
 import static my.sandbox.salad.constant.Type.SEASONING;
 import static my.sandbox.salad.constant.Type.VEGETABLE;
 
+import java.util.Comparator;
+import java.util.List;
+
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.util.Comparator;
-import java.util.List;
 
 public class FitnessGuruTests {
     private static final int FROM_CALORIES = 5;

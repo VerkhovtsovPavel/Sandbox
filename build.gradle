@@ -28,7 +28,7 @@ test {
 // apply plugin: 'checkstyle'
 checkstyle {
     configDirectory = file("config/checkstyle")
-    maxErrors = 226
+    maxErrors = 8
     dependencies {
         checkstyle(group: 'com.puppycrawl.tools', name: 'checkstyle', version: '10.21.2')
         checkstyle(group: 'com.github.sevntu-checkstyle', name: 'sevntu-checks', version: '1.44.1')

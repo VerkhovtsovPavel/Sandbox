@@ -6,10 +6,10 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 public final class SyncUtils {
+    private static final Map<String, BlockingQueue<Object>> SYNCS = new HashMap<>();
+
     private SyncUtils() {
     }
-
-    private static final Map<String, BlockingQueue<Object>> SYNCS = new HashMap<>();
 
     public static void register(final String key) {
         SYNCS.put(key, new ArrayBlockingQueue<>(1));
@@ -20,7 +20,8 @@ public final class SyncUtils {
         if (queue != null) {
             try {
                 queue.take();
-            } catch (InterruptedException e) {
+            }
+            catch (InterruptedException e) {
                 throw new IllegalStateException(e);
             }
         }

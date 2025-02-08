@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.function.Function;
 
 public final class GroupBy {
+    private GroupBy() {
+    }
 
     public static <V, K> Map<V, List<K>> groupBy(Collection<K> collection, Function<K, V> groupCondition) {
         HashMap<V, List<K>> groups = new HashMap<>();
@@ -21,8 +23,4 @@ public final class GroupBy {
 
         return groups;
     }
-
-    private GroupBy() {
-    }
-
 }

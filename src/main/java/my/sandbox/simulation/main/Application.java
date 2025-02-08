@@ -1,12 +1,15 @@
 package my.sandbox.simulation.main;
 
+import static my.sandbox.common.constant.IntConstant.FIFTY;
 import static my.sandbox.common.constant.IntConstant.FIVE;
 import static my.sandbox.common.constant.IntConstant.HUNDRED;
 import static my.sandbox.common.constant.IntConstant.ONE;
 import static my.sandbox.common.constant.IntConstant.THREE;
 import static my.sandbox.common.constant.IntConstant.TWO;
 import static my.sandbox.common.logger.CommonLogger.LOG;
+
 import java.util.List;
+
 import my.sandbox.common.util.Randomizer;
 import my.sandbox.simulation.person.Person;
 import my.sandbox.simulation.person.PopulationBuilder;
@@ -17,16 +20,17 @@ import my.sandbox.simulation.place.Place;
 import my.sandbox.simulation.util.Constant;
 
 public final class Application {
-
     private static final int ITERATIONS = 100;
 
-    public static void main(String[] args) {
+    private Application() {
+    }
 
+    public static void main(String[] args) {
         Navigator navigator = new Navigator();
         Reporter reporter = new Reporter();
 
         City city =
-            new CityBuilder().withHomes(FIVE * HUNDRED).withWorks(50).withSchools(THREE).withPubs(FIVE).withParks(
+            new CityBuilder().withHomes(FIVE * HUNDRED).withWorks(FIFTY).withSchools(THREE).withPubs(FIVE).withParks(
                 TWO).withHospitals(ONE).build();
 
         PopulationBuilder populationBuilder = new PopulationBuilder(city);
@@ -35,11 +39,11 @@ public final class Application {
         initInfection(population);
 
         for (int i = 0; i < ITERATIONS; i++) {
-            population.forEach((p) -> navigator.moveTo(p, p.getCurrentPlace(), p.tick()));
+            population.forEach(p -> navigator.moveTo(p, p.getCurrentPlace(), p.tick()));
 
             newInfection(city, navigator, reporter);
             reporter.addLine(i, population);
-            long count = population.stream().filter((p) -> p.getStatus().isSick()).count();
+            long count = population.stream().filter(p -> p.getStatus().isSick()).count();
             if (count == 0) {
                 LOG.info("End of simulation on " + i + " iteration. Not more sick people");
                 break;
@@ -58,7 +62,7 @@ public final class Application {
     private static void newInfection(City city, Navigator navigator, Reporter reporter) {
         for (Place place : city.getPlaces()) {
             List<Person> people = navigator.inPlace(place);
-            long count = people.stream().filter((p) -> p.getStatus().isContagious()).count();
+            long count = people.stream().filter(p -> p.getStatus().isContagious()).count();
             if (count > 0) {
                 for (Person person : people) {
                     if (person.infected()
@@ -75,8 +79,5 @@ public final class Application {
         reporter.printTable();
         reporter.printInfectionStatistic();
         reporter.printUninfected(population);
-    }
-
-    private Application() {
     }
 }

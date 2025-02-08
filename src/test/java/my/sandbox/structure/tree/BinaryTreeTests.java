@@ -1,10 +1,12 @@
 package my.sandbox.structure.tree;
 
-import static my.sandbox.common.logger.CommonLogger.LOG;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
 import org.testng.annotations.Test;
 
-//TODO Make test reasonable
+//TODO Increase coverage
 public class BinaryTreeTests {
     @Test
     public void dummyTreeTest() {
@@ -16,10 +18,10 @@ public class BinaryTreeTests {
         integerBinaryTree.add(8);
         integerBinaryTree.add(1);
 
-        LOG.info(integerBinaryTree.contains(5));
-        LOG.info(integerBinaryTree.contains(6));
-        LOG.info(integerBinaryTree.contains(10));
+        assertTrue(integerBinaryTree.contains(5));
+        assertTrue(integerBinaryTree.contains(6));
+        assertFalse(integerBinaryTree.contains(10));
 
-        LOG.info(integerBinaryTree.traverse(TraversalOrder.IN_ORDER));
+        assertEquals(integerBinaryTree.traverse(TraversalOrder.IN_ORDER).toString(), "[1, 3, 5, 6, 8]");
     }
 }

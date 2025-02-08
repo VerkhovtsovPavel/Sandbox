@@ -3,14 +3,13 @@ package my.sandbox;
 import static my.sandbox.util.ParameterUtils.arr;
 import static org.testng.Assert.assertEquals;
 
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-
 import java.util.Iterator;
 import java.util.List;
 
-public class AllNonconsecutiveBinaryStringsTests {
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
+public class AllNonconsecutiveBinaryStringsTests {
     @Test(dataProvider = "bounders")
     public void nonconsecutiveBinaryStrings(int length, String expectedResult) {
         assertEquals(Small.allNonconsecutiveBinaryStrings(length), expectedResult);

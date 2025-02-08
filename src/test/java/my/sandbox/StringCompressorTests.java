@@ -1,18 +1,18 @@
 package my.sandbox;
 
+import static my.sandbox.constant.StringConstant.ABC;
 import static my.sandbox.util.ParameterUtils.arr;
+
+import java.util.Iterator;
+import java.util.List;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.Iterator;
-import java.util.List;
-
 import my.sandbox.compressor.StringCompressor;
 
 public class StringCompressorTests {
-    private static final String ABC = "abc";
     private final StringCompressor stringCompressor = new StringCompressor();
 
     @Test(dataProvider = "strings")

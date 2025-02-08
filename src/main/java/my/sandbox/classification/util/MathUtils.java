@@ -6,7 +6,6 @@ import my.sandbox.classification.entity.Entity;
 
 public final class MathUtils {
     private MathUtils() {
-
     }
 
     public static double distance(final Entity first, final Entity second) {

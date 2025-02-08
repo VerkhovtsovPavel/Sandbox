@@ -2,7 +2,9 @@ package my.sandbox.common.util;
 
 import java.util.function.Consumer;
 
-public final class ExecutionUtils {
+public final class ExecutionUtil {
+    private ExecutionUtil() {
+    }
 
     public static void times(long times, Consumer<Number> body) {
         for (long i = 0; i < times; i++) {
@@ -14,8 +16,5 @@ public final class ExecutionUtils {
         for (long i = 0; i < times; i++) {
             body.run();
         }
-    }
-
-    private ExecutionUtils() {
     }
 }

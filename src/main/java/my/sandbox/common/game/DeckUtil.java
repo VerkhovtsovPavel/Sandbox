@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class DeckUtil {
-
     public <T> Deck<T> unite(final Deck<T>... decks) {
         List<T> allCards = new LinkedList<>();
 

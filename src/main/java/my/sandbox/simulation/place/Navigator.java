@@ -9,7 +9,6 @@ import java.util.Map;
 import my.sandbox.simulation.person.Person;
 
 public class Navigator {
-
     private final Map<Place, List<Person>> currentLocation = new HashMap<>();
 
     public void moveTo(final Person person, final Place from, final Place to) {

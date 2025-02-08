@@ -6,9 +6,8 @@ import java.util.List;
 import my.sandbox.cars.command.CarCommand;
 
 public final class Storage {
-    private final List<Car> cars;
-
     private static final Storage INSTANCE = new Storage();
+    private final List<Car> cars;
 
     private Storage() {
         this.cars = new ArrayList<>();

@@ -1,22 +1,29 @@
 package my.sandbox.game.furnace;
 
+import static my.sandbox.common.constant.IntConstant.EIGHTH;
+import static my.sandbox.common.constant.IntConstant.FIVE;
+import static my.sandbox.common.constant.IntConstant.FOUR;
+import static my.sandbox.common.constant.IntConstant.SIX;
 import static my.sandbox.common.logger.CommonLogger.LOG;
-import static my.sandbox.common.util.ExecutionUtils.times;
+import static my.sandbox.common.util.ExecutionUtil.times;
 import static my.sandbox.game.furnace.GameMode.UNIVERSITIES;
 import static my.sandbox.game.furnace.GameMode.VARIABLE_CAPITAL_DISK;
 import static my.sandbox.game.furnace.PlayerColor.BLACK;
 import static my.sandbox.game.furnace.PlayerColor.RED;
 import static my.sandbox.game.furnace.PlayerColor.WHILE;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
 import my.sandbox.common.game.Dice;
 import my.sandbox.common.game.DiceFactory;
 
 public final class Application {
+    private Application() {
+    }
 
     public static void main(String[] args) {
-
         Set<GameMode> gameModes = Set.of(UNIVERSITIES);
 
         DisksFactory.configure(gameModes);
@@ -33,10 +40,11 @@ public final class Application {
 
         List<Player> players = List.of(userPlayer, upsidePlayer, downsidePlayer);
 
-        times(4, (round) -> {
-            LOG.info("Round [{}] ", round.intValue() + 1);
+        times(FOUR, round -> {
+            int humanReadableRoundNumber = round.intValue() + 1;
+            LOG.info("Round [{}] ", humanReadableRoundNumber);
 
-            players.forEach(player -> player.setup(round.intValue() + 1));
+            players.forEach(player -> player.setup(humanReadableRoundNumber));
 
             List<Player> playOrder = new ArrayList<>();
             times(disksInRound(gameModes), () -> playOrder.addAll(players));
@@ -51,14 +59,11 @@ public final class Application {
     }
 
     private static int cardsInRound(Set<GameMode> gameModes) {
-        return gameModes.contains(UNIVERSITIES) ? 8 : 6;
+        return gameModes.contains(UNIVERSITIES) ? EIGHTH : SIX;
     }
 
     private static int disksInRound(Set<GameMode> gameModes) {
-        return gameModes.contains(VARIABLE_CAPITAL_DISK) ? 5 : 4;
-    }
-
-    private Application() {
+        return gameModes.contains(VARIABLE_CAPITAL_DISK) ? FIVE : FOUR;
     }
 }
 

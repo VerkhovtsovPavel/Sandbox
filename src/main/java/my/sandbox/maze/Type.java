@@ -4,7 +4,7 @@ public enum Type implements Bitable {
     START(16),
     FINISH(32);
 
-    public final int bit;
+    private final int bit;
 
     Type(int bit) {
         this.bit = bit;
