@@ -30,7 +30,7 @@ checkstyle {
     configDirectory = file("config/checkstyle")
     maxErrors = 500
     dependencies {
-        checkstyle(group: 'com.puppycrawl.tools', name: 'checkstyle', version: '10.20.1')
+        checkstyle(group: 'com.puppycrawl.tools', name: 'checkstyle', version: '10.21.2')
         checkstyle(group: 'com.github.sevntu-checkstyle', name: 'sevntu-checks', version: '1.44.1')
     }
 }
@@ -69,7 +69,7 @@ tasks.withType(SpotBugsTask) {
 }
 
 dependencies {
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.24.1'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.24.3'
     implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.24.3'
 
     testImplementation group: 'org.testng', name: 'testng', version: '7.10.2'
