@@ -1,4 +1,4 @@
-package my.sandbox.common.game;
+package my.sandbox.game.common;
 
 import static my.sandbox.common.constant.IntConstant.FOUR;
 import static my.sandbox.common.constant.IntConstant.ONE;

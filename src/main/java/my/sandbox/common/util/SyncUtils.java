@@ -1,4 +1,4 @@
-package my.sandbox.classification.util;
+package my.sandbox.common.util;
 
 import java.util.HashMap;
 import java.util.Map;

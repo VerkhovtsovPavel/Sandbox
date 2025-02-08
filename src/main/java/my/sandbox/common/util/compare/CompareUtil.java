@@ -1,6 +1,4 @@
-package my.sandbox.common.util;
-
-import my.sandbox.common.constant.CompareResult;
+package my.sandbox.common.util.compare;
 
 public final class CompareUtil {
     private CompareUtil() {

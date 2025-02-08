@@ -1,4 +1,4 @@
-package my.sandbox.cars.command;
+package my.sandbox.cars.command.base;
 
 import java.util.List;
 

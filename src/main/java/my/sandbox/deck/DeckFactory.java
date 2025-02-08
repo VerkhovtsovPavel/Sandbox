@@ -3,7 +3,7 @@ package my.sandbox.deck;
 import java.util.ArrayList;
 import java.util.List;
 
-import my.sandbox.common.game.Deck;
+import my.sandbox.game.common.Deck;
 
 public class DeckFactory {
     public Deck<PlayingCard> thirtySixCardsDeck() {

@@ -1,4 +1,4 @@
-package my.sandbox.common.game;
+package my.sandbox.game.common;
 
 public interface Dice {
     int roll();

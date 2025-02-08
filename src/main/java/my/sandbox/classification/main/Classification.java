@@ -9,7 +9,7 @@ import my.sandbox.classification.entity.Entity;
 import my.sandbox.classification.entity.EntityFactory;
 import my.sandbox.classification.graphics.GraphicsClass;
 import my.sandbox.classification.util.MathUtils;
-import my.sandbox.classification.util.SyncUtils;
+import my.sandbox.common.util.SyncUtils;
 
 public abstract class Classification {
     private final int dispersion;

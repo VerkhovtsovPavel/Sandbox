@@ -1,4 +1,4 @@
-package my.sandbox.common.game;
+package my.sandbox.game.common;
 
 import java.util.ArrayList;
 import java.util.Collections;

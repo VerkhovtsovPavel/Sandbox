@@ -19,7 +19,6 @@ public class UserPlayer implements Player {
         LOG.info("[{}] Choose card and disk:", color);
         int card = CONSOLE_SCANNER.nextInt() - 1;
         int disk = CONSOLE_SCANNER.nextInt();
-        // TODO Add validation on valid turn
         cards.get(card).disks().put(color, disk);
         LOG.debug("Player[{}] put {} disk on {} card", color, disk, card + 1);
     }

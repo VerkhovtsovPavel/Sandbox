@@ -3,7 +3,7 @@ package my.sandbox.cars.storage;
 import java.util.ArrayList;
 import java.util.List;
 
-import my.sandbox.cars.command.CarCommand;
+import my.sandbox.cars.command.base.CarCommand;
 
 public final class Storage {
     private static final Storage INSTANCE = new Storage();
