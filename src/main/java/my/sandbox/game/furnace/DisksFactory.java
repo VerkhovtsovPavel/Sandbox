@@ -1,43 +1,33 @@
 package my.sandbox.game.furnace;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public final class DisksFactory {
 
     public static Queue<Integer> lowToHigh() {
-        final Queue<Integer> disks = new LinkedList<>();
-        disks.add(1);
-        disks.add(2);
-        disks.add(3);
-        disks.add(4);
-        return disks;
+        return IntStream.rangeClosed(1, 4).boxed().collect(Collectors.toCollection(LinkedList::new));
     }
 
     public static Queue<Integer> lowToHigh(Integer rotationDisk) {
         final Queue<Integer> disks = lowToHigh();
         disks.add(rotationDisk);
-        Collections.sort((List<Integer>) disks);
-        return disks;
+        return disks.stream().sorted().collect(Collectors.toCollection(LinkedList::new));
     }
 
     public static Queue<Integer> highToLow() {
-        final Queue<Integer> disks = new LinkedList<>();
-        disks.add(4);
-        disks.add(3);
-        disks.add(2);
-        disks.add(1);
-        return disks;
+        return reverse((LinkedList<Integer>) lowToHigh());
     }
 
     public static Queue<Integer> highToLow(Integer rotationDisk) {
-        final Queue<Integer> disks = highToLow();
-        disks.add(rotationDisk);
-        Collections.sort((List<Integer>) disks);
-        Collections.reverse((List<Integer>) disks);
-        return disks;
+        return reverse((LinkedList<Integer>) lowToHigh(rotationDisk));
+    }
+
+    private static <T> LinkedList<T> reverse(LinkedList<T> list) {
+        final LinkedList<T> reversedList = new LinkedList<>();
+        list.descendingIterator().forEachRemaining(reversedList::add);
+        return reversedList;
     }
 
     private DisksFactory() {}

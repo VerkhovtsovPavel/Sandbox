@@ -52,3 +52,7 @@ gradle-app.setting
 # Idea
 .idea/
 *.iml
+
+# Local notes
+
+local_note*

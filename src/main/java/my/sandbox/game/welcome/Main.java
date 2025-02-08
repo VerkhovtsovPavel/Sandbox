@@ -14,8 +14,7 @@ public final class Main {
         Deck<Card> deck = Decks.classic();
         deck.shuffle();
         for (Card card : deck.draw(3)) {
-            LOG.info(card.bonus());
-            LOG.info(card.denomination() + " - " + card.bonus().getIcon());
+            LOG.info("{} - {} ({})", card.denomination(), card.bonus().getIcon(), card.bonus());
         }
     }
 }
