@@ -54,5 +54,4 @@ gradle-app.setting
 *.iml
 
 # Local notes
-
-local_note*
+localNotes.md
