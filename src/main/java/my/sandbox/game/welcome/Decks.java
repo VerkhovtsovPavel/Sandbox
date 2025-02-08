@@ -1,12 +1,14 @@
 package my.sandbox.game.welcome;
 
-import my.sandbox.common.game.Deck;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import my.sandbox.common.game.Deck;
+
 public final class Decks {
+    private Decks() {
+    }
 
     public static Deck<Card> classic() {
         List<Card> cards = new ArrayList<>();
@@ -20,17 +22,14 @@ public final class Decks {
     }
 
     private static List<Card> smallBonusCards(BaseBonus bonus) {
-       return Constant.SMALL_BONUS_CARD_VALUES.stream()
-                .map(value -> new Card(bonus, value))
-                .collect(Collectors.toList());
+        return Constant.SMALL_BONUS_CARD_VALUES.stream()
+            .map(value -> new Card(bonus, value))
+            .collect(Collectors.toList());
     }
 
     private static List<Card> bigBonusCards(BaseBonus bonus) {
         return Constant.BIG_BONUS_CARD_VALUES.stream()
-                .map(value -> new Card(bonus, value))
-                .collect(Collectors.toList());
-    }
-
-    private Decks() {
+            .map(value -> new Card(bonus, value))
+            .collect(Collectors.toList());
     }
 }

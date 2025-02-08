@@ -1,12 +1,11 @@
 package my.sandbox.simulation.person;
 
-import my.sandbox.simulation.place.Place;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Behavior {
+import my.sandbox.simulation.place.Place;
 
+public abstract class Behavior {
     private final List<Place> places = new ArrayList<>();
     private int currentElement;
 

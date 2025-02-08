@@ -1,26 +1,21 @@
 package my.sandbox.common.util;
 
-import static my.sandbox.common.logger.CommonLogger.LOG;
-
-import java.util.Map;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-
 /**
- * Use CommonLogger instwad
+ * @deprecated Use CommonLogger instead
  */
-@Deprecated
+@Deprecated(forRemoval = true, since = "0.1")
 public final class LogUtil {
-
+    @Deprecated(forRemoval = true, since = "0.1")
     public static final Logger LOG = LogManager.getLogger();
 
-
-    public static void info(String message) {
-        LOG.info(message);
+    private LogUtil() {
     }
 
-    private LogUtil() {
+    @Deprecated(forRemoval = true, since = "0.1")
+    public static void info(String message) {
+        LOG.info(message);
     }
 }

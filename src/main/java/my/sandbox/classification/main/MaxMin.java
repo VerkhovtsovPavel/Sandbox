@@ -12,7 +12,6 @@ import my.sandbox.classification.util.MathUtils;
  * Main class for Max-Min approach
  */
 public class MaxMin extends Classification {
-
     private static final int INITIAL_CLASSES_COUNT = 2;
     private Entity entityWithMaxDistance;
 

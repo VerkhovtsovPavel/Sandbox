@@ -12,5 +12,6 @@ public final class SymbolConstants {
     public static final char OPEN_SQUARE_BRACKET = '[';
     public static final char CLOSE_SQUARE_BRACKET = ']';
 
-    private SymbolConstants() {}
+    private SymbolConstants() {
+    }
 }

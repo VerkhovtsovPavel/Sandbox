@@ -1,18 +1,16 @@
 package my.sandbox.structure.tree;
 
-import my.sandbox.common.constant.CompareResult;
+import static my.sandbox.common.util.CompareUtil.compare;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static my.sandbox.common.util.CompareUtils.compare;
+import my.sandbox.common.constant.CompareResult;
 
 // TODO: Add delete
 // TODO: Optimize `add` function (?)
-
 public class BinaryTree<T extends Comparable<T>> {
-
     private Node<T> root;
 
     public void add(final T value) {
@@ -31,9 +29,12 @@ public class BinaryTree<T extends Comparable<T>> {
         CompareResult comparison = compare(value, currentNode.value);
 
         return switch (comparison) {
-            case LESS -> recursiveFind(currentNode.left, value);
-            case MORE -> recursiveFind(currentNode.right, value);
-            case EQUAL -> Optional.of(currentNode);
+            case LESS:
+                yield recursiveFind(currentNode.left, value);
+            case MORE:
+                yield recursiveFind(currentNode.right, value);
+            case EQUAL:
+                yield Optional.of(currentNode);
         };
     }
 
@@ -44,14 +45,16 @@ public class BinaryTree<T extends Comparable<T>> {
 
         CompareResult comparison = compare(value, currentNode.value);
 
-        switch (comparison) {
-            case LESS -> currentNode.left = recursiveAdd(currentNode.left, value);
-            case MORE -> currentNode.right = recursiveAdd(currentNode.right, value);
-            case EQUAL -> { /* Ignore - Current value equal to added */ }
+        if (comparison == CompareResult.LESS) {
+            currentNode.left = recursiveAdd(currentNode.left, value);
+        }
+        else if (comparison == CompareResult.MORE) {
+            currentNode.right = recursiveAdd(currentNode.right, value);
         }
         return currentNode;
     }
 
+    @SuppressWarnings("checkstyle:MissingSwitchDefault")
     public List<T> traverse(TraversalOrder order) {
         List<T> traverse = new ArrayList<>();
         switch (order) {
@@ -87,7 +90,6 @@ public class BinaryTree<T extends Comparable<T>> {
     }
 
     private static class Node<T> {
-
         private final T value;
         private Node<T> right;
         private Node<T> left;

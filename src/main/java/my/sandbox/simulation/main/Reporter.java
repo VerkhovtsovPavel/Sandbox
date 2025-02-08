@@ -6,7 +6,7 @@ import static my.sandbox.common.logger.CommonLogger.LOG;
 import java.util.LinkedList;
 import java.util.List;
 
-import my.sandbox.common.util.StringUtils;
+import my.sandbox.common.util.StringUtil;
 import my.sandbox.simulation.person.HealthState;
 import my.sandbox.simulation.person.Person;
 import my.sandbox.simulation.place.Place;
@@ -57,7 +57,7 @@ public class Reporter {
     public void printInfectionStatistic() {
         LOG.info("Infected by place:");
         quantityOfInfection.getCounters()
-              .forEach((key, value) -> LOG.info(StringUtils.beatifyClassName(key) + " -> " + value));
+              .forEach((key, value) -> LOG.info(StringUtil.beatifyClassName(key) + " -> " + value));
     }
 
     public void printUninfected(List<Person> population) {

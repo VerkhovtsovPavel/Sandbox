@@ -17,6 +17,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public final class Small {
+    private Small() {
+    }
 
     public static void main(String[] args) {
         LOG.info(hIndex(ONE, THREE, SEVEN, FOUR));
@@ -33,6 +35,7 @@ public final class Small {
     }
 
     // return an array with count of positives and sum of negatives
+    @SuppressWarnings("checkstyle:streamOf")
     public static int[] countPositivesSumNegatives(final int... input) {
         if (input == null || input.length == ZERO) {
             return new int[ZERO];
@@ -90,8 +93,8 @@ public final class Small {
     }
 
     public static boolean compareOrderIgnoreIntermediate(
-            final List<String> eventsLog,
-            final List<String> targetSequence) {
+        final List<String> eventsLog,
+        final List<String> targetSequence) {
         int count = 0;
         for (String event : eventsLog) {
             if (targetSequence.get(count).equals(event)) {
@@ -138,14 +141,14 @@ public final class Small {
 
         return String.join(" ", nonconsecutiveBinaryStrings);
     }
-    
+
     public static int uniqueSequenceCount(String value) {
         int maxSequence = 0;
         Set<Character> sequenceChars = new HashSet<>();
-        for(char currentChar : value.toCharArray()) {
-            if(sequenceChars.contains(currentChar)) {
+        for (char currentChar : value.toCharArray()) {
+            if (sequenceChars.contains(currentChar)) {
                 int currentSequence = sequenceChars.size();
-                if(currentSequence > maxSequence) {
+                if (currentSequence > maxSequence) {
                     maxSequence = currentSequence;
                 }
                 sequenceChars.clear();
@@ -154,14 +157,9 @@ public final class Small {
         }
 
         int currentSequence = sequenceChars.size();
-        if(currentSequence > maxSequence) {
+        if (currentSequence > maxSequence) {
             maxSequence = currentSequence;
         }
-
         return maxSequence;
-
-    }
-
-    private Small() {
     }
 }

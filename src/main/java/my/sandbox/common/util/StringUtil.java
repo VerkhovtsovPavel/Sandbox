@@ -2,8 +2,10 @@ package my.sandbox.common.util;
 
 import static my.sandbox.common.constant.StringConstant.DOT;
 
+public final class StringUtil {
+    private StringUtil() {
+    }
 
-public final class StringUtils {
     public static String beatifyClassName(final String className) {
         int indexOfLastDot = className.lastIndexOf(DOT) + 1;
         return className.substring(indexOfLastDot);
@@ -15,9 +17,5 @@ public final class StringUtils {
 
     public static String repeat(final String value, final int times) {
         return value.repeat(times);
-    }
-
-    private StringUtils() {
-
     }
 }

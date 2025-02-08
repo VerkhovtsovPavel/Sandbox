@@ -1,11 +1,14 @@
 package my.sandbox.classification.main;
 
-public final class Application {
+import static my.sandbox.common.constant.IntConstant.HUNDRED;
+import static my.sandbox.common.constant.IntConstant.SIX;
 
-    public static void main(final String[] args) {
-        Classification classification = new KMeans(600);
-        classification.process();
+public final class Application {
+    private Application() {
     }
 
-    private Application() {}
+    public static void main(final String[] args) {
+        Classification classification = new KMeans(SIX * HUNDRED);
+        classification.process();
+    }
 }

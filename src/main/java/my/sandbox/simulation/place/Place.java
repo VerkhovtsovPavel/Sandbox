@@ -1,11 +1,10 @@
 package my.sandbox.simulation.place;
 
+import static my.sandbox.common.util.StringUtil.beatifyClassName;
+
 import my.sandbox.simulation.util.Counter;
 
-import static my.sandbox.common.util.StringUtils.beatifyClassName;
-
 public abstract class Place {
-
     private final long id;
 
     public Place(final Counter counter) {

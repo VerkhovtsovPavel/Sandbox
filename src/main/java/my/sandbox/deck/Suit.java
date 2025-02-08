@@ -1,7 +1,6 @@
 package my.sandbox.deck;
 
 public enum Suit {
-
     SPADES(false), HEARTS(true), CLUBS(false), DIAMONDS(true);
 
     private final boolean color;
@@ -10,6 +9,7 @@ public enum Suit {
         this.color = color;
     }
 
+    @SuppressWarnings("checkstyle:SimpleAccessorNameNotation")
     public boolean isRed() {
         return color;
     }
@@ -17,5 +17,4 @@ public enum Suit {
     public boolean isBlack() {
         return !color;
     }
-
 }

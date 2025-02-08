@@ -8,7 +8,6 @@ import java.util.Optional;
 import java.util.Queue;
 
 public class Deck<T> {
-
     private final Queue<T> cards;
 
     public Deck(List<T> cards) {

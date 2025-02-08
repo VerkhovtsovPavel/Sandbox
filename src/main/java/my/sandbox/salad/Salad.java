@@ -3,9 +3,7 @@ package my.sandbox.salad;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class Salad {
-
     private final Map<Ingredient, Integer> recipe;
 
     public Salad() {

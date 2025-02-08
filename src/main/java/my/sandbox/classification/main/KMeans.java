@@ -8,25 +8,24 @@ import java.util.List;
 import my.sandbox.classification.entity.Entity;
 
 public class KMeans extends Classification {
+    public KMeans(final int dispersion) {
+        super(dispersion);
+    }
 
-	public KMeans(final int dispersion) {
-		super(dispersion);
-	}
+    @Override
+    protected void prepare(List<Entity> entities, List<Entity> cores) {
+        // Do nothing in this classifier
+    }
 
-	@Override
-	protected void prepare(List<Entity> entities, List<Entity> cores) {
-		// Do nothing in this classifier
-	}
+    @Override
+    protected int getEntitiesCount() {
+        LOG.info("Input count entities: ");
+        return CONSOLE_SCANNER.nextInt();
+    }
 
-	@Override
-	protected int getEntitiesCount() {
-		LOG.info("Input count entities: ");
-		return CONSOLE_SCANNER.nextInt();
-	}
-
-	@Override
-	protected int getClassesCount() {
-		LOG.info("Input count classes: ");
-		return CONSOLE_SCANNER.nextInt();
-	}
+    @Override
+    protected int getClassesCount() {
+        LOG.info("Input count classes: ");
+        return CONSOLE_SCANNER.nextInt();
+    }
 }

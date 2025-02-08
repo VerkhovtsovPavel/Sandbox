@@ -1,11 +1,10 @@
 package my.sandbox.simulation.place;
 
-import my.sandbox.common.util.Randomizer;
-
 import java.util.List;
 
-public class City {
+import my.sandbox.common.util.Randomizer;
 
+public class City {
     private static final Place GATE = new Gate();
     private final List<Place> places;
 
@@ -17,9 +16,9 @@ public class City {
         return GATE;
     }
 
-    //TODO Add generic for Place bounds
+    //TODO: Add generic for Place bounds
     public Place getRandom(final Class<?> clazz) {
-        Object[] filteredPlaces = places.stream().filter((x) -> x.getClass() == clazz).toArray();
+        Object[] filteredPlaces = places.stream().filter(x -> x.getClass() == clazz).toArray();
         int randomIndex = Randomizer.nextInt(filteredPlaces.length);
         return (Place) filteredPlaces[randomIndex];
     }
@@ -28,3 +27,4 @@ public class City {
         return this.places;
     }
 }
+

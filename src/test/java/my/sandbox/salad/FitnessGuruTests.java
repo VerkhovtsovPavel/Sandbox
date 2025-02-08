@@ -1,15 +1,23 @@
 package my.sandbox.salad;
 
-import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import static my.sandbox.salad.constant.SortCriteria.CALORIES;
+import static my.sandbox.salad.constant.SortCriteria.CARBOHYDRATES;
+import static my.sandbox.salad.constant.SortCriteria.FATS;
+import static my.sandbox.salad.constant.SortCriteria.PROTEINS;
+import static my.sandbox.salad.constant.SortCriteria.TYPE;
+import static my.sandbox.salad.constant.Type.FRUIT;
+import static my.sandbox.salad.constant.Type.NUT;
+import static my.sandbox.salad.constant.Type.SAUCE;
+import static my.sandbox.salad.constant.Type.SEASONING;
+import static my.sandbox.salad.constant.Type.VEGETABLE;
 
 import java.util.Comparator;
 import java.util.List;
 
-import static my.sandbox.salad.constant.SortCriteria.*;
-import static my.sandbox.salad.constant.Type.*;
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 
 public class FitnessGuruTests {
     private static final int FROM_CALORIES = 5;
@@ -37,13 +45,13 @@ public class FitnessGuruTests {
     @Test(dataProvider = "sortConditions")
     public void sorting(final Comparator<Ingredient> sortCondition, final List<Ingredient> expectedOrder) {
         Assert.assertEquals(fitnessGuru.sortIngredients(salad, sortCondition),
-                expectedOrder, "Sorting order is incorrect");
+            expectedOrder, "Sorting order is incorrect");
     }
 
     @Test
     public void calories() {
         Assert.assertEquals(fitnessGuru.calories(salad),
-                EXPECTED_CALORIES, "Calories calculation is incorrect");
+            EXPECTED_CALORIES, "Calories calculation is incorrect");
     }
 
     @Test
@@ -58,27 +66,27 @@ public class FitnessGuruTests {
     @DataProvider(name = "sortConditions")
     Object[][] sortConditions() {
         return new Object[][]
+            {
                 {
-                        {
-                                TYPE,
-                                List.of(caloriesVegetable, carbohydrateFruit, proteinsSauce, fattyNut, balancedSeasoning)
-                        },
-                        {
-                                FATS,
-                                List.of(caloriesVegetable, carbohydrateFruit, proteinsSauce, balancedSeasoning, fattyNut)
-                        },
-                        {
-                                CARBOHYDRATES,
-                                List.of(fattyNut, caloriesVegetable, proteinsSauce, balancedSeasoning, carbohydrateFruit)
-                        },
-                        {
-                                CALORIES,
-                                List.of(fattyNut, carbohydrateFruit, proteinsSauce, balancedSeasoning, caloriesVegetable)
-                        },
-                        {
-                                PROTEINS,
-                                List.of(fattyNut, caloriesVegetable, carbohydrateFruit, balancedSeasoning, proteinsSauce)
-                        }
-                };
+                    TYPE,
+                    List.of(caloriesVegetable, carbohydrateFruit, proteinsSauce, fattyNut, balancedSeasoning)
+                },
+                {
+                    FATS,
+                    List.of(caloriesVegetable, carbohydrateFruit, proteinsSauce, balancedSeasoning, fattyNut)
+                },
+                {
+                    CARBOHYDRATES,
+                    List.of(fattyNut, caloriesVegetable, proteinsSauce, balancedSeasoning, carbohydrateFruit)
+                },
+                {
+                    CALORIES,
+                    List.of(fattyNut, carbohydrateFruit, proteinsSauce, balancedSeasoning, caloriesVegetable)
+                },
+                {
+                    PROTEINS,
+                    List.of(fattyNut, caloriesVegetable, carbohydrateFruit, balancedSeasoning, proteinsSauce)
+                }
+            };
     }
 }

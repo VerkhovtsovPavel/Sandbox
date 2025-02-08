@@ -1,19 +1,17 @@
 package my.sandbox.classification.main;
 
+import static my.sandbox.classification.util.Constants.UI_REDRAW_EVENT;
+import static my.sandbox.common.logger.CommonLogger.LOG;
+
+import java.util.List;
+
 import my.sandbox.classification.entity.Entity;
 import my.sandbox.classification.entity.EntityFactory;
 import my.sandbox.classification.graphics.GraphicsClass;
 import my.sandbox.classification.util.MathUtils;
 import my.sandbox.classification.util.SyncUtils;
 
-import java.util.List;
-
-import static my.sandbox.classification.util.Constants.UI_REDRAW_EVENT;
-import static my.sandbox.common.logger.CommonLogger.LOG;
-
-
 public abstract class Classification {
-
     private final int dispersion;
 
     public Classification(final int dispersion) {

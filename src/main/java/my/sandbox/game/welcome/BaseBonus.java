@@ -1,7 +1,7 @@
 package my.sandbox.game.welcome;
 
+@SuppressWarnings("checkstyle:AvoidEscapedUnicodeCharacters")
 public enum BaseBonus {
-
     SURVEYOR("\uD83D\uDCCF"),
     REAL_ESTATE_AGENT("\uD83D\uDCB5"),
     LANDSCAPER("\uD83E\uDEB4"),

@@ -6,7 +6,6 @@ import static my.sandbox.common.constant.SymbolConstants.PLUS;
 import static my.sandbox.common.constant.SymbolConstants.X;
 import static my.sandbox.common.constant.SymbolConstants.ZERO;
 
-
 public class DisplayInfo {
     public static final DisplayInfo BASE = new DisplayInfo(PLUS, "│", "---", ZERO, X, false);
     public static final DisplayInfo BIG = new DisplayInfo(PLUS, "│││", "---___---", ZERO, X, false);
@@ -21,12 +20,12 @@ public class DisplayInfo {
     private final String spaces;
 
     public DisplayInfo(
-            final char cornerSign,
-            final String wallSigns,
-            final String flatSigns,
-            final char startSign,
-            final char endSign,
-            final boolean isDuplicateSign) {
+        final char cornerSign,
+        final String wallSigns,
+        final String flatSigns,
+        final char startSign,
+        final char endSign,
+        final boolean isDuplicateSign) {
         this.corner = cornerSign;
         this.wall = wallSigns;
         this.flat = flatSigns;
@@ -50,11 +49,11 @@ public class DisplayInfo {
         return flat;
     }
 
-    public String getStartSign() {
+    public String getStartSigns() {
         return startSigns;
     }
 
-    public String getEndSign() {
+    public String getEndSigns() {
         return endSigns;
     }
 
