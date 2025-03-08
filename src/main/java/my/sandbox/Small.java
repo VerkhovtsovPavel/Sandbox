@@ -1,12 +1,8 @@
 package my.sandbox;
 
-import static my.sandbox.common.constant.IntConstant.FOUR;
 import static my.sandbox.common.constant.IntConstant.ONE;
-import static my.sandbox.common.constant.IntConstant.SEVEN;
-import static my.sandbox.common.constant.IntConstant.THREE;
 import static my.sandbox.common.constant.IntConstant.TWO;
 import static my.sandbox.common.constant.IntConstant.ZERO;
-import static my.sandbox.common.logger.CommonLogger.LOG;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,12 +14,6 @@ import java.util.stream.Collectors;
 
 public final class Small {
     private Small() {
-    }
-
-    public static void main(String[] args) {
-        LOG.info(hIndex(ONE, THREE, SEVEN, FOUR));
-        LOG.info(hIndex(FOUR, FOUR, SEVEN, FOUR));
-        LOG.info(hIndex());
     }
 
     public static int[] uniqueElements(final int... array) {

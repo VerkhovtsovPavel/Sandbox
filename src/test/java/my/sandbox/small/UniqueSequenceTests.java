@@ -1,4 +1,4 @@
-package my.sandbox;
+package my.sandbox.small;
 
 import static my.sandbox.Small.uniqueSequenceCount;
 import static my.sandbox.util.ParameterUtils.arr;
