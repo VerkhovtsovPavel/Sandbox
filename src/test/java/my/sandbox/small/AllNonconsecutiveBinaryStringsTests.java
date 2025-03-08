@@ -1,18 +1,20 @@
-package my.sandbox;
+package my.sandbox.small;
 
 import static my.sandbox.util.ParameterUtils.arr;
-import static org.testng.Assert.assertEquals;
 
 import java.util.Iterator;
 import java.util.List;
 
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import my.sandbox.Small;
 
 public class AllNonconsecutiveBinaryStringsTests {
     @Test(dataProvider = "bounders")
     public void nonconsecutiveBinaryStrings(int length, String expectedResult) {
-        assertEquals(Small.allNonconsecutiveBinaryStrings(length), expectedResult);
+        Assert.assertEquals(Small.allNonconsecutiveBinaryStrings(length), expectedResult);
     }
 
     @SuppressWarnings("checkstyle:LineLength")

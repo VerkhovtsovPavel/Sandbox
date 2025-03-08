@@ -1,4 +1,4 @@
-package my.sandbox;
+package my.sandbox.small;
 
 import static my.sandbox.Small.uniqueElements;
 import static my.sandbox.util.ParameterUtils.intArr;
