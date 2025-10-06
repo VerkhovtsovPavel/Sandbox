@@ -22,7 +22,7 @@ jobs:
         distribution: 'temurin'
 
     - name: Set Gradle
-      uses: gradle/actions/setup-gradle@v4
+      uses: gradle/actions/setup-gradle@v5
 
     - name: Compile
       run: ./gradlew compileJava compileTestJava
