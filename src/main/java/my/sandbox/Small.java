@@ -64,10 +64,12 @@ public final class Small {
         for (int i = 0; i < letters.length; i++) {
             if (letters[i] == currentLetter) {
                 counter++;
-            } else if (counter == ONE) {
+            }
+            else if (counter == ONE) {
                 result.append(currentLetter);
                 currentLetter = letters[i];
-            } else {
+            }
+            else {
                 result.append(currentLetter);
                 result.append(counter);
                 currentLetter = letters[i];

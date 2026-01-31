@@ -1,14 +1,14 @@
 package my.sandbox.small;
 
-import java.util.List;
 import static my.sandbox.Small.strictTwoOutOfThreeWithUniqueElements;
+
+import java.util.List;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class StrictTwoOutOfThreeTests {
-
     @Test(dataProvider = "lists")
     public void validArray(List<Integer> a, List<Integer> b, List<Integer> c, List<Integer> expected) {
         List<Integer> actual = strictTwoOutOfThreeWithUniqueElements(a, b, c);
