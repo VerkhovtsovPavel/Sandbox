@@ -6,11 +6,14 @@ import static my.sandbox.common.constant.IntConstant.ZERO;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public final class Small {
     private Small() {
@@ -151,5 +154,43 @@ public final class Small {
             maxSequence = currentSequence;
         }
         return maxSequence;
+    }
+
+    public static List<Integer> strictTwoOutOfThreeWithUniqueElements(List<Integer> a, List<Integer> b,
+                                                                      List<Integer> c) {
+        Map<Integer, Integer> mapA = toMap(a);
+        Map<Integer, Integer> mapB = toMap(b);
+        Map<Integer, Integer> mapC = toMap(c);
+
+        Map<Integer, Integer> result = new HashMap<>();
+        compareMaps(mapA, mapB, mapC, result);
+        compareMaps(mapB, mapA, mapC, result);
+        compareMaps(mapC, mapA, mapB, result);
+
+        List<Integer> finalResult = new ArrayList<>();
+        result.forEach((k, v) ->
+            IntStream.range(0, v).mapToObj(i -> k).forEach(finalResult::add)
+        );
+
+        return finalResult;
+    }
+
+    private static void compareMaps(Map<Integer, Integer> coreMap,
+                                    Map<Integer, Integer> firstMap,
+                                    Map<Integer, Integer> secondMap,
+                                    Map<Integer, Integer> result) {
+        for (var item : coreMap.entrySet()) {
+            if (firstMap.containsKey(item.getKey()) ^ secondMap.containsKey(item.getKey())
+                || !firstMap.getOrDefault(item.getKey(), 0).equals(secondMap.getOrDefault(item.getKey(), 0))) {
+                result.put(item.getKey(), Math.min(firstMap.getOrDefault(item.getKey(), Integer.MAX_VALUE),
+                    secondMap.getOrDefault(item.getKey(), Integer.MAX_VALUE)));
+            }
+        }
+    }
+
+    private static Map<Integer, Integer> toMap(List<Integer> list) {
+        return list.stream().map(x -> Map.entry(x, 1))
+            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+                Integer::sum));
     }
 }
