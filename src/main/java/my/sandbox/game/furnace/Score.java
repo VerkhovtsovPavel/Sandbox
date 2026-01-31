@@ -11,7 +11,7 @@ public class Score {
     private final HashMap<PlayerColor, Integer> wonCards = new HashMap<>();
     private final HashMap<PlayerColor, Integer> scores = new HashMap<>();
 
-    public void computeScope(List<Card> cards) {
+    public void computeScore(List<Card> cards) {
         for (Card card : cards) {
             var disks = card.disks();
             if (!disks.isEmpty()) {

@@ -18,10 +18,10 @@ public class BotPlayer implements Player {
     private final PlayerColor color;
     private final Dice dice;
 
-    public BotPlayer(PlayerColor color, BotMode upside, Dice dice, Cards cards,
+    public BotPlayer(PlayerColor color, BotMode mode, Dice dice, Cards cards,
                      Function<Integer, Queue<Integer>> diskProvider) {
         this.color = color;
-        this.mode = upside;
+        this.mode = mode;
         this.dice = dice;
         this.cards = cards.getCards();
         this.disksProvider = diskProvider;

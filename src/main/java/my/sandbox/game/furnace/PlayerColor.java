@@ -1,5 +1,5 @@
 package my.sandbox.game.furnace;
 
 public enum PlayerColor {
-    RED, YELLOW, WHILE, BLACK, DARK_GREEN
+    RED, YELLOW, WHITE, BLACK, DARK_GREEN
 }
