@@ -29,7 +29,7 @@ test {
 checkstyle {
     configDirectory = file("config/checkstyle")
     dependencies {
-        checkstyle(group: 'com.puppycrawl.tools', name: 'checkstyle', version: '10.21.4')
+        checkstyle(group: 'com.puppycrawl.tools', name: 'checkstyle', version: '13.0.0')
         checkstyle(group: 'com.github.sevntu-checkstyle', name: 'sevntu-checks', version: '1.44.1')
     }
 }
@@ -68,9 +68,9 @@ tasks.withType(SpotBugsTask) {
 }
 
 dependencies {
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.24.3'
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.24.3'
-    implementation 'org.jetbrains:annotations:26.0.2'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.25.3'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.25.3'
+    implementation 'org.jetbrains:annotations:26.0.2-1'
 
-    testImplementation group: 'org.testng', name: 'testng', version: '7.11.0'
+    testImplementation group: 'org.testng', name: 'testng', version: '7.12.0'
 }
