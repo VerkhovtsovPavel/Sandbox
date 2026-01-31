@@ -10,7 +10,7 @@ import static my.sandbox.game.furnace.GameMode.UNIVERSITIES;
 import static my.sandbox.game.furnace.GameMode.VARIABLE_CAPITAL_DISK;
 import static my.sandbox.game.furnace.PlayerColor.BLACK;
 import static my.sandbox.game.furnace.PlayerColor.RED;
-import static my.sandbox.game.furnace.PlayerColor.WHILE;
+import static my.sandbox.game.furnace.PlayerColor.WHITE;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,15 +26,15 @@ public final class Application {
     public static void main(String[] args) {
         Set<GameMode> gameModes = Set.of(UNIVERSITIES);
 
-        DisksFactory.configure(gameModes);
+        DisksFactory disksFactory = new DisksFactory(gameModes);
 
         Dice dice = DiceFactory.d6();
 
         Cards rowOfCard = new Cards(cardsInRound(gameModes));
 
         UserPlayer userPlayer = new UserPlayer(RED, rowOfCard);
-        BotPlayer upsidePlayer = new BotPlayer(BLACK, BotMode.UPSIDE, dice, rowOfCard, DisksFactory::highToLow);
-        BotPlayer downsidePlayer = new BotPlayer(WHILE, BotMode.DOWNSIDE, dice, rowOfCard, DisksFactory::lowToHigh);
+        BotPlayer upsidePlayer = new BotPlayer(BLACK, BotMode.UPSIDE, dice, rowOfCard, disksFactory::highToLow);
+        BotPlayer downsidePlayer = new BotPlayer(WHITE, BotMode.DOWNSIDE, dice, rowOfCard, disksFactory::lowToHigh);
 
         Score score = new Score();
 
@@ -51,7 +51,7 @@ public final class Application {
 
             playOrder.forEach(Player::applyDisk);
 
-            score.computeScope(rowOfCard.getCards());
+            score.computeScore(rowOfCard.getCards());
             score.getScores().forEach((key, value) -> LOG.info("Player[{}] has {} points", key, value));
 
             rowOfCard.clean();

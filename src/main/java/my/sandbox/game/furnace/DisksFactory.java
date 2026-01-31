@@ -10,20 +10,17 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public final class DisksFactory {
-    private static Set<GameMode> gameModes;
+    private final Set<GameMode> gameModes;
 
-    private DisksFactory() {
+    public DisksFactory(Set<GameMode> modes) {
+        this.gameModes = modes;
     }
 
-    public static void configure(Set<GameMode> modes) {
-        gameModes = modes;
-    }
-
-    public static Queue<Integer> lowToHigh() {
+    public Queue<Integer> lowToHigh() {
         return IntStream.rangeClosed(ONE, FOUR).boxed().collect(Collectors.toCollection(LinkedList::new));
     }
 
-    public static Queue<Integer> lowToHigh(Integer rotationDisk) {
+    public Queue<Integer> lowToHigh(Integer rotationDisk) {
         Queue<Integer> disks = lowToHigh();
 
         if (gameModes.contains(GameMode.VARIABLE_CAPITAL_DISK)) {
@@ -33,11 +30,11 @@ public final class DisksFactory {
         return disks;
     }
 
-    public static Queue<Integer> highToLow() {
+    public Queue<Integer> highToLow() {
         return ((LinkedList<Integer>) lowToHigh()).reversed();
     }
 
-    public static Queue<Integer> highToLow(Integer rotationDisk) {
+    public Queue<Integer> highToLow(Integer rotationDisk) {
         return ((LinkedList<Integer>) lowToHigh(rotationDisk)).reversed();
     }
 }

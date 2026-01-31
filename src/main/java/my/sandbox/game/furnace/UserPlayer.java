@@ -17,7 +17,20 @@ public class UserPlayer implements Player {
     @Override
     public void applyDisk() {
         LOG.info("[{}] Choose card and disk:", color);
-        int card = CONSOLE_SCANNER.nextInt() - 1;
+        int card = -1;
+        while (card < 0 || card >= cards.size()) {
+            if (CONSOLE_SCANNER.hasNextInt()) {
+                card = CONSOLE_SCANNER.nextInt() - 1;
+                if (card < 0 || card >= cards.size()) {
+                    LOG.error("Invalid card number. Please choose between 1 and {}", cards.size());
+                }
+            }
+            else {
+                // consume invalid input
+                CONSOLE_SCANNER.next();
+                LOG.error("Invalid input. Please enter numbers.");
+            }
+        }
         int disk = CONSOLE_SCANNER.nextInt();
         cards.get(card).disks().put(color, disk);
         LOG.debug("Player[{}] put {} disk on {} card", color, disk, card + 1);
