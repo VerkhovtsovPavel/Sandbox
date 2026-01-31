@@ -24,8 +24,10 @@ public class UserPlayer implements Player {
                 if (card < 0 || card >= cards.size()) {
                     LOG.error("Invalid card number. Please choose between 1 and {}", cards.size());
                 }
-            } else {
-                CONSOLE_SCANNER.next(); // consume invalid input
+            }
+            else {
+                // consume invalid input
+                CONSOLE_SCANNER.next();
                 LOG.error("Invalid input. Please enter numbers.");
             }
         }
